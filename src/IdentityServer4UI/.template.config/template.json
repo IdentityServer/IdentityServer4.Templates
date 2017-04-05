@@ -1,0 +1,14 @@
+{
+  "author": "Dominick Baier",
+  "classifications": [
+    "Web"
+  ],
+  "name": "Basic IdentityServer4 with UI and test users",
+  "identity": "IdentityServer4.UI",
+  "shortName": "is4basicui",
+  "tags": {
+    "language": "C#"
+  },
+  "sourceName": "IdentityServer4UI",
+  "preferNameDirectory": "true"
+}
