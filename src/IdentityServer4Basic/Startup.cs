@@ -17,18 +17,14 @@ namespace IdentityServer4Basic
             var serilog = new LoggerConfiguration()
                 .MinimumLevel.Verbose()
                 .Enrich.FromLogContext()
-                .WriteTo.File(@"identityserver4_log.txt");
-
-            if (Environment.IsDevelopment())
-            {
-                serilog.WriteTo.LiterateConsole(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message}{NewLine}{Exception}{NewLine}");
-            }
+                .WriteTo.File(@"identityserver4_log.txt")
+                .WriteTo.LiterateConsole(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message}{NewLine}{Exception}{NewLine}");
 
             loggerFactory
                 .WithFilter(new FilterLoggerSettings
                 {
                     { "IdentityServer4", LogLevel.Debug },
-                    { "Microsoft", LogLevel.Information },
+                    { "Microsoft", LogLevel.Error },
                     { "System", LogLevel.Error },
                 })
                 .AddSerilog(serilog.CreateLogger());
