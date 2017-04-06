@@ -2,8 +2,8 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>IdentityServer4.Templates</id>
-    <version>$version$</version>
-    <authors>Dominick Baier</authors>
+    <version></version>
+    <authors>Brock Allen, Dominick Baier</authors>
     <description>IdentityServer4 Templates</description>
     <language>en-US</language>
     <projectUrl>https://github.com/IdentityServer/IdentityServer4.Templates</projectUrl>
@@ -12,9 +12,5 @@
     <packageTypes>
       <packageType name="Template" />
     </packageTypes>
-    
-    <files>
-      <file src="content/**" target="" />
-    </files>
   </metadata>
 </package>

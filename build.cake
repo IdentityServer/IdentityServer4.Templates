@@ -4,8 +4,8 @@ var configuration   = Argument<string>("configuration", "Release");
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBAL VARIABLES
 ///////////////////////////////////////////////////////////////////////////////
-var packPath            = Directory("./feed");
 var buildArtifacts      = Directory("./artifacts/packages");
+var packageVersion      = "1.0.0";
 
 ///////////////////////////////////////////////////////////////////////////////
 // Clean
@@ -37,14 +37,18 @@ Task("Pack")
     .IsDependentOn("Copy")
     .Does(() =>
 {
-    var settings = new DotNetCorePackSettings
+    var settings = new NuGetPackSettings
     {
-        Configuration = configuration,
-        OutputDirectory = buildArtifacts,
-        NoBuild = true
+        Version = packageVersion,
+        OutputDirectory = buildArtifacts
     };
 
-    DotNetCorePack(packPath, settings);
+    if (AppVeyor.IsRunningOnAppVeyor)
+    {
+        settings.Version = packageVersion + "b" + AppVeyor.Environment.Build.Number.ToString().PadLeft(4,'0');
+    }
+
+    NuGetPack("./feed/IdentityServer4.Templates.nuspec", settings);
 });
 
 
