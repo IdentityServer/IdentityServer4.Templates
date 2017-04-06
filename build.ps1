@@ -80,6 +80,10 @@ function MD5HashFile([string] $filePath)
     }
 }
 
+Write-Host "clean..."
+Invoke-Expression "git clean -xdf ./src"
+Invoke-Expression "git clean -xdf ./feed"
+
 Write-Host "Preparing to run build script..."
 
 if(!$PSScriptRoot){
