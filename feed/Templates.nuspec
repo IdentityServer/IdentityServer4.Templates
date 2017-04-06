@@ -8,8 +8,13 @@
     <language>en-US</language>
     <projectUrl>https://github.com/IdentityServer/IdentityServer4.Templates</projectUrl>
     <licenseUrl>https://github.com/IdentityServer/IdentityServer4.Templates/blob/dev/LICENSE</licenseUrl>
+    
     <packageTypes>
       <packageType name="Template" />
     </packageTypes>
+    
+    <files>
+      <file src="content/**" target="" />
+    </files>
   </metadata>
 </package>
