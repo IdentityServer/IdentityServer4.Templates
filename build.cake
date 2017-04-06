@@ -45,7 +45,7 @@ Task("Pack")
 
     if (AppVeyor.IsRunningOnAppVeyor)
     {
-        settings.Version = packageVersion + "b" + AppVeyor.Environment.Build.Number.ToString().PadLeft(4,'0');
+        settings.Version = packageVersion + "-b" + AppVeyor.Environment.Build.Number.ToString().PadLeft(4,'0');
     }
 
     NuGetPack("./feed/IdentityServer4.Templates.nuspec", settings);
