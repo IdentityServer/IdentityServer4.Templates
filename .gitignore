@@ -252,3 +252,4 @@ paket-files/
 *.sln.iml
 tempkey.rsa
 identityserver4_log.txt
+feed/content/
