@@ -5,6 +5,7 @@
   ],
   "name": "Basic IdentityServer4",
   "identity": "IdentityServer4.Basic",
+  "groupIdentity": "IdentityServer4.Basic",
   "shortName": "is4basic",
   "tags": {
     "language": "C#"
