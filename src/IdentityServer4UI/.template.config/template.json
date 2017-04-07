@@ -1,12 +1,12 @@
 {
   "author": "Dominick Baier",
   "classifications": [
-    "Web"
+    "IdentityServer4"
   ],
-  "name": "Basic IdentityServer4 with UI and test users",
+  "name": "IdentityServer4 with UI and test users",
   "identity": "IdentityServer4.UI",
   "groupIdentity": "IdentityServer4.UI",
-  "shortName": "is4basicui",
+  "shortName": "is4ui",
   "tags": {
     "language": "C#"
   },
