@@ -24,8 +24,8 @@ namespace IdentityServer4Basic
                 .WithFilter(new FilterLoggerSettings
                 {
                     { "IdentityServer4", LogLevel.Debug },
-                    { "Microsoft", LogLevel.Error },
-                    { "System", LogLevel.Error },
+                    { "Microsoft", LogLevel.Warning },
+                    { "System", LogLevel.Warning },
                 })
                 .AddSerilog(serilog.CreateLogger());
         }

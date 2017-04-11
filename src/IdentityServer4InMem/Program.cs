@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace IdentityServer4UI
+namespace IdentityServer4InMem
 {
     public class Program
     {

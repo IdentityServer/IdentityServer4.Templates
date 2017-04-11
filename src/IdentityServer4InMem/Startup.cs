@@ -6,7 +6,7 @@ using Serilog;
 using IdentityServer4;
 using IdentityServer4.Quickstart.UI;
 
-namespace IdentityServer4UI
+namespace IdentityServer4InMem
 {
     public class Startup
     {
@@ -26,8 +26,8 @@ namespace IdentityServer4UI
                 .WithFilter(new FilterLoggerSettings
                 {
                     { "IdentityServer4", LogLevel.Debug },
-                    { "Microsoft", LogLevel.Error },
-                    { "System", LogLevel.Error },
+                    { "Microsoft", LogLevel.Warning },
+                    { "System", LogLevel.Warning },
                 })
                 .AddSerilog(serilog.CreateLogger());
         }
