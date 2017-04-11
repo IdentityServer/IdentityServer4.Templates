@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using IdentityServer4;
-using IdentityServer4.Quickstart.UI;
 
 namespace IdentityServer4InMem
 {

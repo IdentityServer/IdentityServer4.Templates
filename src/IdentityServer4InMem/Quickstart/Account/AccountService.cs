@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Http;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IdentityServer4.Quickstart.UI
+namespace IdentityServer4InMem
 {
     public class AccountService
     {
@@ -143,7 +143,7 @@ namespace IdentityServer4.Quickstart.UI
             if (user != null)
             {
                 var idp = user.FindFirst(JwtClaimTypes.IdentityProvider)?.Value;
-                if (idp != null && idp != IdentityServerConstants.LocalIdentityProvider)
+                if (idp != null && idp != IdentityServer4.IdentityServerConstants.LocalIdentityProvider)
                 {
                     if (vm.LogoutId == null)
                     {
