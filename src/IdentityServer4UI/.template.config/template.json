@@ -3,10 +3,10 @@
   "classifications": [
     "IdentityServer4"
   ],
-  "name": "IdentityServer4 with UI and test users",
-  "identity": "IdentityServer4.UI",
-  "groupIdentity": "IdentityServer4.UI",
-  "shortName": "is4ui",
+  "name": "IdentityServer4 with in-memory stores and test users",
+  "identity": "IdentityServer4.InMem",
+  "groupIdentity": "IdentityServer4.InMem",
+  "shortName": "is4inmem",
   "tags": {
     "language": "C#"
   },

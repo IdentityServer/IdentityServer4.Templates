@@ -1,0 +1,13 @@
+{
+  "author": "Dominick Baier",
+  "classifications": [
+    "IdentityServer4"
+  ],
+  "name": "IdentityServer4 quickstart UI",
+  "identity": "IdentityServer4.Basic",
+  "groupIdentity": "IdentityServer4.UI",
+  "shortName": "is4ui",
+  "tags": {
+    "language": "C#"
+  }
+}
