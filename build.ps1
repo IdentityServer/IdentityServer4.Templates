@@ -83,6 +83,12 @@ function MD5HashFile([string] $filePath)
 Write-Host "clean..."
 Invoke-Expression "git clean -xdf ./src"
 Invoke-Expression "git clean -xdf ./feed"
+Invoke-Expression "git clean -xdf ./UI"
+
+Write-Host "Downloading quickstart UI..."
+cd .\UI
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/IdentityServer/IdentityServer4.Quickstart.UI/release/get.ps1'))
+cd ..
 
 Write-Host "Preparing to run build script..."
 

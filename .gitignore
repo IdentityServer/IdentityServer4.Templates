@@ -254,3 +254,6 @@ tempkey.rsa
 identityserver4_log.txt
 feed/content/
 tools/
+UI/Views/
+UI/wwwroot/
+UI/Quickstart/

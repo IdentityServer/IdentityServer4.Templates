@@ -5,7 +5,7 @@ var configuration   = Argument<string>("configuration", "Release");
 // GLOBAL VARIABLES
 ///////////////////////////////////////////////////////////////////////////////
 var buildArtifacts      = Directory("./artifacts/packages");
-var packageVersion      = "1.0.0-ardbeg";
+var packageVersion      = "1.0.0-arran";
 
 ///////////////////////////////////////////////////////////////////////////////
 // Clean
@@ -13,7 +13,11 @@ var packageVersion      = "1.0.0-ardbeg";
 Task("Clean")
     .Does(() =>
 {
-    CleanDirectories(new DirectoryPath[] { buildArtifacts });
+    CleanDirectories(new DirectoryPath[] 
+    {
+        buildArtifacts,
+        Directory("./feed/content/UI")
+    });
 });
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -25,8 +29,13 @@ Task("Copy")
 {
     CreateDirectory("./feed/content");
 
+    // copy the singel csproj templates
     var files = GetFiles("./src/**/*.*");
     CopyFiles(files, "./feed/content", true);
+
+    // copy the UI files
+    files = GetFiles("./ui/**/*.*");
+    CopyFiles(files, "./feed/content/ui", true);
 });
 
 ///////////////////////////////////////////////////////////////////////////////
