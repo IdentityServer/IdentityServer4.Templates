@@ -4,10 +4,12 @@
     "IdentityServer4"
   ],
   "name": "IdentityServer4 quickstart UI",
-  "identity": "IdentityServer4.Basic",
+  "identity": "IdentityServer4.UI",
   "groupIdentity": "IdentityServer4.UI",
   "shortName": "is4ui",
   "tags": {
     "language": "C#"
-  }
+  },
+  "sourceName": "IdentityServer4.Quickstart.UI",
+  "preferNameDirectory": "true"
 }

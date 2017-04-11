@@ -3,7 +3,7 @@
   "classifications": [
     "IdentityServer4"
   ],
-  "name": "IdentityServer4 basic",
+  "name": "IdentityServer4 Basic",
   "identity": "IdentityServer4.Basic",
   "groupIdentity": "IdentityServer4.Basic",
   "shortName": "is4",
