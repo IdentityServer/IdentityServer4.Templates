@@ -7,7 +7,7 @@ Creates a minimal IdentityServer4 project without a UI and just one API and one 
 ### dotnet new is4ui
 Adds the quickstart UI to the current project (can be combined with *is4*)
 
-### dotnet new ui4inmem
+### dotnet new is4inmem
 Adds a boilerplate IdentityServer with UI, test users and sample clients and resources
 
 ## Installation 
