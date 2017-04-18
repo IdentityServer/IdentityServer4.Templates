@@ -11,5 +11,40 @@
     "language": "C#"
   },
   "sourceName": "IdentityServer4.Quickstart.UI",
-  "preferNameDirectory": "true"
+  "preferNameDirectory": "true",
+
+  "postActions": [
+    {
+      "Description": "Adding MVC reference",
+      "ActionId": "B17581D1-C5C9-4489-8F0A-004BE667B814",
+      "ContinueOnError": "false",
+      "ManualInstructions": [
+        {
+          "Text": "Manually add the reference to your project file"
+        }
+      ],
+      "args": {
+        "referenceType": "package",
+        "reference": "microsoft.aspnetcore.mvc",
+        "version": "1.1.2",
+        "projectFileExtensions": ".csproj"
+      }
+    },
+    {
+      "Description": "Adding StaticFiles reference",
+      "ActionId": "B17581D1-C5C9-4489-8F0A-004BE667B814",
+      "ContinueOnError": "false",
+      "ManualInstructions": [
+        {
+          "Text": "Manually add the reference to your project file"
+        }
+      ],
+      "args": {
+        "referenceType": "package",
+        "reference": "microsoft.aspnetcore.staticfiles",
+        "version": "1.1.1",
+        "projectFileExtensions": ".csproj"
+      }
+    }
+  ]
 }
