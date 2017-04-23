@@ -8,8 +8,41 @@
   "groupIdentity": "IdentityServer4.InMem",
   "shortName": "is4inmem",
   "tags": {
-    "language": "C#"
+    "language": "C#",
+    "type": "project"
+  },
+  "symbols": {
+    "Framework": {
+      "type": "parameter",
+      "description": "The target framework for the project.",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "netcoreapp1.1",
+          "description": "Target netcoreapp1.1"
+        }
+      ],
+      "replaces": "netcoreapp1.1",
+      "defaultValue": "netcoreapp1.1"
+    },
+    "skipRestore": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "If specified, skips the automatic restore of the project on create.",
+      "defaultValue": "false"
+    }
   },
   "sourceName": "IdentityServer4UI",
-  "preferNameDirectory": "true"
+  "preferNameDirectory": "true",
+  "postActions": [
+    {
+      "condition": "(!skipRestore)",
+      "description": "Restore NuGet packages required by this project.",
+      "manualInstructions": [
+        { "text": "Run 'dotnet restore'" }
+      ],
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    }
+  ]
 }
