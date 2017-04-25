@@ -25,6 +25,13 @@
       "replaces": "netcoreapp1.1",
       "defaultValue": "netcoreapp1.1"
     },
+    "TargetFrameworkOverride": {
+      "type": "parameter",
+      "description": "Overrides the target framework",
+      "replaces": "TargetFrameworkOverride",
+      "datatype": "string",
+      "defaultValue": ""
+    },
     "skipRestore": {
       "type": "parameter",
       "datatype": "bool",
