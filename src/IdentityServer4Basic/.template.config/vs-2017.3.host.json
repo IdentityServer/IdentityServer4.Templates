@@ -8,11 +8,5 @@
   "supportsDocker": false,
   "isApi": false,
   "usesOidc": true,
-  "legacyTemplateIdentity": "IdentityServer4.Basic.CSharp",
-  "supportedAuthentications": [
-    {
-      "auth": "None",
-      "authenticationType": "NoAuth"
-    }
-  ]
+  "legacyTemplateIdentity": "IdentityServer4.Basic.CSharp"
 }

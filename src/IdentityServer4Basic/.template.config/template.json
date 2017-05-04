@@ -1,6 +1,7 @@
 {
   "author": "Dominick Baier",
   "classifications": [
+    "Web",
     "IdentityServer4"
   ],
   "name": "IdentityServer4 Basic",
@@ -51,5 +52,6 @@
       "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
       "continueOnError": true
     }
-  ]
+  ],
+  "primaryOutputs": [ { "path": "IdentityServer4Basic.csproj" } ]
 }

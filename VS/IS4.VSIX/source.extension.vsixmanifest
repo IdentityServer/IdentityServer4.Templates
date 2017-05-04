@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <Identity Id="e3fa45c9-a98c-4d7e-b4a8-6b674c416a76" Version="1.0" Language="en-US" Publisher="IdentityServer" />
+    <DisplayName>IdentityServer4 Templates</DisplayName>
+    <Description xml:space="preserve">Templates for working with IdentityServer4</Description>
+    <MoreInfo>https://github.com/IdentityServer/IdentityServer4.Templates/blob/dev/README.md</MoreInfo>
+    <License>https://github.com/IdentityServer/IdentityServer4.Templates/blob/dev/LICENSE</License>
+    <Icon>Resources\IS4Package.ico</Icon>
+  </Metadata>
+  <Installation>
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0]" />
+  </Installation>
+  <Dependencies>
+    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+  </Dependencies>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="template.pkgdef" />
+  </Assets>
+  <Prerequisites>
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,16.0)" DisplayName="Visual Studio core editor" />
+    <Prerequisite Id="Microsoft.VisualStudio.Component.Web" Version="[15.0,16.0)" DisplayName="ASP.NET and web development tools" />
+  </Prerequisites>
+</PackageManifest>
