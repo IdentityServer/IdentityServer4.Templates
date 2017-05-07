@@ -5,7 +5,7 @@
     <DisplayName>IdentityServer4 Templates</DisplayName>
     <Description xml:space="preserve">Templates for working with IdentityServer4</Description>
     <MoreInfo>https://github.com/IdentityServer/IdentityServer4.Templates/blob/dev/README.md</MoreInfo>
-    <License>https://github.com/IdentityServer/IdentityServer4.Templates/blob/dev/LICENSE</License>
+    <License>License.txt</License>
     <Icon>Resources\IS4Package.ico</Icon>
   </Metadata>
   <Installation>

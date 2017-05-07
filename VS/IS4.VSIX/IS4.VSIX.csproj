@@ -56,6 +56,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="License.txt">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\IS4Package.ico">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
