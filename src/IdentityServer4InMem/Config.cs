@@ -67,7 +67,7 @@ namespace IdentityServer4InMem
 
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser = true,
-                    
+
                     RedirectUris =
                     {
                         "http://localhost:5002/index.html",

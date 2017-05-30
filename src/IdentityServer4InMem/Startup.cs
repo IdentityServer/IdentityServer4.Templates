@@ -1,9 +1,13 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
-using IdentityServer4;
 
 namespace IdentityServer4InMem
 {
@@ -43,7 +47,7 @@ namespace IdentityServer4InMem
                 .AddTestUsers(TestUsers.Users);
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app)
         {
             if (Environment.IsDevelopment())
             {
@@ -51,16 +55,6 @@ namespace IdentityServer4InMem
             }
 
             app.UseIdentityServer();
-
-            // middleware for google authentication
-            // must use http://localhost:5000 for this configuration to work
-            app.UseGoogleAuthentication(new GoogleOptions
-            {
-                AuthenticationScheme = "Google",
-                SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme,
-                ClientId = "708996912208-9m4dkjb5hscn7cjrn5u0r4tbgkbj1fko.apps.googleusercontent.com",
-                ClientSecret = "wdfPY6t8H8cecgjlxud__4Gh"
-            });
 
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();

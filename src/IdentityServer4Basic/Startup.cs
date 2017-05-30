@@ -38,7 +38,7 @@ namespace IdentityServer4Basic
                 .AddInMemoryClients(Config.GetClients());
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app)
         {
             if (Environment.IsDevelopment())
             {
