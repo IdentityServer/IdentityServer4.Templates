@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IdentityServer4InMem
+namespace IdentityServer4.Quickstart.UI
 {
     public class ConsentService
     {
@@ -132,7 +132,7 @@ namespace IdentityServer4InMem
 
             vm.ReturnUrl = returnUrl;
 
-            vm.ClientName = client.ClientName;
+            vm.ClientName = client.ClientName ?? client.ClientId;
             vm.ClientUrl = client.ClientUri;
             vm.ClientLogoUrl = client.LogoUri;
             vm.AllowRememberConsent = client.AllowRememberConsent;
@@ -158,7 +158,7 @@ namespace IdentityServer4InMem
                 Description = identity.Description,
                 Emphasize = identity.Emphasize,
                 Required = identity.Required,
-                Checked = check || identity.Required,
+                Checked = check || identity.Required
             };
         }
 
@@ -171,7 +171,7 @@ namespace IdentityServer4InMem
                 Description = scope.Description,
                 Emphasize = scope.Emphasize,
                 Required = scope.Required,
-                Checked = check || scope.Required,
+                Checked = check || scope.Required
             };
         }
 

@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using IdentityServer4;
+using IdentityServer4.Quickstart.UI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Serilog;
 
 namespace IdentityServer4InMem
 {
@@ -15,36 +11,38 @@ namespace IdentityServer4InMem
     {
         public IHostingEnvironment Environment { get; }
 
-        public Startup(ILoggerFactory loggerFactory, IHostingEnvironment environment)
+        public Startup(IHostingEnvironment environment)
         {
             Environment = environment;
-
-            var serilog = new LoggerConfiguration()
-                .MinimumLevel.Verbose()
-                .Enrich.FromLogContext()
-                .WriteTo.File(@"identityserver4_log.txt")
-                .WriteTo.LiterateConsole(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message}{NewLine}{Exception}{NewLine}");
-
-            loggerFactory
-                .WithFilter(new FilterLoggerSettings
-                {
-                    { "IdentityServer4", LogLevel.Debug },
-                    { "Microsoft", LogLevel.Warning },
-                    { "System", LogLevel.Warning },
-                })
-                .AddSerilog(serilog.CreateLogger());
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
 
-            services.AddIdentityServer()
-                .AddDeveloperSigningCredential()
+            var builder = services.AddIdentityServer()
                 .AddInMemoryIdentityResources(Config.GetIdentityResources())
                 .AddInMemoryApiResources(Config.GetApis())
                 .AddInMemoryClients(Config.GetClients())
                 .AddTestUsers(TestUsers.Users);
+
+            if (Environment.IsDevelopment())
+            {
+                builder.AddDeveloperSigningCredential();
+            }
+            else
+            {
+                throw new Exception("need to configure key material");
+            }
+
+            services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+
+                    options.ClientId = "708996912208-9m4dkjb5hscn7cjrn5u0r4tbgkbj1fko.apps.googleusercontent.com";
+                    options.ClientSecret = "wdfPY6t8H8cecgjlxud__4Gh";
+                });
         }
 
         public void Configure(IApplicationBuilder app)

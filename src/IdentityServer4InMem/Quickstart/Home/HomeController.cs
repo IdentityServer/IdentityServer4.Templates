@@ -6,7 +6,7 @@ using IdentityServer4.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace IdentityServer4InMem
+namespace IdentityServer4.Quickstart.UI
 {
     [SecurityHeaders]
     public class HomeController : Controller

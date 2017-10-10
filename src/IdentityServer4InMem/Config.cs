@@ -51,7 +51,7 @@ namespace IdentityServer4InMem
                     ClientSecrets = { new Secret("373f4671-0c18-48d6-9da3-962b1c81299a".Sha256()) },
 
                     RedirectUris = { "http://localhost:5001/signin-oidc" },
-                    LogoutUri = "http://localhost:5001/signout-oidc",
+                    FrontChannelLogoutUri = "http://localhost:5001/signout-oidc",
                     PostLogoutRedirectUris = { "http://localhost:5001/signout-callback-oidc" },
 
                     AllowOfflineAccess = true,

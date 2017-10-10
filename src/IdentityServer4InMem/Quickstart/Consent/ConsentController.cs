@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
-namespace IdentityServer4InMem
+namespace IdentityServer4.Quickstart.UI
 {
     /// <summary>
     /// This controller processes the consent UI
