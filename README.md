@@ -1,5 +1,5 @@
 # IdentityServer4.Templates
-dotnet new templates for IdentityServer4
+dotnet new templates for IdentityServer4 1.x and .NET Core / ASP.NET Core 1.1.x
 
 ### dotnet new is4
 Creates a minimal IdentityServer4 project without a UI and just one API and one client.
