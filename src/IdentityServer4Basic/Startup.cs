@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Serilog;
 
 namespace IdentityServer4Basic
 {
@@ -10,32 +9,25 @@ namespace IdentityServer4Basic
     {
         public IHostingEnvironment Environment { get; }
 
-        public Startup(ILoggerFactory loggerFactory, IHostingEnvironment environment)
+        public Startup(IHostingEnvironment environment)
         {
             Environment = environment;
-
-            var serilog = new LoggerConfiguration()
-                .MinimumLevel.Verbose()
-                .Enrich.FromLogContext()
-                .WriteTo.File(@"identityserver4_log.txt")
-                .WriteTo.LiterateConsole(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message}{NewLine}{Exception}{NewLine}");
-
-            loggerFactory
-                .WithFilter(new FilterLoggerSettings
-                {
-                    { "IdentityServer4", LogLevel.Debug },
-                    { "Microsoft", LogLevel.Warning },
-                    { "System", LogLevel.Warning },
-                })
-                .AddSerilog(serilog.CreateLogger());
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddIdentityServer()
-                .AddDeveloperSigningCredential()
+            var builder = services.AddIdentityServer()
                 .AddInMemoryApiResources(Config.GetApis())
                 .AddInMemoryClients(Config.GetClients());
+
+            if (Environment.IsDevelopment())
+            {
+                builder.AddDeveloperSigningCredential();
+            }
+            else
+            {
+                throw new Exception("need to configure key material");
+            }
         }
 
         public void Configure(IApplicationBuilder app)

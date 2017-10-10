@@ -20,7 +20,7 @@ namespace IdentityServer4Basic
                 new Client
                 {
                     ClientId = "client",
-                    ClientName = "Client credentials Client",
+                    ClientName = "Client Credentials Client",
 
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     ClientSecrets = { new Secret("373f4671-0c18-48d6-9da3-962b1c81299a".Sha256()) },

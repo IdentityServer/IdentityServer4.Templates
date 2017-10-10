@@ -1,6 +1,10 @@
-﻿using System.IO;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using System;
+using Serilog;
+using Serilog.Events;
+using Serilog.Sinks.SystemConsole.Themes;
+using Microsoft.AspNetCore;
+using Microsoft.Extensions.Logging;
 
 namespace IdentityServer4Basic
 {
@@ -10,14 +14,29 @@ namespace IdentityServer4Basic
         {
             Console.Title = "IdentityServer4";
 
-            var host = new WebHostBuilder()
-                .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
-                .UseStartup<Startup>()
-                .Build();
+            BuildWebHost(args).Run();
+        }
 
-            host.Run();
+        public static IWebHost BuildWebHost(string[] args)
+        {
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                .MinimumLevel.Override("System", LogEventLevel.Warning)
+                .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Information)
+                .Enrich.FromLogContext()
+                .WriteTo.File(@"identityserver4_log.txt")
+                .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Literate)
+                .CreateLogger();
+
+            return WebHost.CreateDefaultBuilder(args)
+                    .UseStartup<Startup>()
+                    .ConfigureLogging(builder =>
+                    {
+                        builder.ClearProviders();
+                        builder.AddSerilog();
+                    })
+                    .Build();
         }
     }
 }
