@@ -1,5 +1,5 @@
 {
-  "author": "Dominick Baier",
+  "author": "Brock Allen, Dominick Baier",
   "classifications": [
     "Web",
     "IdentityServer4"
@@ -12,34 +12,7 @@
     "language": "C#",
     "type": "project"
   },
-  "symbols": {
-    "Framework": {
-      "type": "parameter",
-      "description": "The target framework for the project.",
-      "datatype": "choice",
-      "choices": [
-        {
-          "choice": "netcoreapp1.1",
-          "description": "Target netcoreapp1.1"
-        }
-      ],
-      "replaces": "netcoreapp1.1",
-      "defaultValue": "netcoreapp1.1"
-    },
-    "TargetFrameworkOverride": {
-      "type": "parameter",
-      "description": "Overrides the target framework",
-      "replaces": "TargetFrameworkOverride",
-      "datatype": "string",
-      "defaultValue": ""
-    },
-    "skipRestore": {
-      "type": "parameter",
-      "datatype": "bool",
-      "description": "If specified, skips the automatic restore of the project on create.",
-      "defaultValue": "false"
-    }
-  },
+
   "sourceName": "IdentityServer4Basic",
   "preferNameDirectory": "true",
   "postActions": [
