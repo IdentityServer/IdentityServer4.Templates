@@ -14,7 +14,7 @@ Adds a boilerplate IdentityServer with UI, test users and sample clients and res
 
 Install with:
 
-`dotnet new -i identityserver4.templates
+`dotnet new -i identityserver4.templates`
 
 If you need to set back your dotnet new list to "factory defaults", use this command:
 
