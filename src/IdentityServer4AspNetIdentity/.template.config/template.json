@@ -1,0 +1,19 @@
+{
+  "author": "Brock Allen, Dominick Baier",
+  "classifications": [
+    "Web",
+    "IdentityServer4"
+  ],
+  "name": "IdentityServer4 with AspNetIdentity",
+  "identity": "IdentityServer4.AspNetIdentity",
+  "groupIdentity": "IdentityServer4.AspNetIdentity",
+  "shortName": "is4aspnetid",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+
+  "sourceName": "IdentityServer4AspNetIdentity",
+  "preferNameDirectory": "true",
+  "primaryOutputs": [ { "path": "IdentityServer4AspNetIdentity.csproj" } ]
+}

@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.4
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5B4906FF-64CC-4A42-A145-221F083EE165}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer4Basic", "src\IdentityServer4Basic\IdentityServer4Basic.csproj", "{D324CA74-877A-43AB-B978-38416BBE300A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer4InMem", "src\IdentityServer4InMem\IdentityServer4InMem.csproj", "{6CEEA2E8-C482-4197-93D7-2AC94F99D0D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer4InMem", "src\IdentityServer4InMem\IdentityServer4InMem.csproj", "{6CEEA2E8-C482-4197-93D7-2AC94F99D0D0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer4AspNetIdentity", "src\IdentityServer4AspNetIdentity\IdentityServer4AspNetIdentity.csproj", "{91FA2AC8-1DF5-4A0F-B709-8EFF32B4FA08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{6CEEA2E8-C482-4197-93D7-2AC94F99D0D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CEEA2E8-C482-4197-93D7-2AC94F99D0D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CEEA2E8-C482-4197-93D7-2AC94F99D0D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91FA2AC8-1DF5-4A0F-B709-8EFF32B4FA08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91FA2AC8-1DF5-4A0F-B709-8EFF32B4FA08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91FA2AC8-1DF5-4A0F-B709-8EFF32B4FA08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91FA2AC8-1DF5-4A0F-B709-8EFF32B4FA08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,5 +36,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{D324CA74-877A-43AB-B978-38416BBE300A} = {5B4906FF-64CC-4A42-A145-221F083EE165}
 		{6CEEA2E8-C482-4197-93D7-2AC94F99D0D0} = {5B4906FF-64CC-4A42-A145-221F083EE165}
+		{91FA2AC8-1DF5-4A0F-B709-8EFF32B4FA08} = {5B4906FF-64CC-4A42-A145-221F083EE165}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BF7055BF-EC32-42C4-9DF2-E0BF89D1FEE9}
 	EndGlobalSection
 EndGlobal

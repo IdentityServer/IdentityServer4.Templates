@@ -1,0 +1,12 @@
+{
+  "name": { "text": "IdentityServer4 with ASP.NET Identity" },
+  "description": { "text": "IdentityServer4 with ASP.NET Identity" },
+  "order": 500,
+  "icon": "vs-2017.3/IS4.png",
+  "learnMoreLink": "https://github.com/IdentityServer/IdentityServer4.Templates/blob/dev/README.md",
+  "uiFilters": [ "oneaspnet" ],
+  "supportsDocker": false,
+  "isApi": false,
+  "usesOidc": true,
+  "legacyTemplateIdentity": "IdentityServer4.AspNetIdentity.CSharp"
+}
