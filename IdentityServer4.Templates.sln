@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer4InMem", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer4AspNetIdentity", "src\IdentityServer4AspNetIdentity\IdentityServer4AspNetIdentity.csproj", "{91FA2AC8-1DF5-4A0F-B709-8EFF32B4FA08}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer4EntityFramework", "src\IdentityServer4EntityFramework\IdentityServer4EntityFramework.csproj", "{46000F46-B039-49F3-AACD-42E4FBC11E94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{91FA2AC8-1DF5-4A0F-B709-8EFF32B4FA08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91FA2AC8-1DF5-4A0F-B709-8EFF32B4FA08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91FA2AC8-1DF5-4A0F-B709-8EFF32B4FA08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46000F46-B039-49F3-AACD-42E4FBC11E94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46000F46-B039-49F3-AACD-42E4FBC11E94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46000F46-B039-49F3-AACD-42E4FBC11E94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46000F46-B039-49F3-AACD-42E4FBC11E94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,8 +43,9 @@ Global
 		{D324CA74-877A-43AB-B978-38416BBE300A} = {5B4906FF-64CC-4A42-A145-221F083EE165}
 		{6CEEA2E8-C482-4197-93D7-2AC94F99D0D0} = {5B4906FF-64CC-4A42-A145-221F083EE165}
 		{91FA2AC8-1DF5-4A0F-B709-8EFF32B4FA08} = {5B4906FF-64CC-4A42-A145-221F083EE165}
+		{46000F46-B039-49F3-AACD-42E4FBC11E94} = {5B4906FF-64CC-4A42-A145-221F083EE165}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BF7055BF-EC32-42C4-9DF2-E0BF89D1FEE9}
+		SolutionGuid = {32B6CD87-BBD9-4A01-82E9-BA1579E4A083}
 	EndGlobalSection
 EndGlobal
