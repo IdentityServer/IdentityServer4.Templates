@@ -1,0 +1,19 @@
+{
+  "author": "Brock Allen, Dominick Baier",
+  "classifications": [
+    "Web",
+    "IdentityServer4"
+  ],
+  "name": "IdentityServer4 Basic",
+  "identity": "IdentityServer4.Basic",
+  "groupIdentity": "IdentityServer4.Basic",
+  "shortName": "is4",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+
+  "sourceName": "IdentityServer4Basic",
+  "preferNameDirectory": "true",
+  "primaryOutputs": [ { "path": "IdentityServer4Basic.csproj" } ]
+}
