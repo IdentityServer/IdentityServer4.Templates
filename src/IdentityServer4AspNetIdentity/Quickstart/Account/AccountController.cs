@@ -103,11 +103,6 @@ namespace IdentityServer4.Quickstart.UI
                     return Redirect("~/");
                 }
 
-                if (result.IsLockedOut)
-                {
-                    return RedirectToAction(nameof(Lockout));
-                }
-
                 await _events.RaiseAsync(new UserLoginFailureEvent(model.Username, "invalid credentials"));
                 ModelState.AddModelError("", AccountOptions.InvalidCredentialsErrorMessage);
             }
@@ -171,13 +166,5 @@ namespace IdentityServer4.Quickstart.UI
 
             return View("LoggedOut", vm);
         }
-
-        [HttpGet]
-        [AllowAnonymous]
-        public IActionResult Lockout()
-        {
-            return View();
-        }
-
     }
 }
