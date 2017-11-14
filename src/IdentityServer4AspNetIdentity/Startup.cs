@@ -7,17 +7,20 @@ using Microsoft.Extensions.DependencyInjection;
 using IdentityServer4AspNetIdentity.Data;
 using IdentityServer4AspNetIdentity.Models;
 using IdentityServer4AspNetIdentity.Configuration;
+using System;
 
 namespace IdentityServer4AspNetIdentity
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment environment)
         {
             Configuration = configuration;
+            Environment = environment;
         }
 
         public IConfiguration Configuration { get; }
+        public IHostingEnvironment Environment { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -30,12 +33,20 @@ namespace IdentityServer4AspNetIdentity
 
             services.AddMvc();
 
-            services.AddIdentityServer()
-                .AddDeveloperSigningCredential()
+            var builder = services.AddIdentityServer()
                 .AddInMemoryIdentityResources(Resources.GetIdentityResources())
                 .AddInMemoryApiResources(Resources.GetApiResources())
                 .AddInMemoryClients(Clients.Get())
                 .AddAspNetIdentity<ApplicationUser>();
+
+            if (Environment.IsDevelopment())
+            {
+                builder.AddDeveloperSigningCredential();
+            }
+            else
+            {
+                throw new Exception("need to configure key material");
+            }
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
