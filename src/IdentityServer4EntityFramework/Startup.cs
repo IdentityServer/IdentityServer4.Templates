@@ -15,50 +15,64 @@ namespace IdentityServer4EntityFramework
 {
     public class Startup
     {
-        private readonly IConfiguration _config;
-        private readonly IHostingEnvironment _env;
+        public IConfiguration Configuration { get; }
+        public IHostingEnvironment Environment { get; }
 
         public Startup(IConfiguration config, IHostingEnvironment env)
         {
-            _config = config;
-            _env = env;
+            Configuration = config;
+            Environment = env;
         }
 
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
-            const string connectionString = @"Data Source=(LocalDb)\MSSQLLocalDB;database=IdentityServer4.EntityFramework-2.0.0;trusted_connection=yes;";
+            services.AddMvc();
+
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
-            services.AddIdentityServer()
-                .AddDeveloperSigningCredential()
+            var identityServer = services.AddIdentityServer()
                 .AddTestUsers(TestUsers.Users)
                 // this adds the config data from DB (clients, resources, CORS)
                 .AddConfigurationStore(options =>
                 {
                     options.ConfigureDbContext = builder =>
-                        builder.UseSqlServer(connectionString,
+                        builder.UseSqlite(connectionString,
                             sql => sql.MigrationsAssembly(migrationsAssembly));
                 })
                 // this adds the operational data from DB (codes, tokens, consents)
                 .AddOperationalStore(options =>
                 {
                     options.ConfigureDbContext = builder =>
-                        builder.UseSqlServer(connectionString,
+                        builder.UseSqlite(connectionString,
                             sql => sql.MigrationsAssembly(migrationsAssembly));
 
                     // this enables automatic token cleanup. this is optional.
                     options.EnableTokenCleanup = true;
-                    options.TokenCleanupInterval = 30; // interval in seconds
+                    // options.TokenCleanupInterval = 15; // interval in seconds. 15 seconds useful for debugging
                 });
 
-            services.AddMvc();
-
-            return services.BuildServiceProvider(validateScopes: true);
+            if (Environment.IsDevelopment())
+            {
+                identityServer.AddDeveloperSigningCredential();
+            }
+            else
+            {
+                throw new Exception("need to configure key material");
+            }
         }
 
         public void Configure(IApplicationBuilder app)
         {
-            app.UseDeveloperExceptionPage();
+            if (Environment.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
 
             app.UseIdentityServer();
 

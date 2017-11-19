@@ -25,7 +25,7 @@ namespace IdentityServer4AspNetIdentity
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -49,9 +49,9 @@ namespace IdentityServer4AspNetIdentity
             }
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
+            if (Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
@@ -63,7 +63,6 @@ namespace IdentityServer4AspNetIdentity
 
             app.UseStaticFiles();
 
-            //app.UseAuthentication(); // UseAuthentication not needed -- UseIdentityServer add this
             app.UseIdentityServer();
 
             app.UseMvc(routes =>

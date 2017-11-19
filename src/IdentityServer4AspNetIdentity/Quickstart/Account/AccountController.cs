@@ -6,15 +6,12 @@ using IdentityServer4.Services;
 using IdentityServer4.Stores;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using IdentityServer4.Events;
 using IdentityServer4.Models;
 using Microsoft.AspNetCore.Identity;
 using IdentityServer4AspNetIdentity.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace IdentityServer4.Quickstart.UI
 {

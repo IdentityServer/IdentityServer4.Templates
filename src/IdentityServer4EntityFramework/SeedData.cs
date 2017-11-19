@@ -4,6 +4,8 @@ using IdentityServer4EntityFramework.Configuration;
 using IdentityServer4.EntityFramework.Interfaces;
 using IdentityServer4.EntityFramework.Mappers;
 using Microsoft.Extensions.DependencyInjection;
+using IdentityServer4.EntityFramework.DbContexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace IdentityServer4EntityFramework
 {
@@ -13,8 +15,14 @@ namespace IdentityServer4EntityFramework
         {
             using (var scope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                using (var context = scope.ServiceProvider.GetService<IConfigurationDbContext>())
+                using (var context = scope.ServiceProvider.GetService<PersistedGrantDbContext>())
                 {
+                    context.Database.Migrate();
+                }
+
+                using (var context = scope.ServiceProvider.GetService<ConfigurationDbContext>())
+                {
+                    context.Database.Migrate();
                     EnsureSeedData(context);
                 }
             }
