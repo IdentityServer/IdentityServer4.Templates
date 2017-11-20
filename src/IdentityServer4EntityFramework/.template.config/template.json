@@ -4,7 +4,7 @@
     "Web",
     "IdentityServer4"
   ],
-  "name": "IdentityServer4 with Entity Framework stores",
+  "name": "IdentityServer4 with Entity Framework Stores",
   "identity": "IdentityServer4.EntityFramework",
   "groupIdentity": "IdentityServer4.EntityFramework",
   "shortName": "is4ef",
