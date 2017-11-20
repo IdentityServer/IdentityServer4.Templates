@@ -33,7 +33,7 @@ namespace IdentityServer4EntityFramework
                     ClientName = "Client Credentials Client",
 
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    ClientSecrets = { new Secret("373f4671-0c18-48d6-9da3-962b1c81299a".Sha256()) },
+                    ClientSecrets = { new Secret("511536EF-F270-4058-80CA-1C89C192F69A".Sha256()) },
 
                     AllowedScopes = { "api1" }
                 },
@@ -45,7 +45,7 @@ namespace IdentityServer4EntityFramework
                     ClientName = "MVC Client",
 
                     AllowedGrantTypes = GrantTypes.HybridAndClientCredentials,
-                    ClientSecrets = { new Secret("373f4671-0c18-48d6-9da3-962b1c81299a".Sha256()) },
+                    ClientSecrets = { new Secret("49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".Sha256()) },
 
                     RedirectUris = { "http://localhost:5001/signin-oidc" },
                     FrontChannelLogoutUri = "http://localhost:5001/signout-oidc",
