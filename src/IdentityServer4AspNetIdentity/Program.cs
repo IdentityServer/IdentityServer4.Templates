@@ -20,6 +20,7 @@ namespace IdentityServer4AspNetIdentity
             if (seed)
             {
                 SeedData.EnsureSeedData(host.Services);
+                return;
             }
 
             host.Run();
