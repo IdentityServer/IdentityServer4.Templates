@@ -258,3 +258,4 @@ UI/Views/
 UI/wwwroot/
 UI/Quickstart/
 *.sqlite
+*.db
