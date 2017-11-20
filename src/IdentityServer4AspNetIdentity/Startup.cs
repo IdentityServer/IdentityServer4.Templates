@@ -1,25 +1,30 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+
+
+using IdentityServer4;
 using IdentityServer4AspNetIdentity.Data;
 using IdentityServer4AspNetIdentity.Models;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 
 namespace IdentityServer4AspNetIdentity
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+        public IHostingEnvironment Environment { get; }
+
         public Startup(IConfiguration configuration, IHostingEnvironment environment)
         {
             Configuration = configuration;
             Environment = environment;
         }
-
-        public IConfiguration Configuration { get; }
-        public IHostingEnvironment Environment { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -52,6 +57,15 @@ namespace IdentityServer4AspNetIdentity
             {
                 throw new Exception("need to configure key material");
             }
+
+            services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+
+                    options.ClientId = "708996912208-9m4dkjb5hscn7cjrn5u0r4tbgkbj1fko.apps.googleusercontent.com";
+                    options.ClientSecret = "wdfPY6t8H8cecgjlxud__4Gh";
+                });
         }
 
         public void Configure(IApplicationBuilder app)

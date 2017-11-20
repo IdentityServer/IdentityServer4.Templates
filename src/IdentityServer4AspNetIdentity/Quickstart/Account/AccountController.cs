@@ -12,6 +12,7 @@ using IdentityServer4.Events;
 using IdentityServer4.Models;
 using Microsoft.AspNetCore.Identity;
 using IdentityServer4AspNetIdentity.Models;
+using IdentityServer4.Extensions;
 
 namespace IdentityServer4.Quickstart.UI
 {
@@ -145,8 +146,7 @@ namespace IdentityServer4.Quickstart.UI
                 await _signInManager.SignOutAsync();
 
                 // raise the logout event
-                // todo
-                //await _events.RaiseAsync(new UserLogoutSuccessEvent(user.GetSubjectId(), user.GetDisplayName()));
+                await _events.RaiseAsync(new UserLogoutSuccessEvent(user.GetSubjectId(), user.GetDisplayName()));
             }
 
             // check if we need to trigger sign-out at an upstream identity provider

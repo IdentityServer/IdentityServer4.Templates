@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Microsoft.AspNetCore.Hosting;
+using IdentityServer4;
 
 namespace IdentityServer4EntityFramework
 {
@@ -27,6 +28,12 @@ namespace IdentityServer4EntityFramework
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.Configure<IISOptions>(options =>
+            {
+                options.AutomaticAuthentication = false;
+                options.AuthenticationDisplayName = "Windows";
+            });
 
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
@@ -56,6 +63,15 @@ namespace IdentityServer4EntityFramework
                     // this enables automatic token cleanup. this is optional.
                     options.EnableTokenCleanup = true;
                     // options.TokenCleanupInterval = 15; // interval in seconds. 15 seconds useful for debugging
+                });
+
+            services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+
+                    options.ClientId = "708996912208-9m4dkjb5hscn7cjrn5u0r4tbgkbj1fko.apps.googleusercontent.com";
+                    options.ClientSecret = "wdfPY6t8H8cecgjlxud__4Gh";
                 });
 
             if (Environment.IsDevelopment())
