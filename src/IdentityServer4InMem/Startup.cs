@@ -4,16 +4,19 @@ using IdentityServer4.Quickstart.UI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 
 namespace IdentityServer4InMem
 {
     public class Startup
     {
         public IHostingEnvironment Environment { get; }
+        public IConfiguration Configuration { get; }
 
-        public Startup(IHostingEnvironment environment)
+        public Startup(IHostingEnvironment environment, IConfiguration configuration)
         {
             Environment = environment;
+            Configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -27,10 +30,15 @@ namespace IdentityServer4InMem
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
             })
-                .AddInMemoryIdentityResources(Config.GetIdentityResources())
-                .AddInMemoryApiResources(Config.GetApis())
-                .AddInMemoryClients(Config.GetClients())
                 .AddTestUsers(TestUsers.Users);
+
+            // in-memory, code config
+            builder.AddInMemoryIdentityResources(Config.GetIdentityResources());
+            builder.AddInMemoryApiResources(Config.GetApis());
+            //builder.AddInMemoryClients(Config.GetClients());
+
+            // in-memory, json config
+            builder.AddInMemoryClients(Configuration.GetSection("clients"));
 
             if (Environment.IsDevelopment())
             {

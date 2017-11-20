@@ -1,11 +1,10 @@
-﻿using System;
-using System.Linq;
-using IdentityServer4EntityFramework.Configuration;
+﻿using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Interfaces;
 using IdentityServer4.EntityFramework.Mappers;
-using Microsoft.Extensions.DependencyInjection;
-using IdentityServer4.EntityFramework.DbContexts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Linq;
 
 namespace IdentityServer4EntityFramework
 {
@@ -35,7 +34,7 @@ namespace IdentityServer4EntityFramework
             if (!context.Clients.Any())
             {
                 Console.WriteLine("Clients being populated");
-                foreach (var client in Clients.Get().ToList())
+                foreach (var client in Config.GetClients().ToList())
                 {
                     context.Clients.Add(client.ToEntity());
                 }
@@ -49,7 +48,7 @@ namespace IdentityServer4EntityFramework
             if (!context.IdentityResources.Any())
             {
                 Console.WriteLine("IdentityResources being populated");
-                foreach (var resource in Resources.GetIdentityResources().ToList())
+                foreach (var resource in Config.GetIdentityResources().ToList())
                 {
                     context.IdentityResources.Add(resource.ToEntity());
                 }
@@ -63,7 +62,7 @@ namespace IdentityServer4EntityFramework
             if (!context.ApiResources.Any())
             {
                 Console.WriteLine("ApiResources being populated");
-                foreach (var resource in Resources.GetApiResources().ToList())
+                foreach (var resource in Config.GetApis().ToList())
                 {
                     context.ApiResources.Add(resource.ToEntity());
                 }

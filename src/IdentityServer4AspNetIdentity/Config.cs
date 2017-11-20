@@ -1,7 +1,7 @@
 ﻿using IdentityServer4.Models;
 using System.Collections.Generic;
 
-namespace IdentityServer4InMem
+namespace IdentityServer4AspNetIdentity
 {
     public static class Config
     {
