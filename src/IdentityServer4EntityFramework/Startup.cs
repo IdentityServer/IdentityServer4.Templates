@@ -81,7 +81,6 @@ namespace IdentityServer4EntityFramework
             }
 
             app.UseIdentityServer();
-
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
         }

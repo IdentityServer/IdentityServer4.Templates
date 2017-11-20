@@ -69,7 +69,6 @@ namespace IdentityServer4InMem
             }
 
             app.UseIdentityServer();
-
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
         }
