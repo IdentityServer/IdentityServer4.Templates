@@ -224,6 +224,9 @@ namespace IdentityServer4.Quickstart.UI
             {
                 // this sample simply auto-provisions new external user
                 // another common approach is to start a registrations workflow first
+                // a common way to build a registration page is to use the claims from the 
+                // external provider to pre-populate a registration screen, and then store those
+                // as claims (or custom properties) in the ASP.NET Identity database.
                 user = new ApplicationUser
                 {
                     UserName = Guid.NewGuid().ToString(),
