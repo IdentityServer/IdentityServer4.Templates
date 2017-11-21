@@ -6,6 +6,7 @@
     <authors>Brock Allen, Dominick Baier</authors>
     <description>IdentityServer4 Templates</description>
     <language>en-US</language>
+    <iconUrl>https://raw.githubusercontent.com/IdentityServer/Artwork/master/Logos/IDserver_icon128.jpg</iconUrl>
     <projectUrl>https://github.com/IdentityServer/IdentityServer4.Templates</projectUrl>
     <licenseUrl>https://github.com/IdentityServer/IdentityServer4.Templates/blob/dev/LICENSE</licenseUrl>
     
