@@ -7,7 +7,7 @@
   "name": "IdentityServer4 Empty",
   "identity": "IdentityServer4.Empty",
   "groupIdentity": "IdentityServer4.Empty",
-  "shortName": "is4",
+  "shortName": "is4empty",
   "tags": {
     "language": "C#",
     "type": "project"
