@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5B4906FF-64CC-4A42-A145-221F083EE165}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer4Basic", "src\IdentityServer4Basic\IdentityServer4Basic.csproj", "{D324CA74-877A-43AB-B978-38416BBE300A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer4Empty", "src\IdentityServer4Empty\IdentityServer4Empty.csproj", "{D324CA74-877A-43AB-B978-38416BBE300A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer4InMem", "src\IdentityServer4InMem\IdentityServer4InMem.csproj", "{6CEEA2E8-C482-4197-93D7-2AC94F99D0D0}"
 EndProject

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace IdentityServer4Basic
+namespace IdentityServer4Empty
 {
     public class Startup
     {
