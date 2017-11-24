@@ -18,16 +18,11 @@ namespace IdentityServer4EntityFramework
         {
             using (var scope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                using (var context = scope.ServiceProvider.GetService<PersistedGrantDbContext>())
-                {
-                    context.Database.Migrate();
-                }
+                scope.ServiceProvider.GetService<PersistedGrantDbContext>().Database.Migrate();
 
-                using (var context = scope.ServiceProvider.GetService<ConfigurationDbContext>())
-                {
-                    context.Database.Migrate();
-                    EnsureSeedData(context);
-                }
+                var context = scope.ServiceProvider.GetService<ConfigurationDbContext>();
+                context.Database.Migrate();
+                EnsureSeedData(context);
             }
         }
 
