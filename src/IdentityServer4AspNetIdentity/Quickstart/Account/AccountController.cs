@@ -186,7 +186,7 @@ namespace IdentityServer4.Quickstart.UI
         public async Task<IActionResult> ExternalLoginCallback()
         {
             // read external identity from the temporary cookie
-            var result = await HttpContext.AuthenticateAsync(IdentityServer4.IdentityServerConstants.ExternalCookieAuthenticationScheme);
+            var result = await HttpContext.AuthenticateAsync(IdentityConstants.ExternalScheme);
             if (result?.Succeeded != true)
             {
                 throw new Exception("External authentication error");
@@ -266,7 +266,7 @@ namespace IdentityServer4.Quickstart.UI
             await HttpContext.SignInAsync(user.Id, name, provider, props, additionalClaims.ToArray());
 
             // delete temporary cookie used during external authentication
-            await HttpContext.SignOutAsync(IdentityServer4.IdentityServerConstants.ExternalCookieAuthenticationScheme);
+            await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
             // validate return URL and redirect back to authorization endpoint or a local page
             var returnUrl = result.Properties.Items["returnUrl"];
