@@ -21,6 +21,7 @@ namespace IdentityServer4Empty
         public void ConfigureServices(IServiceCollection services)
         {
             var builder = services.AddIdentityServer()
+                .AddInMemoryIdentityResources(Config.GetIdentityResources())
                 .AddInMemoryApiResources(Config.GetApis())
                 .AddInMemoryClients(Config.GetClients());
 
