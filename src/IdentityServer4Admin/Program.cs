@@ -8,7 +8,6 @@ using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
-using System.Linq;
 
 namespace IdentityServer4Admin
 {
@@ -16,17 +15,7 @@ namespace IdentityServer4Admin
     {
         public static void Main(string[] args)
         {
-            var seed = args.Any(x => x == "/seed");
-            if (seed) args = args.Except(new[] { "/seed" }).ToArray();
-
             var host = BuildWebHost(args);
-
-            if (seed)
-            {
-                SeedData.EnsureSeedData(host.Services);
-                return;
-            }
-
             host.Run();
         }
 

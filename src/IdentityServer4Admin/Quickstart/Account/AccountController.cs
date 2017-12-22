@@ -82,7 +82,7 @@ namespace IdentityServer4.Quickstart.UI
                     // denied the consent (even if this client does not require consent).
                     // this will send back an access denied OIDC error response to the client.
                     await _interaction.GrantConsentAsync(context, ConsentResponse.Denied);
-                    
+
                     // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
                     return Redirect(model.ReturnUrl);
                 }
@@ -160,7 +160,7 @@ namespace IdentityServer4.Quickstart.UI
                     }
 
                     await HttpContext.SignInAsync(
-                        IdentityServer4.IdentityServerConstants.ExternalCookieAuthenticationScheme,
+                        IdentityConstants.ExternalScheme,
                         new ClaimsPrincipal(id),
                         props);
                     return Redirect(props.RedirectUri);
@@ -186,7 +186,7 @@ namespace IdentityServer4.Quickstart.UI
         public async Task<IActionResult> ExternalLoginCallback()
         {
             // read external identity from the temporary cookie
-            var result = await HttpContext.AuthenticateAsync(IdentityServer4.IdentityServerConstants.ExternalCookieAuthenticationScheme);
+            var result = await HttpContext.AuthenticateAsync(IdentityConstants.ExternalScheme);
             if (result?.Succeeded != true)
             {
                 throw new Exception("External authentication error");
@@ -266,7 +266,7 @@ namespace IdentityServer4.Quickstart.UI
             await HttpContext.SignInAsync(user.Id, name, provider, props, additionalClaims.ToArray());
 
             // delete temporary cookie used during external authentication
-            await HttpContext.SignOutAsync(IdentityServer4.IdentityServerConstants.ExternalCookieAuthenticationScheme);
+            await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
             // validate return URL and redirect back to authorization endpoint or a local page
             var returnUrl = result.Properties.Items["returnUrl"];
