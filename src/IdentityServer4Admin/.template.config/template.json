@@ -1,0 +1,19 @@
+{
+  "author": "Brock Allen, Dominick Baier",
+  "classifications": [
+    "Web",
+    "IdentityServer4"
+  ],
+  "name": "IdentityServer4 with AdminUI",
+  "identity": "IdentityServer4.Admin",
+  "groupIdentity": "IdentityServer4.Admin",
+  "shortName": "is4admin",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+
+  "sourceName": "IdentityServer4Admin",
+  "preferNameDirectory": "true",
+  "primaryOutputs": [ { "path": "IdentityServer4Admin.csproj" } ]
+}

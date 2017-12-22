@@ -1,0 +1,10 @@
+{
+    "Nav": {
+        "Home": "家",
+        "Users": "用户管理",
+        "Clients": "客户管理",
+        "Roles": "角色管理",
+        "Scopes": "范围",
+        "Claim Types": "声明类型"
+    }
+}
