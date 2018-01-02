@@ -6,6 +6,6 @@ var ENV = {
         ApiUrl: 'http://localhost:5000',
         UiUrl: 'http://localhost:5000',
         AuthorityUrl: 'http://localhost:5000',
-        AddUserPassword: false,
-        CommunityEdition:true
+        AddUserPassword: true,
+        CommunityEdition: true
 };
