@@ -19,7 +19,6 @@ using IdentityModel;
 using System.Linq;
 using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
 
 namespace IdentityServer4.Quickstart.UI
 {
@@ -429,7 +428,8 @@ namespace IdentityServer4.Quickstart.UI
             }
         }
 
-        private async Task<(ApplicationUser user, string provider, string providerUserId, IEnumerable<Claim> claims)> FindUserFromExternalProviderAsync(AuthenticateResult result)
+        private async Task<(ApplicationUser user, string provider, string providerUserId, IEnumerable<Claim> claims)> 
+            FindUserFromExternalProviderAsync(AuthenticateResult result)
         {
             var externalUser = result.Principal;
 
@@ -458,30 +458,19 @@ namespace IdentityServer4.Quickstart.UI
             // create a list of claims that we want to transfer into our store
             var filtered = new List<Claim>();
 
-            foreach (var claim in claims)
+            // user's display name
+            var name = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.Name)?.Value ??
+                claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
+            if (name != null)
             {
-                // if the external system sends a display name - translate that to the standard OIDC name claim
-                if (claim.Type == ClaimTypes.Name)
-                {
-                    filtered.Add(new Claim(JwtClaimTypes.Name, claim.Value));
-                }
-                // if the JWT handler has an outbound mapping to an OIDC claim use that
-                else if (JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap.ContainsKey(claim.Type))
-                {
-                    filtered.Add(new Claim(JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap[claim.Type], claim.Value));
-                }
-                // copy the claim as-is
-                else
-                {
-                    filtered.Add(claim);
-                }
+                filtered.Add(new Claim(JwtClaimTypes.Name, name));
             }
-
-            // if no display name was provided, try to construct by first and/or last name
-            if (!filtered.Any(x => x.Type == JwtClaimTypes.Name))
+            else
             {
-                var first = filtered.FirstOrDefault(x => x.Type == JwtClaimTypes.GivenName)?.Value;
-                var last = filtered.FirstOrDefault(x => x.Type == JwtClaimTypes.FamilyName)?.Value;
+                var first = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.GivenName)?.Value ??
+                    claims.FirstOrDefault(x => x.Type == ClaimTypes.GivenName)?.Value;
+                var last = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.FamilyName)?.Value ??
+                    claims.FirstOrDefault(x => x.Type == ClaimTypes.Surname)?.Value;
                 if (first != null && last != null)
                 {
                     filtered.Add(new Claim(JwtClaimTypes.Name, first + " " + last));
@@ -494,6 +483,14 @@ namespace IdentityServer4.Quickstart.UI
                 {
                     filtered.Add(new Claim(JwtClaimTypes.Name, last));
                 }
+            }
+
+            // email
+            var email = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.Email)?.Value ??
+               claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            if (email != null)
+            {
+                filtered.Add(new Claim(JwtClaimTypes.Email, email));
             }
 
             var user = new ApplicationUser
