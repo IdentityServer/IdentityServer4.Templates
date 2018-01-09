@@ -101,7 +101,8 @@
       "Title": "Reset Password"
     },
     "UserEditable": "User Editable",
-    "Key": "Key" 
+    "Key": "Key",
+    "CommunityEditionBanner": "Welcome to AdminUI Community Edition. This is a free version of the AdminUI tool for administering IdentityServer configuration and users. It is limited to 10 users and 2 clients. To find out more about the full AdminUI product, click on the link below"
   },
   "Nav": {
     "Salutation": "Hello",
