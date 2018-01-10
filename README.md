@@ -16,6 +16,9 @@ Adds a basic IdentityServer that uses ASP.NET Identity for user management. If y
 ### dotnet new is4ef
 Adds a basic IdentityServer that uses Entity Framework for configuration and state management. If you seed the database, you get a couple of basic client and resource registrations, check the `SeedData.cs` file.
 
+### dotnet new is4admin
+Adds an IdentityServer that includes the RockSolidKnowledge AdminUI Community Edition (open `http://localhost:5000/admin` in the browser). This gives you a web-based administration interface for users, claims, clients and resources. The community edition is limited to 10 users and 2 clients. See [here](https://www.identityserver.com/products) for more information about AdminUI.
+
 ## Installation 
 
 Install with:
