@@ -4,12 +4,12 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="IdentityServer4" Version="2.1.0" />
-    <PackageReference Include="IdentityServer4.EntityFramework" Version="2.1.0"></PackageReference>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+    <PackageReference Include="IdentityServer4" Version="2.1.1" />
+    <PackageReference Include="IdentityServer4.EntityFramework" Version="2.1.1"></PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
   
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" PrivateAssets="All" />
 
     <PackageReference Include="Serilog" Version="2.6.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
