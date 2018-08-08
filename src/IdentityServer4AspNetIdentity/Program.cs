@@ -4,7 +4,6 @@
 
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
@@ -19,7 +18,7 @@ namespace IdentityServer4AspNetIdentity
             var seed = args.Any(x => x == "/seed");
             if (seed) args = args.Except(new[] { "/seed" }).ToArray();
 
-            var host = BuildWebHost(args);
+            var host = CreateWebHostBuilder(args).Build();
 
             if (seed)
             {
@@ -30,7 +29,7 @@ namespace IdentityServer4AspNetIdentity
             host.Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args)
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
             return WebHost.CreateDefaultBuilder(args)
                     .UseStartup<Startup>()
@@ -44,8 +43,7 @@ namespace IdentityServer4AspNetIdentity
                             .Enrich.FromLogContext()
                             .WriteTo.File(@"identityserver4_log.txt")
                             .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Literate);
-                    })
-                    .Build();
+                    });
         }
     }
 }
