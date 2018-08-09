@@ -9,6 +9,8 @@ using Serilog.Sinks.SystemConsole.Themes;
 using Microsoft.AspNetCore;
 using Serilog.Events;
 using System.Linq;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 
 namespace IdentityServer4EntityFramework
 {
@@ -28,7 +30,9 @@ namespace IdentityServer4EntityFramework
 
             if (seed)
             {
-                SeedData.EnsureSeedData(host.Services);
+                var config = host.Services.GetRequiredService<IConfiguration>();
+                var connectionString = config.GetConnectionString("DefaultConnection");
+                SeedData.EnsureSeedData(connectionString);
                 return;
             }
 

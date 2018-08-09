@@ -8,7 +8,6 @@ using System;
 using IdentityServer4.Quickstart.UI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 using Microsoft.AspNetCore.Hosting;
 using IdentityServer4;
 
@@ -27,7 +26,7 @@ namespace IdentityServer4EntityFramework
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
 
             services.Configure<IISOptions>(options =>
             {
@@ -36,7 +35,6 @@ namespace IdentityServer4EntityFramework
             });
 
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
-            var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             var identityServer = services.AddIdentityServer(options =>
             {
@@ -49,16 +47,12 @@ namespace IdentityServer4EntityFramework
                 // this adds the config data from DB (clients, resources, CORS)
                 .AddConfigurationStore(options =>
                 {
-                    options.ConfigureDbContext = builder =>
-                        builder.UseSqlite(connectionString,
-                            sql => sql.MigrationsAssembly(migrationsAssembly));
+                    options.ConfigureDbContext = builder => builder.UseSqlite(connectionString);
                 })
                 // this adds the operational data from DB (codes, tokens, consents)
                 .AddOperationalStore(options =>
                 {
-                    options.ConfigureDbContext = builder =>
-                        builder.UseSqlite(connectionString,
-                            sql => sql.MigrationsAssembly(migrationsAssembly));
+                    options.ConfigureDbContext = builder => builder.UseSqlite(connectionString);
 
                     // this enables automatic token cleanup. this is optional.
                     options.EnableTokenCleanup = true;
