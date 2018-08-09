@@ -10,8 +10,8 @@ namespace IdentityServer4.Quickstart.UI
 {
     public class LoginViewModel : LoginInputModel
     {
-        public bool AllowRememberLogin { get; set; }
-        public bool EnableLocalLogin { get; set; }
+        public bool AllowRememberLogin { get; set; } = true;
+        public bool EnableLocalLogin { get; set; } = true;
 
         public IEnumerable<ExternalProvider> ExternalProviders { get; set; }
         public IEnumerable<ExternalProvider> VisibleExternalProviders => ExternalProviders.Where(x => !String.IsNullOrWhiteSpace(x.DisplayName));
