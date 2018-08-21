@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Reflection;
+using IdentityExpress.Identity;
+using IdentityExpress.Manager.Api;
 using IdentityServer4Admin.Data;
 
 namespace IdentityServer4Admin
@@ -94,6 +96,7 @@ namespace IdentityServer4Admin
                 });
 
             services.UseAdminUI();
+            services.AddScoped<IdentityExpressDbContext, SqliteIdentityDbContext>();
         }
 
         public void Configure(IApplicationBuilder app)
