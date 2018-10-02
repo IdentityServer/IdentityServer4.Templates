@@ -18,5 +18,5 @@ gulp.task('docker_env', function(){
                 "AddUserPassword":  process.env.AddUserPassword
             }})
         )
-        .pipe(gulp.dest('./'));
+        .pipe(gulp.dest('./assets'));
 });
