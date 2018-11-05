@@ -56,7 +56,6 @@ namespace IdentityServer4EntityFramework
 
                     // this enables automatic token cleanup. this is optional.
                     options.EnableTokenCleanup = true;
-                    // options.TokenCleanupInterval = 15; // interval in seconds. 15 seconds useful for debugging
                 });
 
             services.AddAuthentication()

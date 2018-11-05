@@ -18,6 +18,7 @@ CREATE TABLE [ApiResources] (
     [Created] datetime2 NOT NULL,
     [Updated] datetime2 NULL,
     [LastAccessed] datetime2 NULL,
+    [NonEditable] bit NOT NULL,
     CONSTRAINT [PK_ApiResources] PRIMARY KEY ([Id])
 );
 
@@ -62,6 +63,10 @@ CREATE TABLE [Clients] (
     [Created] datetime2 NOT NULL,
     [Updated] datetime2 NULL,
     [LastAccessed] datetime2 NULL,
+    [UserSsoLifetime] int NULL,
+    [UserCodeType] nvarchar(100) NULL,
+    [DeviceCodeLifetime] int NOT NULL,
+    [NonEditable] bit NOT NULL,
     CONSTRAINT [PK_Clients] PRIMARY KEY ([Id])
 );
 
@@ -78,6 +83,7 @@ CREATE TABLE [IdentityResources] (
     [ShowInDiscoveryDocument] bit NOT NULL,
     [Created] datetime2 NOT NULL,
     [Updated] datetime2 NULL,
+    [NonEditable] bit NOT NULL,
     CONSTRAINT [PK_IdentityResources] PRIMARY KEY ([Id])
 );
 
@@ -120,12 +126,12 @@ CREATE TABLE [ApiScopes] (
 GO
 
 CREATE TABLE [ApiSecrets] (
-    [Created] datetime2 NOT NULL,
-    [Expiration] datetime2 NULL,
     [Id] int NOT NULL IDENTITY,
     [Description] nvarchar(1000) NULL,
     [Value] nvarchar(4000) NOT NULL,
+    [Expiration] datetime2 NULL,
     [Type] nvarchar(250) NOT NULL,
+    [Created] datetime2 NOT NULL,
     [ApiResourceId] int NOT NULL,
     CONSTRAINT [PK_ApiSecrets] PRIMARY KEY ([Id]),
     CONSTRAINT [FK_ApiSecrets_ApiResources_ApiResourceId] FOREIGN KEY ([ApiResourceId]) REFERENCES [ApiResources] ([Id]) ON DELETE CASCADE
@@ -216,12 +222,12 @@ CREATE TABLE [ClientScopes] (
 GO
 
 CREATE TABLE [ClientSecrets] (
-    [Created] datetime2 NOT NULL,
-    [Expiration] datetime2 NULL,
     [Id] int NOT NULL IDENTITY,
     [Description] nvarchar(2000) NULL,
     [Value] nvarchar(4000) NOT NULL,
+    [Expiration] datetime2 NULL,
     [Type] nvarchar(250) NOT NULL,
+    [Created] datetime2 NOT NULL,
     [ClientId] int NOT NULL,
     CONSTRAINT [PK_ClientSecrets] PRIMARY KEY ([Id]),
     CONSTRAINT [FK_ClientSecrets_Clients_ClientId] FOREIGN KEY ([ClientId]) REFERENCES [Clients] ([Id]) ON DELETE CASCADE
@@ -341,7 +347,7 @@ CREATE UNIQUE INDEX [IX_IdentityResources_Name] ON [IdentityResources] ([Name]);
 GO
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20180807171034_Config', N'2.1.1-rtm-30846');
+VALUES (N'20181021143714_Config', N'2.1.4-rtm-31024');
 
 GO
 
