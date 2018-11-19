@@ -21,10 +21,30 @@ Task("Clean")
 });
 
 ///////////////////////////////////////////////////////////////////////////////
+// Build
+///////////////////////////////////////////////////////////////////////////////
+Task("Build")
+    .IsDependentOn("Clean")
+    .Does(() =>
+{
+    var settings = new DotNetCoreBuildSettings 
+    {
+        Configuration = configuration,
+    };
+
+    var projects = GetFiles("./src/**/*.csproj");
+    foreach(var project in projects)
+	{
+	    DotNetCoreBuild(project.GetDirectory().FullPath, settings);
+    }
+});
+
+///////////////////////////////////////////////////////////////////////////////
 // Copy
 ///////////////////////////////////////////////////////////////////////////////
 Task("Copy")
     .IsDependentOn("Clean")
+    .IsDependentOn("Build")
     .Does(() =>
 {
     CreateDirectory("./feed/content");
