@@ -32,7 +32,7 @@ namespace IdentityServer4.Quickstart.UI
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
             IResourceStore resourceStore,
-            IEventService events, 
+            IEventService events,
             ILogger<ConsentController> logger)
         {
             _interaction = interaction;
@@ -82,7 +82,7 @@ namespace IdentityServer4.Quickstart.UI
 
             if (result.HasValidationError)
             {
-                ModelState.AddModelError("", result.ValidationError);
+                ModelState.AddModelError(string.Empty, result.ValidationError);
             }
 
             if (result.ShowView)
@@ -107,15 +107,15 @@ namespace IdentityServer4.Quickstart.UI
             ConsentResponse grantedConsent = null;
 
             // user clicked 'no' - send back the standard 'access_denied' response
-            if (model.Button == "no")
+            if (model?.Button == "no")
             {
                 grantedConsent = ConsentResponse.Denied;
 
                 // emit event
-                await _events.RaiseAsync(new ConsentDeniedEvent(User.GetSubjectId(), result.ClientId, request.ScopesRequested));
+                await _events.RaiseAsync(new ConsentDeniedEvent(User.GetSubjectId(), request.ClientId, request.ScopesRequested));
             }
             // user clicked 'yes' - validate the data
-            else if (model.Button == "yes" && model != null)
+            else if (model?.Button == "yes")
             {
                 // if the user consented to some scope, build the response model
                 if (model.ScopesConsented != null && model.ScopesConsented.Any())
