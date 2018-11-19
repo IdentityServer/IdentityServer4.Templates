@@ -1,6 +1,6 @@
-@model ConsentViewModel
+@model IdentityServer4.Quickstart.UI.Device.DeviceAuthorizationViewModel
 
-<div class="page-consent">
+<div class="page-header">
     <div class="row page-header">
         <div class="col-sm-10">
             @if (Model.ClientLogoUrl != null)
@@ -14,15 +14,26 @@
         </div>
     </div>
 
+    @if (Model.ConfirmUserCode)
+    {
+        <div class="row">
+            <div class="col-sm-8">
+                <p>
+                    Please confirm that the authorization request quotes the code: "@Model.UserCode".
+                </p>
+            </div>
+        </div>
+    }
+
     <div class="row">
         <div class="col-sm-8">
             <partial name="_ValidationSummary" />
-            
-            <form asp-action="Index" class="consent-form">
-                <input type="hidden" asp-for="ReturnUrl" />
+
+            <form asp-action="Callback" class="consent-form">
+                <input asp-for="UserCode" type="hidden" value="@Model.UserCode" />
 
                 <div>Uncheck the permissions you do not wish to grant.</div>
-                
+
                 @if (Model.IdentityScopes.Any())
                 {
                     <div class="panel panel-default consent-buttons">
