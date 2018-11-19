@@ -87,7 +87,7 @@ Invoke-Expression "git clean -xdf ./UI"
 
 Write-Host "Downloading quickstart UI..."
 cd .\UI
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/IdentityServer/IdentityServer4.Quickstart.UI/release/get.ps1'))
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/IdentityServer/IdentityServer4.Quickstart.UI/master/getmaster.ps1'))
 cd ..
 
 Write-Host "Preparing to run build script..."
