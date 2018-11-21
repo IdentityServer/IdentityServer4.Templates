@@ -215,3 +215,5 @@ UI/Quickstart/
 # IdentityServer temp files
 identityserver4_log.txt
 tempkey.rsa
+src/IdentityServer4EntityFramework/IdentityServer.db
+src/IdentityServer4AspNetIdentity/AspIdUsers.db
