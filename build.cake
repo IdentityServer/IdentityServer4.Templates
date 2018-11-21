@@ -44,7 +44,6 @@ Task("Build")
 ///////////////////////////////////////////////////////////////////////////////
 Task("Copy")
     .IsDependentOn("Clean")
-    .IsDependentOn("Build")
     .Does(() =>
 {
     CreateDirectory("./feed/content");
