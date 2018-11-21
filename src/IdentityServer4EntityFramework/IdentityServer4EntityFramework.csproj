@@ -5,7 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="IdentityServer4" Version="2.3.0" />
-    <PackageReference Include="IdentityServer4.EntityFramework" Version="2.3.0" />
+    <PackageReference Include="IdentityServer4.EntityFramework" Version="2.3.1" />
     <PackageReference Include="IdentityServer4.EntityFramework.Storage" Version="2.3.0" />
 
     <PackageReference Include="Microsoft.AspNetCore.App" />
