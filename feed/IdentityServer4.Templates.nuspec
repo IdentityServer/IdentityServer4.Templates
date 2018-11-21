@@ -8,7 +8,9 @@
     <language>en-US</language>
     <iconUrl>https://raw.githubusercontent.com/IdentityServer/Artwork/master/Logos/IDserver_icon128.jpg</iconUrl>
     <projectUrl>https://github.com/IdentityServer/IdentityServer4.Templates</projectUrl>
-    <licenseUrl>https://github.com/IdentityServer/IdentityServer4.Templates/blob/dev/LICENSE</licenseUrl>
+    <license type="expression">Apache-2.0</license>
+    
+    <!-- <licenseUrl>https://github.com/IdentityServer/IdentityServer4.Templates/blob/dev/LICENSE</licenseUrl> -->
     
     <packageTypes>
       <packageType name="Template" />
