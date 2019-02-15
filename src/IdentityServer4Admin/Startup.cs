@@ -11,10 +11,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using IdentityExpress.Identity;
 using IdentityExpress.Manager.Api;
+using IdentityServer4.Services;
 using IdentityServer4Admin.Data;
+using Microsoft.Extensions.Logging.Abstractions;
+using RSK.Audit.EF;
+using RSK.IdentityServer4.AuditEventSink;
 
 namespace IdentityServer4Admin
 {
@@ -76,6 +81,8 @@ namespace IdentityServer4Admin
                     // options.TokenCleanupInterval = 15; // interval in seconds. 15 seconds useful for debugging
                 });
 
+            ConfigureIdentityServerAuditing(services, connectionString);
+
             if (Environment.IsDevelopment())
             {
                 builder.AddDeveloperSigningCredential();
@@ -116,6 +123,22 @@ namespace IdentityServer4Admin
             app.UseIdentityServer();
             app.UseMvcWithDefaultRoute();
             app.UseAdminUI();
+        }
+        
+        public void ConfigureIdentityServerAuditing(IServiceCollection services, string auditConnectionString)
+        {
+            var dbContextOptionsBuilder = new DbContextOptionsBuilder<AuditDatabaseContext>();
+            RSK.Audit.AuditProviderFactory auditFactory = new AuditProviderFactory(dbContextOptionsBuilder.UseSqlite(auditConnectionString).Options);
+            var auditRecorder = auditFactory.CreateAuditSource("IdentityServer");
+            services.AddSingleton<IEventSink>(provider => new AuditSink(auditRecorder));
+
+            services.AddSingleton<IEventSink>(provider => new EventSinkAggregator(new NullLogger<EventSinkAggregator>())
+            {
+                EventSinks = new List<IEventSink>
+                {
+                    new AuditSink(auditRecorder)
+                }
+            });
         }
     }
 }

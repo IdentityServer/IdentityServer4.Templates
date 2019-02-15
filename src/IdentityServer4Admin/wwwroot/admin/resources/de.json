@@ -73,6 +73,15 @@
     "CompanyName": "Rock Solid Knowledge Ltd",
     "AppName": "IdentityExpress AdminUI",
     "HeadsUp": "<strong>Achtung!<\/strong>",
+    "Password": "Passwort",
+    "Policy": "Zugriffsregelung",
+    "Minute": "Min.",
+    "Hour": "Std.",
+    "Hours": "Stdn.",
+    "Day": "Tag",
+    "Week": "Woche",
+    "Month": "Monat",
+    "Year": "Jahr",
     "Delete": {
       "Title": "Löschen",
       "TitleUndo": "Wiederherstellen",
@@ -102,7 +111,18 @@
     },
     "UserEditable": "Benutzer bearbeitbar",
     "Key": "Schlüssel",
-    "CommunityEditionBanner": "Willkommen bei der AdminUI Community Edition. Dies ist eine kostenlose Version des AdminUI-Tools zum Verwalten der IdentityServer-Konfiguration und der Benutzer. Es ist auf 10 Benutzer und 2 Clients beschränkt. Klicken Sie auf den folgenden Link, um mehr über das vollständige AdminUI-Produkt zu erfahren"
+    "CommunityEditionBanner": "Willkommen bei der AdminUI Community Edition. Dies ist eine kostenlose Version des AdminUI-Tools zum Verwalten der IdentityServer-Konfiguration und der Benutzer. Es ist auf 10 Benutzer und 2 Clients beschränkt. Klicken Sie auf den folgenden Link, um mehr über das vollständige AdminUI-Produkt zu erfahren",
+    "Remove": "Entfernen",
+    "Actions": "Aktionen",
+    "Assign": "Zuweisen",
+    "Unassign": "Zuweisung aufheben",
+    "Days": "Tag(e)",
+    "Weeks": "Woche",
+    "Months": "Monat(e)",
+    "Years": "Jahr(e)",
+    "Unlimited": "Unbegrenzt",
+    "Audits": "Audits",
+    "CommunityPolicyNotice": "Dies ist eine Vorschau der Bildschirmanzeige zur Zugriffsrichtlinie. In der Community Edition wurden die Funktionen zur Zugriffsrichtlinie entfernt. Sie können den Bildschirm verwenden, aber keine der Richtlinien wird greifen. Klicken Sie auf den unten stehenden Link, um mehr über das vollständige AdminUI-Produkt zu erfahren "
   },
   "Nav": {
     "Salutation": "Hallo",
@@ -128,7 +148,16 @@
     "Authentication": "Authentifizierung",
     "Applications": "Anwendungen",
     "Additional Details": "Zusätzliche Details",
-    "ToggleNavigation": "Navigation umschalten"
+    "ToggleNavigation": "Navigation umschalten",
+     "Login": "Login",
+    "External Logins": "Externe Logins",
+    "Settings": "Einstellungen",
+    "AccessPolicy": "Zugriffsregelung",
+    "IdentityServer": "IdentityServer-Verwaltung",
+    "UserManagement": "Benutzerverwaltung",
+    "Start": "Start",
+    "Auditing": "Auditierung",
+    "Audits": "Audits"
   },
   "Errors": {
     "NotFoundTitle": "Fehler 404",
@@ -136,7 +165,12 @@
     "ForbiddenTitle": "Fehler 403",
     "ForbiddenDescription": "Sie sind nicht berechtigt, diese Ressource anzusehen.",
     "UnauthenticatedTitle": "Nicht authentifiziert",
-    "UnauthenticatedDescription": "Sie werden zur Anmeldeseite weitergeleitet..."
+    "UnauthenticatedDescription": "Sie werden zur Anmeldeseite weitergeleitet...",
+    "Unauthorized": "Unerlaubt",
+    "ContactAdmin": "Sie haben nicht die erforderlichen Berechtigungen, um AdminUI zu verwenden, wenden Sie sich bitte an einen Administrator",
+    "ResourceNotFound": "RessourceNichtGefunden",
+    "ResourceNotFoundDescription": "Diese Ressource kann nicht gefunden werden.",
+    "RssUnavalible": "Rss nicht verfügbar"
   },
   "Index": {
     "Title": "Dashboard",
@@ -163,7 +197,9 @@
     "MinimumSearchLength":"Die minimale Suchlänge beträgt 2 Zeichen",
     "Filter": {
       "Active": "Aktiv",
-      "Blocked": "Gesperrt"
+      "Blocked": "Gesperrt",
+      "Label": "Nur folgende Benutzer anzeigen",
+      "Deleted": "Gelöscht"
     },
     "Username": "Benutzername",
     "FullName": "Vollständiger Name",
@@ -233,7 +269,18 @@
     "MisMatchPasswordWarning": "Die Passwörter stimmen <u>nicht<\/u> überein!",
     "PasswordMatchMessage": " Passwörter stimmen überein!",
     "DeleteAccount": "Konto löschen",
-    "ChangePassword": "Passwort zurücksetzen"
+    "ChangePassword": "Passwort zurücksetzen",
+    "UnauthorizedWarning": "Sie haben nicht die erforderlichen Berechtigungen, um diesem Benutzer dieses Anrecht zuzuweisen",
+    "UnauthorizedWarningEdit": "Sie haben nicht die erforderlichen Berechtigungen, um dieses Anrecht für diesen Benutzer zu ändern",
+    "UnauthorizedWarningDelete": "Sie haben nicht die erforderlichen Berechtigungen, um dieses Anrecht dieses Benutzers zu löschen."
+  },
+  "UserLogins": {
+    "ProviderDisplayName": "Name des Anbieters anzeigen",
+    "LoginProvider": "Login des Anbieters",
+    "ProviderKey": "Benutzeridentität",
+    "NoLogins": "Keine externen Logins für diesen Benutzer gefunden",
+    "RevokeExternalLogin": "Externes Login widerrufen",
+    "RevokeLoginConfirmationText": "Sind Sie sicher, dass Sie dieses externe Login widerrufen wollen?"
   },
   "Roles": {
     "Role": "Rolle",
@@ -249,7 +296,12 @@
     "NoRolesFound": "Keine Rollen gefunden",
     "HeadsUpNoRolesFound": "<strong>Achtung!<\/strong> Keine Rollen gefunden",
     "RoleCreated": "Rolle erstellt",
-    "Success": "Rollen erfolgreich aktualisiert"
+    "Success": "Rollen erfolgreich aktualisiert",
+    "AreYouSureDelete": "Sind Sie sicher, dass Sie sie löschen wollen",
+    "AssignUnauthorized": "Sie haben nicht die erforderlichen Berechtigungen, um diese Rolle zuzuweisen",
+    "UnassignUnauthorized": "Sie haben nicht die erforderlichen Berechtigungen, um diese Rolle aufzuheben",
+    "UpdateUnauthorized": "Sie haben nicht die erforderlichen Berechtigungen, um diese Rolle zu aktualisieren",
+    "DeleteUnauthorized": "Sie haben nicht die erforderlichen Berechtigungen, um diese Rolle zu löschen."
   },
   "Claims": {
     "Title": "Anspruchstyp",
@@ -267,7 +319,9 @@
     "DeleteConfirmation": "Sind Sie sich sicher, dass Sie den Anspruchstyp löschen möchten",
     "Search": "Nach einem Anspruchstyp suchen ...",
     "TapClaim": "<i class='fa fa-info'><\/i> Wenn Sie auf eine Zeile tippen, werden<br \/>Sie zu den Details des Anspruchstyp weitergeleitet",
-    "UserEditable":  "Der Wert kann von einem Benutzer bearbeitet werden, wenn er über die öffentliche API angezeigt wird"
+    "UserEditable":  "Der Wert kann von einem Benutzer bearbeitet werden, wenn er über die öffentliche API angezeigt wird",
+    "AssignUnassignUnauthorized": "Sie haben nicht die erforderlichen Rechte, um dieses Anrecht zuzuteilen oder aufzuheben.",
+    "NoClaimsFound": "<strong>Keine Claims gefunden</strong> Passen Sie Ihre Suchanfrage an"
   },
   "Resources": {
     "ResourceID": "Ressourcen-ID",
@@ -293,7 +347,8 @@
       "Consent": "Die Zustimmung zur Verwendung des Bereichs ist zum Abschließen der Authentifizierung erforderlich",
       "DiscoveryDocumentDescription": "Bereich wird im Discovery-Dokument angezeigt (<em>\/.well-known\/openid-configuration<\/em>)",
       "EmphasiseScope": "Den Bereichsnamen im Zustimmungsfenster hervorheben",
-      "UserClaimTypes": "Weisen Sie Benutzeranspruchstypen zu, die in Token enthalten sein sollen. Anspruchstypen werden der Liste der Anspruchstypen für die übergeordnete Ressource hinzugefügt."
+      "UserClaimTypes": "Weisen Sie Benutzeranspruchstypen zu, die in Token enthalten sein sollen. Anspruchstypen werden der Liste der Anspruchstypen für die übergeordnete Ressource hinzugefügt.",
+      "ScopeAdded": "Aufgabenbereich hinzugefügt"
     }
   },
   "IdentityResources": {
@@ -369,6 +424,19 @@
     "None": "Keine Clients gefunden",
     "NoSecrets": "<strong>Achtung!<\/strong> Es wurden keine Geheimnisse festgelegt. Verwenden Sie das obige Formular, um eines hinzuzufügen und es wird hier angezeigt.",
     "EnableLocalLogin": "Lokale Anmeldung aktivieren",
+    "CORSUrl": "Diese Url ist ein Pfad und kann keine CORS Url sein",
+    "NullURL": "URL ist null oder leer",
+    "UrlIsPath": "Diese Url ist ein Pfad und kann keine CORS Url sein",
+    "UrlNotValid": "Diese Url ist vielleicht nicht gültig",
+    "GrantTypes": {
+      "Implicit": "Implizit(implicit)",
+      "AuthCode": "Autorisierungscode(authorization_code)",
+      "Hybrid": "Hybrid(hybrid)",
+      "Password": "Passwort(password)",
+      "Custom": "Kundenspezifisch",
+      "ClientCredentials": "Kundenreferenzen(client_credentials)",
+      "DeviceFlow": "device_flow"
+    },
     "RequireConsent": {
       "Title": "Zustimmung erforderlich?",
       "Help": "Gibt an, ob ein Zustimmungsfenster erforderlich ist"
@@ -408,7 +476,47 @@
       "UpdateAccessTokens": "Aktualisieren von Zugriffs-Tokenansprüchen beim Aktualisieren",
       "AccessTokensViaBrowser": "Erlauben Sie das Senden von Zugriffs-Token über den Browser. Das Deaktivieren eignet sich für verhärtende Ströme, die mehrere Typgenehmigungen erlauben.",
       "IncludeJwtId": "Jwt-ID einschließen",
-      "LogoutSessionRequired": "Sitzung muss Abmelden auslösen"
+      "LogoutSessionRequired": "Sitzung muss Abmelden auslösen",
+      "IncludeUserClaimsInIdToken": "Benutzeranrechte immer in Id-Token aufnehmen",
+      "BackChannelLogoutSessionRequired": "BackChannel LogoutSession erforderlich",
+      "BackChannelLogoutUri": "Back Channel Logout URI",
+      "UserSSOLifetime": "SSO Lifetime (Sekunden)",
+      "UserSSOLifetimeTooltip": "Zeit zwischen den Aufforderungen zur Benutzerauthentifizierung. Leitet standardmäßig zur Lebensdauer der IdentityServer-Sitzung weiter",
+      "UserCode": "Art des Nutzercode-Generators",
+      "DeviceCodeLifetime": "Lebensdauer des Device Flow Requests",
+      "DurationTitle": "Berechnete Lebensdauer",
+      "Durations": {
+        "Seconds": "Sekunden",
+        "SecondsShort": "s",
+        "Second": "Sekunde",
+        "SecondShort": "s",
+        "Minutes": "Minuten",
+        "MinutesShort": "min",
+        "Minute": "Minute",
+        "MinuteShort": "min",
+        "Hours": "Stunden",
+        "HoursShort": "Std.",
+        "Hour": "Stunde",
+        "HourShort": "Std.",
+        "Days": "Tage",
+        "DaysShort": "d",
+        "Day": "Tag",
+        "DayShort": "d",
+        "Weeks": "Wochen",
+        "WeeksShort": "Wo.",
+        "Week": "Woche",
+        "WeekShort": "Wo.",
+        "Months": "Monate",
+        "MonthsShort": "Mon.",
+        "Month": "Monat",
+        "MonthShort": "Mo.",
+        "Years": "Jahre",
+        "YearsShort": "Jr.",
+        "Year": "Jahr",
+        "YearShort": "Jr.",
+        "Unlimited": "Unbegrenzt",
+        "UnlimitedShort": "∞"
+      }
     },
     "MachineToMachine": {
       "Setup": "Maschinenanwendung einrichten",
@@ -437,6 +545,12 @@
       "Created": "Native Anwendung erstellt",
       "Secrets": "Einige Geheimnisse eingeben (Optional)"
     },
+    "DeviceFlow": {
+      "Setup": "Ein Gerät einrichten",
+      "Title": "Device Flow",
+      "Description": "Geräte-/IoT-Anwendung",
+      "Created": "Device-Flow-Anwendung erstellt"
+    },
     "URLS": {
       "Title": "Anwendungs-URLs",
       "SendTokens": "Token können an diese URL gesendet werden",
@@ -447,7 +561,9 @@
     }
   },
   "Secret Picker": {
-    "Set Expiration Button": "Optionalen Ablauf einrichten"
+    "Set Expiration Button": "Optionalen Ablauf einrichten",
+    "HiddenValue": "Wert ist ausgeblendet",
+    "LastWarning": "Warnung: Nach dem Hinzufügen können Sie nicht auf den Wert dieses Secrets zugreifen."
   },
   "Notifications": {
     "Success": "Erfolg",
@@ -475,6 +591,89 @@
     "Support": "Senden Sie uns für weitere Unterstützung eine Nachricht an support@identityserver.com",
     "Reset Success Message": "Zurücksetzen des Passworts erfolgreich",
     "Reset Error Message": "Beim Zurücksetzen des Benutzerpassworts gab es ein Problem",
-    "Error": "Fehler"
+    "Error": "Fehler",
+    "Unauthorized": "Unerlaubt"
+  },
+  "Settings": {
+    "AccessPolicy": {
+      "ClaimType": "Art des Anrechts",
+      "ClaimValue": "Wert des Anrechts",
+      "Permission": "Erlaubnis",
+      "Save": "Speichern",
+      "ConfirmSave": "Sind Sie sicher, dass Sie Ihre Zugriffsregelung mit diesen Änderungen aktualisieren wollen?",
+      "ConfirmChanges": "Bestätigen Sie die Aktualisierung der Zugriffsregelung",
+      "SaveYes": "Änderungen speichern",
+      "SaveNo": "Nein, nicht speichern",
+      "InvalidClaimType": "Keine Anrechtsart gewählt",
+      "InvalidClaimValue": "Kein Wert eingegeben",
+      "InvalidPermission": "Keine Berechtigung gewählt",
+      "AccessPolicyUpdated": "Zugriffsregelung aktualisiert",
+      "AccessPolicyConflict": "Konflikt: Es gibt eine neuere Zugriffsregelung"
+    },
+    "Title": "Einstellungen/Zugriffsrichtlinie"
+  },
+  "LandingPage": {
+    "Welcome": "Willkommen auf/bei",
+    "LatestNews": "Neueste Nachrichten",
+    "IntroParagraph1": "Willkommen bei AdminUI, dem führenden Benutzer- und Konfigurationsmanagement-Tool für IdentityServer4",
+    "IntroParagraph2": "Für Lizenzanfragen wenden Sie sich bitte an:",
+    "Documentation": "Dokumentation",
+    "APIDocs": "API-Dokumente"
+  },
+  "Permission": {
+    "UserManager": "Benutzer-Manager",
+    "IdentityServerManager": "IdentityServer Manager",
+    "All": "Alle[s]",
+    "Auditer": "Auditor"
+  },
+  "Auditing": {
+    "Title": "Auditing",
+    "SearchAudits": "Nach Audits suchen",
+    "NoAuditsFound": "Keine Audits gefunden",
+    "When": "Wenn",
+    "Subject": "Betreff",
+    "Resource": "Ressource",
+    "Source": "Quelle",
+    "Action": "Aktion",
+    "Description": "Beschreibung",
+    "Succeeded": "Erfolgreich",
+    "FromDate": "Ab Datum",
+    "FromDateWarning": "Das Datum darf nicht in der Zukunft liegen",
+    "ToDate": "Bis Datum",
+    "ToDateBehindWarning": "Ihr Ab-Datum darf nicht vor Ihrem Bis-Datum liegen",
+    "SetDateToday": "Datum auf heute einstellen",
+    "Today": "Heute",
+    "SetDateLast24Hours": "Datum für die letzten 24 Stunden einstellen",
+    "24Hours": "24 Stunden",
+    "SetDateYesterday": "Datum auf gestern einstellen",
+    "Yesterday": "Gestern",
+    "SetDateLastWeek": "Datum auf Woche einstellen",
+    "Week" : "Woche",
+    "ResultsPerPage": "Ergebnisse pro Seite",
+    "AddFilter": "Filter hinzufügen",
+    "ShowFilters": "Filter anzeigen",
+    "HideFilters": "Filter ausblenden",
+    "FilterTerm": "Filterbegriff",
+    "FilterTermPlaceholder": "Filterbegriff ...",
+    "RemoveFilter": "Filter entfernen",
+    "Showing": "Anzeigen",
+    "ExecuteAndDownload": "Ausführen und Herunterladen",
+    "DownloadResults": "Herunterladen (CSV)",
+    "ExecuteAndDisplay": "Ausführen und Anzeigen",
+    "UpdateWarning": "Klicken Sie auf \"Ergebnisse aktualisieren\", um Ihre Änderungen anzuzeigen",
+    "Reset": "Zurücksetzen",
+    "Result": "Ergebnis",
+    "First page of results": "Erste Seite der Ergebnisse",
+    "Previous page of results": "Vorherige Seite der Ergebnisse",
+    "Next page of results": "Nächste Seite der Ergebnisse",
+    "Last page of results": "Letzte Seite der Ergebnisse"
+  },
+  "Resource": {
+    "user": "Benutzer",
+    "role": "Position",
+    "claimType": "ClaimType",
+    "client": "Client",
+    "identityResource": "Identitätsressource",
+    "protectedResource": "Geschützte Ressource"
   }
 }
