@@ -73,6 +73,26 @@
     "CompanyName": "Rock Solid Knowledge Ltd",
     "AppName": "IdentityExpress AdminUI",
     "HeadsUp": "<strong>警告!</strong>",
+    "Password": "密码",
+    "Policy": "访问政策",
+    "Minute": "分钟",
+    "Hour": "小时",
+    "Hours": "小时",
+    "Day": "日",
+    "Week": "周",
+    "Month": "月",
+    "Year": "年",
+    "Remove": "删除",
+    "Actions": "操作",
+    "Assign": "分配",
+    "Unassign": "取消分配",
+    "Days": "天",
+    "Weeks": "周",
+    "Months": "月",
+    "Years": "年",
+    "Unlimited": "无限",
+    "Audits": "审计",
+    "CommunityPolicyNotice": "这是访问策略屏幕的预览。在社区版中已删除了访问策略功能。您可以使用该屏幕，但这些策略都不会生效。如需了解有关完整AdminUI产品的更多信息，请单击下面的链接",
     "Delete": {
       "Title": "删除",
       "TitleUndo": "復原",
@@ -128,7 +148,16 @@
     "Authentication": "认证",
     "Applications": "应用程序",
     "Additional Details": "附加明细",
-    "ToggleNavigation": "切换巡览"
+    "ToggleNavigation": "切换巡览",
+    "Login": "登录",
+    "External Logins": "外部登录",
+    "Settings": "设置",
+    "AccessPolicy": "访问政策",
+    "IdentityServer": "IdentityServer管理",
+    "UserManagement": "用户管理",
+    "Start": "开始",
+    "Auditing": "正在审计",
+    "Audits": "审计"
   },
   "Errors": {
     "NotFoundTitle": "Error 404",
@@ -136,7 +165,12 @@
     "ForbiddenTitle": "Error 403",
     "ForbiddenDescription": "您禁止查看此资源.",
     "UnauthenticatedTitle": "未受认证",
-    "UnauthenticatedDescription": "重导至登录页..."
+    "UnauthenticatedDescription": "重导至登录页...",
+    "Unauthorized": "未经授权",
+    "ContactAdmin": "您没有使用AdminUI所需的权限,请联系管理员",
+    "ResourceNotFound": "找不到资源",
+    "ResourceNotFoundDescription": "无法找到此资源",
+    "RssUnavalible": "Rss不可用"
   },
   "Index": {
     "Title": "仪表板",
@@ -163,7 +197,9 @@
     "MinimumSearchLength": "最小搜寻长度为2个字元",
     "Filter": {
       "Active": "启用",
-      "Blocked": "停用"
+      "Blocked": "停用",
+      "Label": "仅显示符合以下条件的用户：",
+      "Deleted": "已删除"
     },
     "Username": "用户名称",
     "FullName": "全名",
@@ -233,7 +269,18 @@
     "MisMatchPasswordWarning": "密码 <u>不</u> 相符!",
     "PasswordMatchMessage": " 密码相符!",
     "DeleteAccount": "删除帐号",
-    "ChangePassword": "重置密码"
+    "ChangePassword": "重置密码",
+    "UnauthorizedWarning": "您没有为此用户分配此声明所需的权限",
+    "UnauthorizedWarningEdit": "您没有为此用户修改此声明所需的权限",
+    "UnauthorizedWarningDelete": "您没有从此用户删除此声明所需的权限"
+  },
+  "UserLogins": {
+    "ProviderDisplayName": "提供者显示名称",
+    "LoginProvider": "登录提供商",
+    "ProviderKey": "用户身份",
+    "NoLogins": "找不到此用户的外部登录信息",
+    "RevokeExternalLogin": "撤销外部登录",
+    "RevokeLoginConfirmationText": "您确定要撤消此外部登录"
   },
   "Roles": {
     "Role": "角色",
@@ -249,7 +296,12 @@
     "NoRolesFound": "找不到角色",
     "HeadsUpNoRolesFound": "<strong>警告!</strong> 找不到角色",
     "RoleCreated": "角色已建立",
-    "Success": "角色更新成功"
+    "Success": "角色更新成功",
+    "AreYouSureDelete": "你确定要删除",
+    "AssignUnauthorized": "您没有分配此角色所需的权限",
+    "UnassignUnauthorized": "您没有取消分配此角色所需的权限",
+    "UpdateUnauthorized": "您没有更新此角色所需的权限",
+    "DeleteUnauthorized": "您没有删除此角色所需的权限"
   },
   "Claims": {
     "Title": "声明类型",
@@ -267,7 +319,9 @@
     "DeleteConfirmation": "你是否要删除此声明类型",
     "Search": "搜寻一种声明类型...",
     "TapClaim": "<i class='fa fa-info'></i>在单笔上连击<br />可显示声明类型明细",
-    "UserEditable": "如果通过对外公开的露出，用户可以编辑这些值"
+    "UserEditable": "如果通过对外公开的露出，用户可以编辑这些值",
+    "AssignUnassignUnauthorized": "您没有分配或取消分配此声明所需的权限",
+    "NoClaimsFound": "<strong>未找到任何声明</strong>请尝试调整搜索查询"
   },
   "Resources": {
     "ResourceID": "资源 ID",
@@ -293,7 +347,8 @@
       "Consent": "需要同意使用范围才能完成身份验证",
       "DiscoveryDocumentDescription": "范围显示于发现文档 (<em>/.well-known/openid-configuration</em>)",
       "EmphasiseScope": "在同意画面上强调范围名称",
-      "UserClaimTypes": "令牌内包含用户声明类型，声明类型将被附加到上层资源的声明类型列表中."
+      "UserClaimTypes": "令牌内包含用户声明类型，声明类型将被附加到上层资源的声明类型列表中.",
+      "ScopeAdded": "范围已添加"
     }
   },
   "IdentityResources": {
@@ -369,6 +424,19 @@
     "None": "找不到客户端",
     "NoSecrets": "<strong>警告!</strong> 未设置密钥。使用上面的表格新增，将显示在这裡.",
     "EnableLocalLogin": "启用本地登录",
+    "CORSUrl": "此Url是一条路径,不能是CORS Url",
+    "NullURL": "URL为空白或不存在",
+    "UrlIsPath": "此网址是一条路径,不能是CORS网址",
+    "UrlNotValid": "此网址可能无效",
+    "GrantTypes": {
+      "Implicit": "隐含式(implicit)",
+      "AuthCode": "授权码(authorization_code)",
+      "Hybrid": "混合式(hybrid)",
+      "Password": "密码(password)",
+      "Custom": "自定义",
+      "ClientCredentials": "客户端凭据(client_credentials)",
+      "DeviceFlow": "设备流"
+    },
     "RequireConsent": {
       "Title": "需要同意?",
       "Help": "指定是否需要同意画面"
@@ -408,7 +476,47 @@
       "UpdateAccessTokens": "当刷新时更新访问令牌声明",
       "AccessTokensViaBrowser": "允许透过浏览器发送令牌. 禁用对于允许多种授予类型的流程固化很有用.",
       "IncludeJwtId": "包含 Jwt Id",
-      "LogoutSessionRequired": "要求Seesion触发登出"
+      "LogoutSessionRequired": "要求Seesion触发登出",
+      "IncludeUserClaimsInIdToken": "始终在Id令牌中包含用户声明",
+      "BackChannelLogoutSessionRequired": "需要返回频道注销会话",
+      "BackChannelLogoutUri": "返回频道注销URI",
+      "UserSSOLifetime": "SSO生存期(秒)",
+      "UserSSOLifetimeTooltip": "身份验证质询之间的时间量。默认为IdentityServer会话生存期",
+      "UserCode": "用户代码生成器类型",
+      "DeviceCodeLifetime": "设备流请求生存期",
+      "DurationTitle": "计算生存期时长"
+    },
+    "Durations": {
+      "Seconds": "秒",
+      "SecondsShort": "s",
+      "Second": "秒",
+      "SecondShort": "s",
+      "Minutes": "分",
+      "MinutesShort": "mins",
+      "Minute": "分",
+      "MinuteShort": "min",
+      "Hours": "小时",
+      "HoursShort": "hrs",
+      "Hour": "小时",
+      "HourShort": "hr",
+      "Days": "天",
+      "DaysShort": "d",
+      "Day": "天",
+      "DayShort": "d",
+      "Weeks": "星期",
+      "WeeksShort": "wk",
+      "Week": "星期",
+      "WeekShort": "wk",
+      "Months": "月",
+      "MonthsShort": "mos",
+      "Month": "月",
+      "MonthShort": "mo",
+      "Years": "年",
+      "YearsShort": "yrs",
+      "Year": "年",
+      "YearShort": "yr",
+      "Unlimited": "无限",
+      "UnlimitedShort": "∞"
     },
     "MachineToMachine": {
       "Setup": "设置机器应用程序",
@@ -437,6 +545,12 @@
       "Created": "原生应用程序已建立",
       "Secrets": "输入密钥 (选择性)"
     },
+    "DeviceFlow": {
+      "Setup": "设置设备",
+      "Title": "设备流",
+      "Description": "设备/物联网应用程序",
+      "Created": "设备流应用程序已创建"
+    },
     "URLS": {
       "Title": "应用程序 URLs",
       "SendTokens": "可传送令牌至此URL",
@@ -447,7 +561,9 @@
     }
   },
   "Secret Picker": {
-    "Set Expiration Button": "设置选择性逾期"
+    "Set Expiration Button": "设置选择性逾期",
+    "HiddenValue": "值已被隐藏",
+    "LastWarning": "警告，添加后您将无法访问此密钥的值。"
   },
   "Notifications": {
     "Success": "成功",
@@ -475,6 +591,89 @@
     "Support": "留讯息至support@identityserver.com寻求更多协助",
     "Reset Success Message": "密码成功重置",
     "Reset Error Message": "用户重置密码发生一些问题",
-    "Error": "错误"
+    "Error": "错误",
+    "Unauthorized": "未经授权"
+  },
+  "Settings": {
+    "AccessPolicy": {
+      "ClaimType": "声明类型",
+      "ClaimValue": "声明值",
+      "Permission": "许可",
+      "Save": "保存",
+      "ConfirmSave": "您确定要使用这些更改来更新访问策略吗？",
+      "ConfirmChanges": "确认访问策略更新",
+      "SaveYes": "保存更改",
+      "SaveNo": "不,不要保存",
+      "InvalidClaimType": "没有选择声明类型",
+      "InvalidClaimValue": "没有输入值",
+      "InvalidPermission": "未选择权限",
+      "AccessPolicyUpdated": "访问策略已更新",
+      "AccessPolicyConflict": "冲突: 存在更新的访问策略",
+      "Title": "设置/访问策略"
+    }
+  },
+  "LandingPage": {
+    "Welcome": "欢迎使用",
+    "LatestNews": "最新消息",
+    "IntroParagraph1": "欢迎使用AdminUI,IdentityServer4的领先用户和配置管理工具。",
+    "IntroParagraph2": "如需查询许可证,请联系: ",
+    "Documentation": "文档",
+    "APIDocs": "API文档"
+  },
+  "Permission": {
+    "UserManager": "用户管理者",
+    "IdentityServerManager": "IdentityServer 管理者",
+    "All": "全部",
+    "Auditer": "审计员"
+  },
+  "Auditing": {
+    "Title": "正在审计",
+    "SearchAudits": "搜索审计",
+    "NoAuditsFound": "未找到审计",
+    "When": "时间",
+    "Subject": "主题",
+    "Resource": "资源",
+    "Source": "源",
+    "Action": "操作",
+    "Description": "描述",
+    "Succeeded": "成功",
+    "FromDate": "起始日期",
+    "FromDateWarning": "起始日期不能在将来",
+    "ToDate": "结束日期",
+    "ToDateBehindWarning": "您的起始日期不能在结束日期之后",
+    "SetDateToday": "将日期设置为今天",
+    "Today": "今天",
+    "SetDateLast24Hours": "设置最近24小时的日期",
+    "24Hours": "24小时",
+    "SetDateYesterday": "将日期设置为昨天",
+    "Yesterday": "昨天",
+    "SetDateLastWeek": "将日期设置为星期",
+    "Week": "星期",
+    "ResultsPerPage": "每页结果数",
+    "AddFilter": "添加过滤器",
+    "ShowFilters": "显示过滤器",
+    "HideFilters": "隐藏过滤器",
+    "FilterTerm": "过滤词",
+    "FilterTermPlaceholder": "过滤词...",
+    "RemoveFilter": "删除过滤器",
+    "Showing": "显示",
+    "ExecuteAndDownload": "执行并下载",
+    "DownloadResults": "下载(CSV)",
+    "ExecuteAndDisplay": "更新结果",
+    "UpdateWarning": "点击“更新结果”以查看您的更改",
+    "Reset": "重置",
+    "Result": "重置",
+    "First page of results": "结果第一页",
+    "Previous page of results": "结果的上一页",
+    "Next page of results": "结果的下一页",
+    "Last page of results": "结果的最后一页"
+  },
+  "Resource": {
+    "user": "用户",
+    "role": "角色",
+    "claimType": "ClaimType",
+    "client": "客户端",
+    "identityResource": "标识资源",
+    "protectedResource": "受保护资源"
   }
 }

@@ -2,6 +2,7 @@
   "Common": {
     "ID": "ID",
     "Add": "Add",
+    "Password": "Password",
     "AddandConfigure": "Add and Configure",
     "True": "true",
     "False": "false",
@@ -14,6 +15,7 @@
     "Enabled": "Enabled",
     "Disabled": "Disabled",
     "Required": "Required",
+    "Remove": "Remove",
     "Removed": "Removed",
     "Advanced": "Advanced",
     "DisplayName": "Display Name",
@@ -49,10 +51,13 @@
     "Secrets": "Secrets",
     "GenerateRandom": "Generate a random 32char string",
     "Restrictions": "Restrictions",
+    "Actions": "Actions",
     "Never": "Never",
     "OK": "OK",
     "Yes": "Yes",
     "No": "No",
+    "Assign": "Assign",
+    "Unassign": "Unassign",
     "Note": "Note",
     "Signout": "Signout",
     "Revoke": "Revoke",
@@ -73,6 +78,19 @@
     "CompanyName": "Rock Solid Knowledge Ltd",
     "AppName": "IdentityExpress AdminUI",
     "HeadsUp": "<strong>Heads up!</strong>",
+    "Policy": "access policy",
+    "Minute": "min",
+    "Hour": "hr",
+    "Hours": "hr(s)",
+    "Day": "Day",
+    "Days": "Day(s)",
+    "Weeks": "Week",
+    "Month": "Month",
+    "Months": "Month(s)",
+    "Year": "Year",
+    "Years": "Year(s)",
+    "Unlimited": "Unlimited",
+    "Audits" : "Audits",
     "Delete": {
       "Title": "Delete",
       "TitleUndo": "Restore",
@@ -102,11 +120,14 @@
     },
     "UserEditable": "User Editable",
     "Key": "Key",
-    "CommunityEditionBanner": "Welcome to AdminUI Community Edition. This is a free version of the AdminUI tool for administering IdentityServer configuration and users. It is limited to 10 users and 2 clients. To find out more about the full AdminUI product, click on the link below"
+    "CommunityEditionBanner": "Welcome to AdminUI Community Edition. This is a free version of the AdminUI tool for administering IdentityServer configuration and users. It is limited to 10 users and 2 clients. To find out more about the full AdminUI product, click on the link below",
+    "CommunityPolicyNotice" : "This is a preview of the Access Policy screen. In Community Edition the Access Policy features have been removed. You can use the screen but none of the policies will take effect. To find out more about the full AdminUI product, click on the link below "
   },
   "Nav": {
     "Salutation": "Hello",
+    "Login": "Login",
     "Logout": "Logout",
+    "Start": "Start",
     "Home": "Home",
     "Users": "Users",
     "Roles": "Roles",
@@ -115,6 +136,8 @@
     "Resources": "Resources",
     "IdentityResources": "Identity Resources",
     "ProtectedResources": "Protected Resources",
+    "Auditing": "Auditing",
+    "Audits": "Audits",
     "ToTop": "Jump to Top",
     "Support": "Support",
     "MobileListInfo": "Tapping on a row will redirect you to the user details",
@@ -128,7 +151,12 @@
     "Authentication": "Authentication",
     "Applications": "Applications",
     "Additional Details": "Additional Details",
-    "ToggleNavigation": "Toggle navigation"
+    "External Logins": "External Logins",
+    "ToggleNavigation": "Toggle navigation",
+    "Settings": "Settings",
+    "AccessPolicy": "Access Policy",
+    "IdentityServer": "IdentityServer Management",
+    "UserManagement": "User Management"
   },
   "Errors": {
     "NotFoundTitle": "Error 404",
@@ -136,7 +164,12 @@
     "ForbiddenTitle": "Error 403",
     "ForbiddenDescription": "You are forbidden from viewing this resource.",
     "UnauthenticatedTitle": "Unauthenticated",
-    "UnauthenticatedDescription": "Redirecting you to login page..."
+    "UnauthenticatedDescription": "Redirecting you to login page...",
+    "Unauthorized": "Unauthorized",
+    "ContactAdmin": "You do not have the required permissions to use AdminUI, please contact an administrator",
+    "ResourceNotFound": "Not Found",
+    "ResourceNotFoundDescription": "This resource cannot be found",
+    "RssUnavalible" : "Rss Unavalible"
   },
   "Index": {
     "Title": "Dashboard",
@@ -160,10 +193,12 @@
     "AddUser": "Add User",
     "NewUser": "New User",
     "SearchUser": "Search for a user...",
-    "MinimumSearchLength":"Minimum Search Length is 2 Characters",
+    "MinimumSearchLength": "Minimum Search Length is 2 Characters",
     "Filter": {
+      "Label": "Show only users that are",
       "Active": "Active",
-      "Blocked": "Blocked"
+      "Blocked": "Blocked",
+      "Deleted": "Deleted"
     },
     "Username": "Username",
     "FullName": "Full Name",
@@ -183,7 +218,7 @@
         "1": "At Least One Uppercase Letter",
         "2": "At Least One Lowercase Letter",
         "3": "At Least One Digit",
-        "4": "At Least One Special Character (# ? ! @ $ % ^ &amp; * -)",
+        "4": "At Least One Special Character (# ? ! @ $ % ^ & * -)",
         "5": "At Least 8 Characters in length"
       },
       "Title": "Password"
@@ -233,7 +268,18 @@
     "MisMatchPasswordWarning": "Passwords <u>do not</u> match!",
     "PasswordMatchMessage": " Passwords match!",
     "DeleteAccount": "Delete Account",
-    "ChangePassword": "Reset Password"
+    "ChangePassword": "Reset Password",
+    "UnauthorizedWarning": "You do not have the required permissions to assign this user this claim",
+    "UnauthorizedWarningEdit": "You do not have the required permissions to modify this claim for this user",
+    "UnauthorizedWarningDelete": "You do not have the required permissions to delete this claim from this user"
+  },
+  "UserLogins": {
+    "ProviderDisplayName": "Provider Display Name",
+    "LoginProvider": "Login Provider",
+    "ProviderKey": "User Identity",
+    "NoLogins": "No external logins found for this user",
+    "RevokeExternalLogin": "Revoke External Login",
+    "RevokeLoginConfirmationText": "Are you sure you want to revoke this External Login"
   },
   "Roles": {
     "Role": "Role",
@@ -249,7 +295,12 @@
     "NoRolesFound": "No Roles Found",
     "HeadsUpNoRolesFound": "<strong>Heads up!</strong> No Roles Found",
     "RoleCreated": "Role Created",
-    "Success": "Updated Roles Successfully"
+    "Success": "Updated Roles Successfully",
+    "AreYouSureDelete": "Are you sure you want to delete",
+    "AssignUnauthorized": "You do not have the permissions required to assign this role",
+    "UnassignUnauthorized": "You do not have the permissions required to unassign this role",
+    "UpdateUnauthorized": "You do not have the permissions required to update this role",
+    "DeleteUnauthorized": "You do not have the permissions required to delete this role"
   },
   "Claims": {
     "Title": "Claim type",
@@ -267,7 +318,9 @@
     "DeleteConfirmation": "Are you sure you want to delete the claim type",
     "Search": "Search for a claim type...",
     "TapClaim": "<i class='fa fa-info'></i> Tapping on a row will redirect<br />you to the claim type details",
-    "UserEditable":  "Value will be editable by a user if exposed through the public api"
+    "UserEditable": "Value will be editable by a user if exposed through the public api",
+    "AssignUnassignUnauthorized": "You do not have the permissions required to assign or unassign this claim",
+    "NoClaimsFound": "<strong>No claims found</strong> Try adjusting your search query"
   },
   "Resources": {
     "ResourceID": "Resource ID",
@@ -293,7 +346,8 @@
       "Consent": "Consent to use scope is required to complete authentication",
       "DiscoveryDocumentDescription": "Scope appears within Discovery Document (<em>/.well-known/openid-configuration</em>)",
       "EmphasiseScope": "Emphasize scope name on consent screen",
-      "UserClaimTypes": "User claim types to be included in tokens. Claims types will be added to the list of claim types for the parent resource."
+      "UserClaimTypes": "User claim types to be included in tokens. Claims types will be added to the list of claim types for the parent resource.",
+      "ScopeAdded": "Scope Added"
     }
   },
   "IdentityResources": {
@@ -369,6 +423,19 @@
     "None": "No clients found",
     "NoSecrets": "<strong>Heads up!</strong> No secrets have been set. Use the form above to add one and it'll show up here.",
     "EnableLocalLogin": "Enable Local Login",
+    "CORSUrl": "This Url is a path and cannot be a CORS Url",
+    "NullURL": "URL is null or empty",
+    "UrlIsPath": "This Url is a path and cannot be a CORS Url",
+    "UrlNotValid": "This Url may not valid",
+    "GrantTypes": {
+      "Implicit": "implicit",
+      "AuthCode": "authorization_code",
+      "Hybrid": "hybrid",
+      "Password": "password",
+      "DeviceFlow": "device_flow",
+      "Custom": "Custom",
+      "ClientCredentials": "client_credentials"
+    },
     "RequireConsent": {
       "Title": "Require Consent?",
       "Help": "Specifies whether a consent screen is required"
@@ -386,6 +453,8 @@
       "ClientTokenLifetime": "Identity Token Lifetime (seconds)",
       "AccessTokenLifetime": "Access Token Lifetime (seconds)",
       "ConsentLifetime": "Consent Token Lifetime (seconds)",
+      "UserSSOLifetime": "SSO Lifetime (seconds)",
+      "UserSSOLifetimeTooltip": "Amount of time between user authentication challenges. Defaults to the IdentityServer session lifetime",
       "FrontChannelLogoutUri": "Front Channel Logout Uri",
       "PairWiseSubjectSalt": "Pairwise Subject Salt",
       "FrontChannelLogoutSessionRequired": "Front Channel Logout Session Required",
@@ -408,7 +477,45 @@
       "UpdateAccessTokens": "Update Access Token Claims On Refresh",
       "AccessTokensViaBrowser": "Allow access tokens to be sent via browser. Disabling is useful for hardening flows that allow for multiple grant types.",
       "IncludeJwtId": "Include Jwt Id",
-      "LogoutSessionRequired": "Require session to trigger logout"
+      "LogoutSessionRequired": "Require session to trigger logout",
+      "IncludeUserClaimsInIdToken": "Always Include User Claims In Id Token" ,
+      "BackChannelLogoutSessionRequired" : "BackChannel LogoutSession Required",
+      "BackChannelLogoutUri" : "Back Channel Logout URI",
+      "UserCode": "User Code Generator Type",
+      "DeviceCodeLifetime": "Device Flow Request Lifetime",
+      "DurationTitle": "Computed lifetime duration",
+      "Durations": {
+        "Seconds": "seconds",
+        "SecondsShort": "s",
+        "Second": "second",
+        "SecondShort": "s",
+        "Minutes": "minutes",
+        "MinutesShort": "mins",
+        "Minute": "minute",
+        "MinuteShort": "min",
+        "Hours": "hours",
+        "HoursShort": "hrs",
+        "Hour": "hour",
+        "HourShort": "hr",
+        "Days": "days",
+        "DaysShort": "d",
+        "Day": "day",
+        "DayShort": "d",
+        "Weeks": "weeks",
+        "WeeksShort": "wk",
+        "Week": "week",
+        "WeekShort": "wk",
+        "Months": "months",
+        "MonthsShort": "mos",
+        "Month": "month",
+        "MonthShort": "mo",
+        "Years": "years",
+        "YearsShort": "yrs",
+        "Year": "year",
+        "YearShort": "yr",
+        "Unlimited": "Unlimited",
+        "UnlimitedShort": "∞"
+      }
     },
     "MachineToMachine": {
       "Setup": "Setup a Machine Application",
@@ -437,17 +544,25 @@
       "Created": "Native Application Created",
       "Secrets": "Enter some secrets (Optional)"
     },
+    "DeviceFlow": {
+      "Setup": "Setup a Device",
+      "Title": "Device Flow",
+      "Description": "Device/IoT application",
+      "Created": "Device Flow Application Created"
+    },
     "URLS": {
       "Title": "Application URLs",
       "SendTokens": "Can send tokens to this URL",
       "RedirectAfterLogout": "Can redirect to this URL after logout",
       "CORSDomain": "Domain that can make cross-origin requests",
       "NoURLS": "Cannot Have no redirect urls",
-      "URLAddUnsuccessful" : "There was a problem adding your URL"
+      "URLAddUnsuccessful": "There was a problem adding your URL"
     }
   },
   "Secret Picker": {
-    "Set Expiration Button": "Set optional expiration"
+    "Set Expiration Button": "Set optional expiration",
+    "HiddenValue": "Value is hidden",
+    "LastWarning": "Warning, you will not be able to access the value of this secret after adding it."
   },
   "Notifications": {
     "Success": "Success",
@@ -475,6 +590,90 @@
     "Support": "Message Us At support@identityserver.com For More Assistance",
     "Reset Success Message": "Password reset successful",
     "Reset Error Message": "There has been a problem reseting the user's password",
-    "Error": "Error"
+    "Error": "Error",
+    "Unauthorized": "Unauthorized"
+  },
+  "Settings": {
+    "Title" : "Settings/Access Policy",
+    "AccessPolicy": {
+      "ClaimType": "Claim Type",
+      "ClaimValue": "Claim Value",
+      "Permission": "Permission",
+      "Save": "Save",
+      "ConfirmSave": "Are you sure you want to update your access policy with these changes?",
+      "ConfirmChanges": "Confirm access policy update",
+      "SaveYes": "Save Changes",
+      "SaveNo": "No, dont save",
+      "InvalidClaimType": "No Claim Type Selected",
+      "InvalidClaimValue": "No Value Entered",
+      "InvalidPermission": "No Permission Selected",
+      "AccessPolicyUpdated": "Access Policy Updated",
+      "AccessPolicyConflict": "Conflict: A more recent Access Policy exists"
+    } 
+  },
+  "LandingPage":{
+    "Welcome" :"Welcome to",
+    "LatestNews" : "Latest News",
+    "IntroParagraph1": "Welcome to AdminUI, the leading user and configuration management tool for IdentityServer4.",
+    "IntroParagraph2": "For licensing enquiries, please contact:",
+    "Documentation" : "Documentation",
+    "APIDocs" : "API Docs"
+  },
+  "Permission": {
+    "UserManager": "User Manager" ,
+    "IdentityServerManager": "IdentityServer Manager",
+    "Auditer": "Auditer",
+    "All": "All" 
+  },
+  "Auditing": {
+    "Title": "Auditing",
+    "SearchAudits": "Search Audits",
+    "NoAuditsFound": "No Audits Found",
+    "When": "When",
+    "Subject": "Subject",
+    "Resource": "Resource",
+    "Source": "Source",
+    "Action": "Action",
+    "Description": "Description",
+    "Succeeded": "Succeeded",
+    "FromDate": "From date",
+    "FromDateWarning": "From date cannot be in the future",
+    "ToDate": "To date",
+    "ToDateBehindWarning": "Your From date cannot be ahead of your To date",
+    "SetDateToday": "Set date to today",
+    "Today": "Today",
+    "SetDateLast24Hours": "Set date for last 24 hours",
+    "24Hours": "24 hours",
+    "SetDateYesterday": "Set date to yesterday",
+    "Yesterday": "Yesterday",
+    "SetDateLastWeek": "Set date to week",
+    "Week": "Week",
+    "ResultsPerPage": "Results per page",
+    "AddFilter": "Add filter",
+    "ShowFilters": "Show filters",
+    "HideFilters": "Hide filters",
+    "FilterTerm": "Filter term",
+    "FilterTermPlaceholder": "Filter term...",
+    "RemoveFilter": "Remove filter",
+    "Showing": "Showing",
+    "ExecuteAndDownload": "Execute and download",
+    "DownloadResults": "Download (CSV)",
+    "ExecuteAndDisplay": "Update results",
+    "UpdateWarning": "Click \"Update results\" to see your changes",
+    "Reset": "Reset",
+    "Result": "Result",
+    "First page of results": "First page of results",
+    "Previous page of results": "Previous page of results",
+    "Next page of results": "Next page of results",
+    "Last page of results": "Last page of results"
+  },
+  "Resource":{
+    "Resource": "",
+    "user": "User",
+    "role": "Role",
+    "claimType": "ClaimType",
+    "client": "Client",
+    "identityResource": "Identity Resource",
+    "protectedResource": "Protected Resource"
   }
 }
