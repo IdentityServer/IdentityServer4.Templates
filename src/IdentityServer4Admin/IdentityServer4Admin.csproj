@@ -6,8 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="IdentityExpress.Identity" Version="2.3.0.12" />
-    <PackageReference Include="IdentityExpress.Manager.Api.Community" Version="2.3.2.53" />
-    <PackageReference Include="IdentityExpress.Manager.BusinessLogic.Community" Version="2.3.2.53" />
+    <PackageReference Include="IdentityExpress.Manager.Api.Community" Version="2.3.2.54" />
+    <PackageReference Include="IdentityExpress.Manager.BusinessLogic.Community" Version="2.3.2.54" />
     <PackageReference Include="IdentityServer4" Version="2.3.2" />
     <PackageReference Include="IdentityServer4.EntityFramework" Version="2.3.2" />
     <PackageReference Include="IdentityServer4.AspNetIdentity" Version="2.3.0" />

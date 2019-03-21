@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using IdentityExpress.Identity;
 using IdentityExpress.Manager.Api;
+using IdentityServer4.Configuration;
 using IdentityServer4.Services;
 using IdentityServer4Admin.Data;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -60,6 +61,13 @@ namespace IdentityServer4Admin
                 options.Events.RaiseInformationEvents = true;
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
+
+                options.UserInteraction = new UserInteractionOptions
+                {
+                    LogoutUrl = "/Account/Logout",
+                    LoginUrl = "/Account/Login",
+                    LoginReturnUrlParameter = "returnUrl"
+                };
             })
                 .AddAspNetIdentity<ApplicationUser>()
                 // this adds the config data from DB (clients, resources, CORS)
@@ -118,9 +126,12 @@ namespace IdentityServer4Admin
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseIdentityServer();
+
+            app.UseCommunityLogin();
+
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.UseIdentityServer();
             app.UseMvcWithDefaultRoute();
             app.UseAdminUI();
         }
