@@ -59,15 +59,16 @@ namespace IdentityServer4AspNetIdentity
                     AllowedScopes = { "openid", "profile", "api1" }
                 },
 
-                // SPA client using implicit flow
+                // SPA client using code flow + pkce
                 new Client
                 {
                     ClientId = "spa",
                     ClientName = "SPA Client",
                     ClientUri = "http://identityserver.io",
 
-                    AllowedGrantTypes = GrantTypes.Implicit,
-                    AllowAccessTokensViaBrowser = true,
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequirePkce = true,
+                    RequireClientSecret = false,
 
                     RedirectUris =
                     {
