@@ -17,7 +17,7 @@ jobs:
     displayName: 'MyGet push'
     inputs:
       command: push
-      packagesToPush: 'nuget/*.nupkg'
+      packagesToPush: 'artifacts/*.nupkg'
       nuGetFeedType: external
       publishFeedCredentials: 'MyGet'
       condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
