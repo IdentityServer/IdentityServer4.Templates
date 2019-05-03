@@ -56,67 +56,6 @@ if (!(Test-Path $NUGET_EXE)) {
 # Save nuget.exe path to environment to be available to child processed
 $ENV:NUGET_EXE = $NUGET_EXE
 
-
-###########################################################################
-# INSTALL .NET CORE CLI
-###########################################################################
-
-Function Remove-PathVariable([string]$VariableToRemove)
-{
-    $path = [Environment]::GetEnvironmentVariable("PATH", "User")
-    if ($path -ne $null)
-    {
-        $newItems = $path.Split(';', [StringSplitOptions]::RemoveEmptyEntries) | Where-Object { "$($_)" -inotlike $VariableToRemove }
-        [Environment]::SetEnvironmentVariable("PATH", [System.String]::Join(';', $newItems), "User")
-    }
-
-    $path = [Environment]::GetEnvironmentVariable("PATH", "Process")
-    if ($path -ne $null)
-    {
-        $newItems = $path.Split(';', [StringSplitOptions]::RemoveEmptyEntries) | Where-Object { "$($_)" -inotlike $VariableToRemove }
-        [Environment]::SetEnvironmentVariable("PATH", [System.String]::Join(';', $newItems), "Process")
-    }
-}
-
-# Get .NET Core CLI path if installed.
-$FoundDotNetCliVersion = $null;
-if (Get-Command dotnet -ErrorAction SilentlyContinue) {
-    $FoundDotNetCliVersion = dotnet --version;
-}
-
-if($FoundDotNetCliVersion -ne $DotNetVersion) {
-    $InstallPath = Join-Path $PSScriptRoot ".dotnet"
-    if (!(Test-Path $InstallPath)) {
-        mkdir -Force $InstallPath | Out-Null;
-    }
-    (New-Object System.Net.WebClient).DownloadFile($DotNetInstallerUri, "$InstallPath\dotnet-install.ps1");
-    & $InstallPath\dotnet-install.ps1 -Channel $DotNetChannel -Version $DotNetVersion -InstallDir $InstallPath;
-
-    Remove-PathVariable "$InstallPath"
-    $env:PATH = "$InstallPath;$env:PATH"
-}
-
-$env:DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
-$env:DOTNET_CLI_TELEMETRY_OPTOUT=1
-
-###########################################################################
-# INSTALL SignTool
-###########################################################################
-
-# Make sure Cake has been installed.
-$SignClientPath = Join-Path $ToolPath ".store\SignClient"
-$SignClientExePath = (Get-ChildItem -Path $ToolPath -Filter "SignClient*" -File| ForEach-Object FullName | Select-Object -First 1)
-
-if ((!(Test-Path -Path $SignClientPath -PathType Container)) -or (!(Test-Path $SignClientExePath -PathType Leaf))) {
-    & dotnet tool install --tool-path $ToolPath SignClient
-    if ($LASTEXITCODE -ne 0)
-    {
-        'Failed to install SignClient'
-        exit 1
-    }
-    $SignClientExePath = (Get-ChildItem -Path $ToolPath -Filter "signtool*" -File| ForEach-Object FullName | Select-Object -First 1)
-}
-
 ###########################################################################
 # INSTALL CAKE
 ###########################################################################
