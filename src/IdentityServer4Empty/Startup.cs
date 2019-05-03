@@ -20,7 +20,7 @@ namespace IdentityServer4Empty
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // uncomment, if you wan to add an MVC-based UI
+            // uncomment, if you want to add an MVC-based UI
             //services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
 
             var builder = services.AddIdentityServer()
@@ -50,7 +50,7 @@ namespace IdentityServer4Empty
 
             app.UseIdentityServer();
 
-            // uncomment, if you wan to add an MVC-based UI
+            // uncomment, if you want to add an MVC-based UI
             //app.UseMvcWithDefaultRoute();
         }
     }
