@@ -1,6 +1,5 @@
 trigger:
 - master
-- aspnetcore3
 - features/*
 
 jobs:
