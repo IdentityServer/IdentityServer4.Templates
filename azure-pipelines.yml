@@ -4,15 +4,6 @@ trigger:
 - features/*
 
 jobs:
-- job: Linux
-  pool:
-    vmImage: 'ubuntu-16.04'
-  steps:
-  - task: Bash@3
-    displayName: 'Build Script'
-    inputs:
-      targetType: filePath
-      filePath: ./build.sh
 
 - job: Windows
   pool:
