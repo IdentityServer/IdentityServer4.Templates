@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace IdentityServer4EntityFramework.Migrations.IdentityServer.ConfigurationDb
 {
