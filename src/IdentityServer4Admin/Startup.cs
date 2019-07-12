@@ -128,7 +128,6 @@ namespace IdentityServer4Admin
 
             app.UseIdentityServer();
 
-            app.UseCommunityLogin();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();

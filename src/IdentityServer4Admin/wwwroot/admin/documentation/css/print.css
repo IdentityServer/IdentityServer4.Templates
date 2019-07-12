@@ -1,0 +1,16 @@
+.hidden,.no-print{display:none !important}.tns-inner{height:auto !important}.tns-controls{display:none !important}.tns-slider{transform:none !important}.tns-item,.tns-slider{width:100% !important}body,html{color:#000;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:20px;margin:0 auto;padding:0;text-align:left;max-width:1200px}
+h1,h2,h3,h4,h5,h6,p{margin:0 0 15px;padding:0}h1{font-size:32px;line-height:36px}h2{font-size:28px;line-height:32px}h3{font-size:24px;line-height:28px}h3,h4{margin-bottom:10px}h4{font-size:22px;line-height:26px;font-size:20px;line-height:24px}h4,h5{margin-bottom:5px}h5{font-size:18px;line-height:22px}h6{font-size:16px;line-height:20px;margin-bottom:5px}
+a{color:#000;color:inherit;text-decoration:none}ol,ul{margin-bottom:10px;padding-left:35px}ol>li,ul>li{padding-bottom:5px}ol ol,ol ul,ul ol,ul ul{margin-bottom:0;padding-top:10px}ol>li ol{list-style-type:lower-alpha}table{border-collapse:collapse;border:0;margin-bottom:20px;width:100%}table td,table th{border-bottom:1px solid #ccc;font-size:14px;line-height:18px;padding:10px 15px;text-align:left;vertical-align:center}
+table thead td,table thead th{color:#666;font-size:12px;font-weight:400;letter-spacing:1px;line-height:16px;vertical-align:bottom;text-transform:uppercase}table tbody tr:nth-child(odd) td,table tbody tr:nth-child(odd) th{background:#f6f6f6}small{color:#888}.block{display:block}.list-reset{list-style:none;padding-left:0}
+.text-left{text-align:left}.text-center{text-align:center}.print-grid{font-size:0;margin:0 0 0 -2rem;text-align:left}.print-grid-center{text-align:center}[class*=print-grid__col],[class^=print-grid__col]{box-sizing:border-box;display:inline-block;font-size:16px;line-height:20px;padding:0 0 2rem 2rem;text-align:left;vertical-align:top;width:100%}
+.print-grid__col-1\/4{width:25%}.print-grid__col-1\/3{width:33.3333%}.print-grid__col-1\/2{width:50%}.print-grid__col-2\/3{width:66.6666%}.print-grid__col-3\/4{width:75%}body>header{border-bottom:1px solid #ccc;font-size:20px;font-weight:700;margin-bottom:15px;padding-bottom:15px;text-align:left}body>footer{color:#666;font-size:12px;line-height:16px;padding-top:15px}
+body>footer a:after{content:" - www.rocksolidknowledge.com"}.cms blockquote{border-left:4px solid #000;font-size:18px;font-weight:700;line-height:22px;margin:0 10% 15px;padding:10px 15px}.cms .cms-quote-author{display:block;font-weight:400;margin-top:10px}.cms .cms-quote-author,[itemtype="http://schema.org/Article"] [itemprop=author]{color:#888;font-size:14px;line-height:18px}
+[itemtype="http://schema.org/Article"] [itemprop=author] [itemprop=name]{color:#000}.row-block{border-bottom:1px solid #ccc;clear:both;margin-bottom:2rem;padding-bottom:2rem}
+
+.shadow-lg {
+    box-shadow: none;
+}
+
+main > section {
+    padding: 0;
+}

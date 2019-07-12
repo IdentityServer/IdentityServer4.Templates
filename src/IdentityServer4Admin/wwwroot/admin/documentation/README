@@ -1,0 +1,139 @@
+# IdentityServer.com & Product Mkdocs Themes
+Documentation theme to fit both identityserver.com and associated products.
+
+## Requirements
+- Node 8.11+
+- Gulp 4.0+
+- Python 2.7+
+- Pip 1.5+
+
+## Setup
+Make sure you meet the requirements and that Python is added to your `PATH` if on Windows.
+
+Move the following files from the theme directory and into your root mkdocs directory:
+- .gitignore (or merge with your own)
+- gulpfile.js
+- MANIFEST.ini
+- mydocs.yml (or merge with your own, use as a base)
+- package.json
+- package-lock.json
+
+
+Install MkDocs locally on your system via Pip:
+
+`pip install mkdocs`
+
+Now pull this repo and navigate to it in a terminal.
+
+To serve the docs locally, run:
+
+`mkdocs serve`
+
+This will serve the documentation locally at http://127.0.0.1:8000
+
+## Building
+
+Building for distribution is easy. Navigate to the documentation directory, and run:
+
+`npm install`
+
+To install all dependencies.
+
+Set the environment variable `MKDOCS_IDENTITYSERVER_THEME_COLOUR_MODE` to a valid colour mode, or `default`.
+
+Then run `gulp build` to run the mkdocs build process and run a css purge.
+
+The output from this will be stored in a directory called `site`.
+
+## Theme Options
+
+Inside the `mkdocs.yml` file you will have the following theme options avaliable:
+
+`analytics`
+```
+boolean
+Default: true
+
+Determines whether or not to include analytics script in the header
+```
+
+`show_back_btn`
+```
+Boolean
+Default: true
+
+Toggles showing the back button in the header
+```
+
+`back_btn_link`
+```
+String
+Default: null
+
+This is the link which the header back button will route the user to
+```
+
+`back_btn_text`
+```
+String
+Default: null
+
+This is the text within the header back button link
+```
+
+`show_version`
+```
+Boolean
+Default: true
+
+Toggles showing version number in the footer
+```
+
+`show_doc_bottom_nav_btns`
+```
+Boolean
+Default: true
+
+Toggles showing in-document previous and next navigation buttons
+```
+
+`show_sidebar_in_doc_navigation`
+```
+Boolean
+Default: true
+
+Toggles showing in-document navigation in the sidebar (desktop only)
+```
+
+`custom_colour_mode`
+```
+String
+Options: default, adminui
+Default: default
+
+Enables custom colour overrides to the theme for branding. null === default
+```
+
+`error_404_email`
+```
+String
+Default: null
+
+This is the email address in the mailto link on the 404 page
+```
+
+`error_404_email_text`
+```
+String
+Default: null
+
+This is the text string inside the mailto link on the 404 page
+```
+
+`error_404_string`
+```
+String
+Default: null
+
+This is the string which preceeds the mailto link on the 404 page
+```
