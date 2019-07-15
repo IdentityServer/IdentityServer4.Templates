@@ -1,0 +1,7 @@
+#mkdocs-search-results article {
+    text-align: left;
+}
+
+#mkdocs-search-results article:not(:last-of-type) {
+    margin-bottom: 1.5em;
+}
