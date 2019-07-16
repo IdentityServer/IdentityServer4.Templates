@@ -6,21 +6,21 @@
 
   <ItemGroup>
     <PackageReference Include="IdentityExpress.Identity" Version="2.3.0.12" />
-    <PackageReference Include="IdentityExpress.Manager.Api.Community" Version="2.4.0.124" />
-    <PackageReference Include="IdentityServer4" Version="2.3.2" />
-    <PackageReference Include="IdentityServer4.EntityFramework" Version="2.3.2" />
-    <PackageReference Include="IdentityServer4.AspNetIdentity" Version="2.3.0" />
+    <PackageReference Include="IdentityExpress.Manager.Api.Community" Version="2.4.0.133" />
+    <PackageReference Include="IdentityServer4" Version="2.5.0" />
+    <PackageReference Include="IdentityServer4.EntityFramework" Version="2.5.0" />
+    <PackageReference Include="IdentityServer4.AspNetIdentity" Version="2.5.0" />
     <PackageReference Include="RSK.Audit" Version="1.0.0.35" />
     <PackageReference Include="RSK.Audit.EF" Version="1.0.0.35" />
     <PackageReference Include="RSK.IdentityServer4.AuditEventSink" Version="1.0.0.19" />
-    
-    <PackageReference Include="Serilog" Version="2.7.1" />
+
+    <PackageReference Include="Serilog" Version="2.8.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="2.1.1" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
     <PackageReference Include="Serilog.Sinks.File" Version="4.0.0" />
     
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.1" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.4" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.6" PrivateAssets="All" />
   </ItemGroup>
 </Project>
