@@ -1,9 +1,11 @@
-// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Security.Principal;
+using System.Threading.Tasks;
 using IdentityModel;
 using IdentityServer4.Events;
-using IdentityServer4.Quickstart.UI;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
 using IdentityServer4Admin.Models;
@@ -12,14 +14,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Security.Principal;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
-namespace Host.Quickstart.Account
+namespace IdentityServer4.Quickstart.UI
 {
     [SecurityHeaders]
     [AllowAnonymous]
@@ -30,19 +27,22 @@ namespace Host.Quickstart.Account
         private readonly IIdentityServerInteractionService _interaction;
         private readonly IClientStore _clientStore;
         private readonly IEventService _events;
+        private readonly ILogger<ExternalController> _logger;
 
         public ExternalController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
-            IEventService events)
+            IEventService events,
+            ILogger<ExternalController> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _interaction = interaction;
             _clientStore = clientStore;
             _events = events;
+            _logger = logger;
         }
 
         /// <summary>
@@ -95,6 +95,12 @@ namespace Host.Quickstart.Account
                 throw new Exception("External authentication error");
             }
 
+            if (_logger.IsEnabled(LogLevel.Debug))
+            {
+                var externalClaims = result.Principal.Claims.Select(c => $"{c.Type}: {c.Value}");
+                _logger.LogDebug("External claims: {@claims}", externalClaims);
+            }
+
             // lookup our user and external provider info
             var (user, provider, providerUserId, claims) = await FindUserFromExternalProviderAsync(result);
             if (user == null)
@@ -120,20 +126,29 @@ namespace Host.Quickstart.Account
             var principal = await _signInManager.CreateUserPrincipalAsync(user);
             additionalLocalClaims.AddRange(principal.Claims);
             var name = principal.FindFirst(JwtClaimTypes.Name)?.Value ?? user.Id;
-            await _events.RaiseAsync(new UserLoginSuccessEvent(provider, providerUserId, user.Id, name));
             await HttpContext.SignInAsync(user.Id, name, provider, localSignInProps, additionalLocalClaims.ToArray());
 
             // delete temporary cookie used during external authentication
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
-            // validate return URL and redirect back to authorization endpoint or a local page
-            var returnUrl = result.Properties.Items["returnUrl"];
-            if (_interaction.IsValidReturnUrl(returnUrl) || Url.IsLocalUrl(returnUrl))
+            // retrieve return URL
+            var returnUrl = result.Properties.Items["returnUrl"] ?? "~/";
+
+            // check if external login is in the context of an OIDC request
+            var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
+            await _events.RaiseAsync(new UserLoginSuccessEvent(provider, providerUserId, user.Id, name, true, context?.ClientId));
+
+            if (context != null)
             {
-                return Redirect(returnUrl);
+                if (await _clientStore.IsPkceClientAsync(context.ClientId))
+                {
+                    // if the client is PKCE then we assume it's native, so this change in how to
+                    // return the response is for better UX for the end user.
+                    return View("Redirect", new RedirectViewModel { RedirectUrl = returnUrl });
+                }
             }
 
-            return Redirect("~/");
+            return Redirect(returnUrl);
         }
 
         private async Task<IActionResult> ProcessWindowsLoginAsync(string returnUrl)

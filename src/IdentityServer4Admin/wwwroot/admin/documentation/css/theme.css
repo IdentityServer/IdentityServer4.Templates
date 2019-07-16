@@ -1,0 +1,45 @@
+body {
+    margin: 1em;
+}
+
+.active a {
+    color: red;
+    font-weight: bold;
+}
+
+.btn-light {
+    background: transparent;
+    border-color: #EEE;
+}
+
+.btn-light:hover {
+    background: #EEE;
+    border-color: #EEE;
+    color: #404040;
+}
+
+.btn-line-subtle {
+    color: #404040;
+    border-color: #404040;
+}
+
+.btn-line-subtle:hover {
+    color: black;
+    border-color: black;
+}
+
+.cms p:last-of-type {
+    margin-bottom: 0;
+}
+
+.header-overlay-colour {
+    background-color: rgba(86, 86, 85, 0.1);
+}
+
+.cms h1, .cms h2, .cms h3, .cms h4, .cms h5, .cms h6, .cms blockquote, .cms strong, .cms b, .cms em, .cms i {
+    color: #404040;
+}
+
+.cms > pre {
+    min-height: auto;
+}

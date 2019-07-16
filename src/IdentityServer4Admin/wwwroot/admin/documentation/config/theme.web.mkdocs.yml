@@ -1,0 +1,19 @@
+theme:
+  name: null
+  custom_dir: 'identityserver_theme/'
+  analytics: true 
+  show_version: true
+  show_back_btn: true
+  back_btn_link: "https://www.identityserver.com/documentation"
+  back_btn_text: "Documentation"
+  show_doc_bottom_nav_btns: true
+  show_sidebar_in_doc_navigation: true
+  load_menu_expanded: false
+  custom_colour_mode: "default" # default, adminui
+  theme_header_texture: "img/escheresque_ste.png"
+  error_404_email: "support@identityserver.com"
+  error_404_email_text: "Email Us"
+  error_404_string: "Can't find what you're looking for? Need more help?"
+  static_templates:
+    - 404.html
+    - search.html
