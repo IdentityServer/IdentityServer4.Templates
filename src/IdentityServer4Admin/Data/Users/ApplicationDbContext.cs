@@ -2,9 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using IdentityServer4Admin.Models;
 
+using IdentityExpress.Identity;
+
 namespace IdentityServer4Admin.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityExpressDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
