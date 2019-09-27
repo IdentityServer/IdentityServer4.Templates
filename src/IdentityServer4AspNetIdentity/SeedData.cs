@@ -11,6 +11,7 @@ using IdentityServer4AspNetIdentity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 
 namespace IdentityServer4AspNetIdentity
 {
@@ -19,6 +20,7 @@ namespace IdentityServer4AspNetIdentity
         public static void EnsureSeedData(string connectionString)
         {
             var services = new ServiceCollection();
+            services.AddLogging();
             services.AddDbContext<ApplicationDbContext>(options =>
                options.UseSqlite(connectionString));
 
@@ -60,11 +62,11 @@ namespace IdentityServer4AspNetIdentity
                         {
                             throw new Exception(result.Errors.First().Description);
                         }
-                        Console.WriteLine("alice created");
+                        Log.Debug("alice created");
                     }
                     else
                     {
-                        Console.WriteLine("alice already exists");
+                        Log.Debug("alice already exists");
                     }
 
                     var bob = userMgr.FindByNameAsync("bob").Result;
@@ -94,11 +96,11 @@ namespace IdentityServer4AspNetIdentity
                         {
                             throw new Exception(result.Errors.First().Description);
                         }
-                        Console.WriteLine("bob created");
+                        Log.Debug("bob created");
                     }
                     else
                     {
-                        Console.WriteLine("bob already exists");
+                        Log.Debug("bob already exists");
                     }
                 }
             }
