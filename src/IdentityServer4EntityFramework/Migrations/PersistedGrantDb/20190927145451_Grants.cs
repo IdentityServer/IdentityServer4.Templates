@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace SqlServer.Migrations.PersistedGrantDb
+namespace IdentityServer4EntityFramework.Migrations.PersistedGrantDb
 {
     public partial class Grants : Migration
     {
@@ -11,8 +11,8 @@ namespace SqlServer.Migrations.PersistedGrantDb
                 name: "DeviceCodes",
                 columns: table => new
                 {
-                    DeviceCode = table.Column<string>(maxLength: 200, nullable: false),
                     UserCode = table.Column<string>(maxLength: 200, nullable: false),
+                    DeviceCode = table.Column<string>(maxLength: 200, nullable: false),
                     SubjectId = table.Column<string>(maxLength: 200, nullable: true),
                     ClientId = table.Column<string>(maxLength: 200, nullable: false),
                     CreationTime = table.Column<DateTime>(nullable: false),
@@ -48,10 +48,14 @@ namespace SqlServer.Migrations.PersistedGrantDb
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_DeviceCodes_UserCode",
+                name: "IX_DeviceCodes_Expiration",
                 table: "DeviceCodes",
-                column: "UserCode",
-                unique: true);
+                column: "Expiration");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PersistedGrants_Expiration",
+                table: "PersistedGrants",
+                column: "Expiration");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PersistedGrants_SubjectId_ClientId_Type",

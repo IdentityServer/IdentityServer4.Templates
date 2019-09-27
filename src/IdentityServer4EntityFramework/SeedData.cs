@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 using IdentityServer4.EntityFramework.Storage;
+using Serilog;
 
 namespace IdentityServer4EntityFramework
 {
@@ -41,11 +42,9 @@ namespace IdentityServer4EntityFramework
 
         private static void EnsureSeedData(IConfigurationDbContext context)
         {
-            Console.WriteLine("Seeding database...");
-
             if (!context.Clients.Any())
             {
-                Console.WriteLine("Clients being populated");
+                Log.Debug("Clients being populated");
                 foreach (var client in Config.GetClients().ToList())
                 {
                     context.Clients.Add(client.ToEntity());
@@ -54,12 +53,12 @@ namespace IdentityServer4EntityFramework
             }
             else
             {
-                Console.WriteLine("Clients already populated");
+                Log.Debug("Clients already populated");
             }
 
             if (!context.IdentityResources.Any())
             {
-                Console.WriteLine("IdentityResources being populated");
+                Log.Debug("IdentityResources being populated");
                 foreach (var resource in Config.GetIdentityResources().ToList())
                 {
                     context.IdentityResources.Add(resource.ToEntity());
@@ -68,12 +67,12 @@ namespace IdentityServer4EntityFramework
             }
             else
             {
-                Console.WriteLine("IdentityResources already populated");
+                Log.Debug("IdentityResources already populated");
             }
 
             if (!context.ApiResources.Any())
             {
-                Console.WriteLine("ApiResources being populated");
+                Log.Debug("ApiResources being populated");
                 foreach (var resource in Config.GetApis().ToList())
                 {
                     context.ApiResources.Add(resource.ToEntity());
@@ -82,11 +81,8 @@ namespace IdentityServer4EntityFramework
             }
             else
             {
-                Console.WriteLine("ApiResources already populated");
+                Log.Debug("ApiResources already populated");
             }
-
-            Console.WriteLine("Done seeding database.");
-            Console.WriteLine();
         }
     }
 }

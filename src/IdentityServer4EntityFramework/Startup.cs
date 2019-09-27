@@ -2,31 +2,32 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
 using System;
-using IdentityServer4.Quickstart.UI;
-using Microsoft.Extensions.Configuration;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Hosting;
 using IdentityServer4;
+using IdentityServer4.Quickstart.UI;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 
 namespace IdentityServer4EntityFramework
 {
     public class Startup
     {
+        public IWebHostEnvironment Environment { get; }
         public IConfiguration Configuration { get; }
-        public IHostingEnvironment Environment { get; }
 
-        public Startup(IConfiguration config, IHostingEnvironment env)
+        public Startup(IWebHostEnvironment environment, IConfiguration configuration)
         {
-            Configuration = config;
-            Environment = env;
+            Environment = environment;
+            Configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
+            services.AddControllersWithViews();
 
             services.Configure<IISOptions>(options =>
             {
@@ -36,13 +37,13 @@ namespace IdentityServer4EntityFramework
 
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
 
-            var identityServer = services.AddIdentityServer(options =>
-            {
-                options.Events.RaiseErrorEvents = true;
-                options.Events.RaiseInformationEvents = true;
-                options.Events.RaiseFailureEvents = true;
-                options.Events.RaiseSuccessEvents = true;
-            })
+            var builder = services.AddIdentityServer(options =>
+                {
+                    options.Events.RaiseErrorEvents = true;
+                    options.Events.RaiseInformationEvents = true;
+                    options.Events.RaiseFailureEvents = true;
+                    options.Events.RaiseSuccessEvents = true;
+                })
                 .AddTestUsers(TestUsers.Users)
                 // this adds the config data from DB (clients, resources, CORS)
                 .AddConfigurationStore(options =>
@@ -58,6 +59,15 @@ namespace IdentityServer4EntityFramework
                     options.EnableTokenCleanup = true;
                 });
 
+            if (Environment.IsDevelopment())
+            {
+                builder.AddDeveloperSigningCredential();
+            }
+            else
+            {
+                throw new Exception("need to configure key material");
+            }
+
             services.AddAuthentication()
                 .AddGoogle(options =>
                 {
@@ -69,15 +79,6 @@ namespace IdentityServer4EntityFramework
                     options.ClientId = "copy client ID from Google here";
                     options.ClientSecret = "copy client secret from Google here";
                 });
-
-            if (Environment.IsDevelopment())
-            {
-                identityServer.AddDeveloperSigningCredential();
-            }
-            else
-            {
-                throw new Exception("need to configure key material");
-            }
         }
 
         public void Configure(IApplicationBuilder app)
@@ -87,14 +88,16 @@ namespace IdentityServer4EntityFramework
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
 
-            app.UseIdentityServer();
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
+
+            app.UseRouting();
+            app.UseIdentityServer();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapDefaultControllerRoute();
+            });
         }
     }
 }
