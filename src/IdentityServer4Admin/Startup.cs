@@ -11,25 +11,21 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Reflection;
 using IdentityExpress.Identity;
 using IdentityExpress.Manager.Api;
 using IdentityServer4.Configuration;
-using IdentityServer4.Services;
 using IdentityServer4Admin.Data;
-using Microsoft.Extensions.Logging.Abstractions;
-using RSK.Audit.EF;
-using RSK.IdentityServer4.AuditEventSink;
+using Microsoft.Extensions.Hosting;
 
 namespace IdentityServer4Admin
 {
     public class Startup
     {
+        public IWebHostEnvironment Environment { get; }
         public IConfiguration Configuration { get; }
-        public IHostingEnvironment Environment { get; }
 
-        public Startup(IConfiguration configuration, IHostingEnvironment environment)
+        public Startup(IWebHostEnvironment environment, IConfiguration configuration)
         {
             Configuration = configuration;
             Environment = environment;
@@ -37,14 +33,7 @@ namespace IdentityServer4Admin
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("Users")));
-
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
-
-            services.AddMvc();
+            services.AddControllersWithViews();
 
             services.Configure<IISOptions>(iis =>
             {
@@ -52,23 +41,30 @@ namespace IdentityServer4Admin
                 iis.AutomaticAuthentication = false;
             });
 
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("Users")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
             var connectionString = Configuration.GetConnectionString("Configuration");
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             var builder = services.AddIdentityServer(options =>
-            {
-                options.Events.RaiseErrorEvents = true;
-                options.Events.RaiseInformationEvents = true;
-                options.Events.RaiseFailureEvents = true;
-                options.Events.RaiseSuccessEvents = true;
-
-                options.UserInteraction = new UserInteractionOptions
                 {
-                    LogoutUrl = "/Account/Logout",
-                    LoginUrl = "/Account/Login",
-                    LoginReturnUrlParameter = "returnUrl"
-                };
-            })
+                    options.Events.RaiseErrorEvents = true;
+                    options.Events.RaiseInformationEvents = true;
+                    options.Events.RaiseFailureEvents = true;
+                    options.Events.RaiseSuccessEvents = true;
+
+                    options.UserInteraction = new UserInteractionOptions
+                    {
+                        LogoutUrl = "/Account/Logout",
+                        LoginUrl = "/Account/Login",
+                        LoginReturnUrlParameter = "returnUrl"
+                    };
+                })
                 .AddAspNetIdentity<ApplicationUser>()
                 // this adds the config data from DB (clients, resources, CORS)
                 .AddConfigurationStore(options =>
@@ -88,9 +84,7 @@ namespace IdentityServer4Admin
                     options.EnableTokenCleanup = true;
                     // options.TokenCleanupInterval = 15; // interval in seconds. 15 seconds useful for debugging
                 });
-
-            ConfigureIdentityServerAuditing(services, connectionString);
-
+            
             if (Environment.IsDevelopment())
             {
                 builder.AddDeveloperSigningCredential();
@@ -126,28 +120,16 @@ namespace IdentityServer4Admin
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseIdentityServer();
-
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
-            app.UseAdminUI();
-        }
-        
-        public void ConfigureIdentityServerAuditing(IServiceCollection services, string auditConnectionString)
-        {
-            var dbContextOptionsBuilder = new DbContextOptionsBuilder<AuditDatabaseContext>();
-            RSK.Audit.AuditProviderFactory auditFactory = new AuditProviderFactory(dbContextOptionsBuilder.UseSqlite(auditConnectionString).Options);
-            var auditRecorder = auditFactory.CreateAuditSource("IdentityServer");
-            services.AddSingleton<IEventSink>(provider => new AuditSink(auditRecorder));
 
-            services.AddSingleton<IEventSink>(provider => new EventSinkAggregator(new NullLogger<EventSinkAggregator>())
-            {
-                EventSinks = new List<IEventSink>
-                {
-                    new AuditSink(auditRecorder)
-                }
-            });
+            app.UseRouting();
+            app.UseIdentityServer();
+            app.UseAuthorization();
+
+            app.UseAdminUI();
+
+            app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
         }
     }
 }

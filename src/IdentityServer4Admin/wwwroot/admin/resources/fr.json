@@ -1,5 +1,11 @@
 {
   "Common": {
+    "Saving": "Enregistrement en cours",
+    "Remove": {
+      "Title": "Supprimer",
+      "Confirm": "Confirmer la suppression",
+      "No": "Non, ne pas supprimer"
+    },
     "AddandConfigure": "Ajouter et configurer",
     "Reset": "Réinitialiser",
     "SaveAll": "Tout enregistrer",
@@ -122,12 +128,13 @@
     "ResetPassword": {
       "Confirm": "Confirmer la réinitialisation",
       "AreYouSureSimple": "Voulez-vous vraiment réinitialiser le mot de passe pour",
-      "Title": "Réinitialiser le mot de passe"
+      "Title": "Réinitialiser le mot de passe",
+      "HowToSetupTitle": "Configurer Webhook de réinitialisation de mot de passe utilisateur",
+      "HowToSetup": "Le Webhook de réinitialisation de mot de passe doit d'abord être configuré pour pouvoir utiliser cette fonctionnalité. Consultez la documentation de WebHook AdminUI."
     },
     "UserEditable": "Utilisateur éditable",
     "Key": "Clé",
     "CommunityEditionBanner": "Bienvenue dans AdminUI Community Edition. Ceci est une version gratuite de l'outil AdminUI pour l'administration de la configuration et des utilisateurs d'IdentityServer. Il est limité à 10 utilisateurs et 2 clients. Pour en savoir plus sur le produit AdminUI complet, cliquez sur le lien ci-dessous",
-    "Remove": "Supprimer",
     "Actions": "Actions",
     "Assign": "Attribuer",
     "Unassign": "Annuler l'attribution",
@@ -140,7 +147,6 @@
     "CommunityPolicyNotice": "Ceci est un aperçu de l'écran de la politique d'accès. Dans l'édition communautaire, les fonctionnalités de politique d'accès ont été supprimées. Vous pouvez utiliser l'écran mais aucune des politiques ne prendra effet. Pour en savoir plus sur le produit AdminUI complet, cliquez sur le lien ci-dessous"
   },
   "Nav": {
-    "Salutation": "Bonjour",
     "Login": "Connexion",
     "Logout": "Déconnexion",
     "Home": "Accueil",
@@ -156,7 +162,6 @@
     "MobileListInfo": "Si vous cliquez sur une ligne, vous retournerez aux détails de l'utilisateur",
     "PerPage": "par page",
     "Displaying": "Affichage en cours",
-    "Found": "Trouvé",
     "Page": "Page",
     "of": "sur",
     "Details": "Détails",
@@ -179,7 +184,17 @@
     "Claims": "Revendications",
     "Secrets": "Secrets",
     "Saml": "SAML",
-    "WsFed": "WS-Fed"
+    "WsFed": "WS-Fed",
+    "Breadcrumbs": "Fil d'Ariane",
+    "Active": "Actif",
+    "Account": "\"Compte” ,",
+    "Found": "trouvé",
+    "ResultsFound": "résultat(s) trouvé(s)",
+    "PageXofX": "Page {0} sur {1}",
+    "First": "Premier",
+    "Previous": "Précédent",
+    "Next": "Suivant",
+    "Last": "Dernier"
   },
   "Errors": {
     "NotFoundTitle": "Erreur 404",
@@ -316,7 +331,6 @@
     "CloseReturnsRoleList": "Si vous sélectionnez<strong> Ajouter</strong> , cette boîte de dialogue sera fermée et vous retournez à la liste des rôles.",
     "RoleRemoved": "Le rôle a été supprimé",
     "Search": "Recherche d'un rôle...",
-    "TapRole": "<i class='fa fa-info'></i> Si vous cliquez sur une rangée, vous accéderez<br /> aux détails du rôle",
     "ReservedHelp": "Ce rôle est réservé et ne peut être modifié",
     "Reserved": "réservé",
     "NoRolesFound": "Aucun rôle n'a été trouvé",
@@ -326,7 +340,26 @@
     "AssignUnauthorized": "Vous n'avez pas les autorisations requises pour attribuer ce rôle",
     "UnassignUnauthorized": "Vous n'avez pas les autorisations requises pour annuler l'attribution de ce rôle",
     "UpdateUnauthorized": "Vous n'avez pas les autorisations requises pour mettre à jour ce rôle",
-    "DeleteUnauthorized": "Vous n'avez pas les autorisations requises pour supprimer ce rôle"
+    "DeleteUnauthorized": "Vous n'avez pas les autorisations requises pour supprimer ce rôle",
+    "AreYouSureRemove": "Êtes-vous sûr de vouloir supprimer <b>{0}</b> de <b>{1}</b> ?",
+    "UpdateBadRequest": "Il n'a pas été possible de traiter votre demande",
+    "ManageUsers": "Gérer les utilisateurs",
+    "AddUsers": "Ajouter des utilisateurs",
+    "AddRemoveUsersFromRole": "Ajouter ou supprimer des utilisateurs de <b>{0}</b>",
+    "User": "Utilisateur",
+    "InRole": "En rôle",
+    "SearchAllUsers": "Rechercher tous les utilisateurs",
+    "Adding": "Ajout en cours",
+    "Removing": "Suppression en cours",
+    "CancelAdding": "Annuler l'ajout",
+    "CancelRemoving": "Annuler la suppression",
+    "NoUsersAdding": "Aucun utilisateur ne sera ajouté",
+    "NoUsersRemoving": "Aucun utilisateur ne sera supprimé",
+    "RoleUserManagement": "Gestion des utilisateurs",
+    "AddRemoveUserFromRole": "Ajouter ou supprimer des utilisateurs de",
+    "NoResults": "Aucun utilisateur correspondant n'a été trouvé.",
+    "NotSelected": "Recherche d'utilisateurs à ajouter ou supprimer de ce rôle (2 caractères min.)",
+    "SavingPleaseWait": "En train de sauvegarder, veuillez patienter..."
   },
   "Claims": {
     "Add": "Ajouter le type de revendication",
@@ -344,7 +377,6 @@
     "AddAnotherClaimType": "Ajouter un autre type de demande après l'envoi",
     "DeleteConfirmation": "Voulez-vous vraiment supprimer le type de demande",
     "Search": "Rechercher un type de demande...",
-    "TapClaim": "<i class='fa fa-info'></i> Si vous cliquez sur une rangée,<br /> vous accéderez aux détails du type de demande",
     "UserEditable": "La valeur pourra être modifiée par un utilisateur si elle est exposée via l'API publique",
     "AssignUnassignUnauthorized": "Vous n'avez pas les autorisations requises pour attribuer ou annuler l'attribution de cette demande",
     "NoClaimsFound": "Aucune revendication n'a été trouvée"
@@ -390,7 +422,6 @@
     "ShowInDiscoveryDocument": "Afficher dans le document de découverte",
     "ConsentScreen": "Souligner le nom de la ressource sur l'écran de consentement",
     "UpdatedClient": "Le client a bien été mis à jour",
-    "ResourceDetailsTapRow": "Si vous cliquez sur une rangée, vous accéderez<br /> aux détails de la ressource",
     "ResourceReservedHelp": "Cette ressource est réservée et ne peut être modifiée",
     "NoIdentityResources": "Aucune ressource d'identité n'a été trouvée",
     "Reserved": "Ce type de demande est réservé et ne peut être modifié"
@@ -408,6 +439,9 @@
     "NoneFound": "Aucune ressource protégée n'a été trouvée"
   },
   "Clients": {
+    "Export": {
+      "ExportAll": "Exporter tout"
+    },
     "EntityId": "ID de l’entité",
     "Realm": "Domaine",
     "Created": "Créé",
@@ -416,7 +450,6 @@
     "NoClaims": "Aucune revendication n’a été trouvée pour ce client",
     "NoRestrictions": "Aucune restriction n’a été trouvée pour ce client",
     "DuplicateProvider": "Le fournisseur déjà ajouté",
-    "CertTapRow": "<i class='fa fa-info'></i> Appuyer sur une ligne entamera la suppression du certificat",
     "NoCertificates": "Pas de certificat trouvé",
     "ID": "ID du client",
     "Title": "Client",
@@ -452,7 +485,6 @@
     "UpdatedClient": "Le client a bien été mis à jour",
     "Deleted": "Client supprimé",
     "Search": "Recherche d'un client...",
-    "TapRow": "<i class='fa fa-info'></i> Si vous cliquez sur une rangée, vous accéderez<br /> aux détails du client",
     "Reserved": "Ce client est réservé et ne peut être modifié",
     "None": "Aucun client n'a été trouvé",
     "NoSecrets": "Aucun secret n'a été défini. Utilisez le formulaire ci-dessus pour en ajouter un et il apparaîtra ici.",
@@ -811,7 +843,7 @@
   "LandingPage": {
     "Welcome": "Bienvenue dans",
     "LatestNews": "Actualités",
-    "IntroParagraph1": "Bienvenue dans AdminUI, le meilleur outil de gestion des utilisateurs et de configuration pour IdentityServer4.",
+    "IntroParagraph1": "Le meilleur outil de gestion des utilisateurs et de configuration pour IdentityServer4.",
     "IntroParagraph2": "Pour les questions relatives aux licences, veuillez contacter :",
     "Documentation": "Documentations",
     "APIDocs": "Documents API"
@@ -823,6 +855,7 @@
     "Auditer": "Auditeur"
   },
   "Auditing": {
+    "ToggleDetails": "Afficher les détails",
     "Title": "En cours d'audit",
     "SearchAudits": "Chercher des audits",
     "NoAuditsFound": "Aucun audit trouvé",
@@ -854,7 +887,7 @@
     "RemoveFilter": "Supprimer le filtre",
     "Showing": "Affichage",
     "ExecuteAndDownload": "Exécuter et télécharger",
-    "DownloadResults": "Télécharger (CSV)",
+    "DownloadResults": "Télécharger",
     "ExecuteAndDisplay": "Mettre à jour les résultats",
     "UpdateWarning": "Cliquez sur \"Mettre à jour les résultats\" pour afficher vos modifications",
     "Reset": "Rénitialiser",

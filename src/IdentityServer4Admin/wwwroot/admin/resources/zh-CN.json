@@ -1,5 +1,11 @@
 ﻿{
   "Common": {
+    "Saving": "正在儲存",
+    "Remove": {
+      "Title": "移除",
+      "Confirm": "確認移除",
+      "No": "否，不要移除"
+    },
     "AddandConfigure": "添加配置",
     "Reset": "重置",
     "SaveAll": "保存全部",
@@ -98,7 +104,6 @@
     "Week": "周",
     "Month": "月",
     "Year": "年",
-    "Remove": "删除",
     "Actions": "操作",
     "Assign": "分配",
     "Unassign": "取消分配",
@@ -133,13 +138,25 @@
     "ResetPassword": {
       "Confirm": "确认重置",
       "AreYouSureSimple": "你确定要重设密码吗",
-      "Title": "重置密码"
+      "Title": "重置密码",
+      "HowToSetupTitle": "設定使用者密碼重置Webhook",
+      "HowToSetup": "需要首先設定密碼重置Webhook才能使用此功能，請存取AdminUI Webhook文件。"
     },
     "UserEditable": "用户可编辑",
     "Key": "键值",
     "CommunityEditionBanner": "欢迎使用AdminUI社群版。 这是用于管理IdentityServer组态和客户的AdminUI工具的免费版本。 它仅限于10个用户和2个客户端。 要了解有关完整AdminUI产品的更多讯息，请点击下面的连结"
   },
   "Nav": {
+    "Breadcrumbs": "階層連結",
+    "Active": "使用中",
+    "Account": "帳戶",
+    "Found": "找到",
+    "ResultsFound": "個結果被找到",
+    "PageXofX": "第{0}頁 共{1}頁",
+    "First": "第一個",
+    "Previous": "上一個",
+    "Next": "下一個",
+    "Last": "最後一個",
     "SkipToContent": "跳到内容",
     "Menu": "菜单",
     "SubMenu": "子菜单",
@@ -147,7 +164,6 @@
     "Secrets": "秘钥",
     "Saml": "SAML",
     "WsFed": "WS-Fed",
-    "Salutation": "您好",
     "Logout": "登出",
     "Home": "首页",
     "Users": "用户",
@@ -162,7 +178,6 @@
     "MobileListInfo": "连续点击会将您重导至用户明细",
     "PerPage": "每一页",
     "Displaying": "显示中",
-    "Found": "找到",
     "Page": "页",
     "of": "of",
     "Details": "明细",
@@ -312,7 +327,6 @@
     "CloseReturnsRoleList": "<strong>新增</strong> 将关闭对话框并将您带回角色列表.",
     "RoleRemoved": "角色已被删除.",
     "Search": "搜寻一个角色...",
-    "TapRole": "<i class='fa fa-info'></i>在单笔上连击<br />可显示角色明细",
     "ReservedHelp": "此角色已被保留，不可编辑",
     "Reserved": "保留",
     "NoRolesFound": "找不到角色",
@@ -322,7 +336,26 @@
     "AssignUnauthorized": "您没有分配此角色所需的权限",
     "UnassignUnauthorized": "您没有取消分配此角色所需的权限",
     "UpdateUnauthorized": "您没有更新此角色所需的权限",
-    "DeleteUnauthorized": "您没有删除此角色所需的权限"
+    "DeleteUnauthorized": "您没有删除此角色所需的权限",
+    "AreYouSureRemove": "您是否確定希望將<b>{0}</b>從<b>{1}</b>移除？",
+    "UpdateBadRequest": "無法處理您的要求",
+    "ManageUsers": "管理使用者",
+    "AddUsers": "新增使用者",
+    "AddRemoveUsersFromRole": "新增使用者或將使用者從<b>{0}</b>移除",
+    "User": "使用者",
+    "InRole": "角色：",
+    "SearchAllUsers": "搜尋所有使用者",
+    "Adding": "新增",
+    "Removing": "移除",
+    "CancelAdding": "取消新增",
+    "CancelRemoving": "取消移除",
+    "NoUsersAdding": "不會新增任何使用者",
+    "NoUsersRemoving": "不會移除任何使用者",
+    "RoleUserManagement": "角色使用者管理",
+    "AddRemoveUserFromRole": "新增使用者或將其移除出",
+    "NoResults": "未找到相符的使用者",
+    "NotSelected": "搜尋要新增或從此角色移除的使用者（最少2個字元）",
+    "SavingPleaseWait": "正在儲存，請稍候......"
   },
   "Claims": {
     "Add": "添加声明类型",
@@ -340,7 +373,6 @@
     "AddAnotherClaimType": "提交后新增另一个声明类型",
     "DeleteConfirmation": "你是否要删除此声明类型",
     "Search": "搜寻一种声明类型...",
-    "TapClaim": "<i class='fa fa-info'></i>在单笔上连击<br />可显示声明类型明细",
     "UserEditable": "如果通过对外公开的露出，用户可以编辑这些值",
     "AssignUnassignUnauthorized": "您没有分配或取消分配此声明所需的权限",
     "NoClaimsFound": "未找到任何声明"
@@ -386,7 +418,6 @@
     "ShowInDiscoveryDocument": "显示于发现文档",
     "ConsentScreen": "在同意画面上强调资源名称",
     "UpdatedClient": "更新客户端成功",
-    "ResourceDetailsTapRow": "在单笔上连击<br />会至资源明细",
     "ResourceReservedHelp": "此资源已被保留，不可编辑",
     "NoIdentityResources": "找不到身份资源",
     "Reserved": "此声明类型已被保留，不可编辑"
@@ -403,6 +434,9 @@
     "NoneFound": "找不到受保护的资源"
   },
   "Clients": {
+    "Export": {
+      "ExportAll": "匯出全部"
+    },
     "EntityId": "实体ID",
     "Realm": "领域",
     "Created": "已创建",
@@ -411,7 +445,6 @@
     "NoClaims": "未找到此客户端的声明",
     "NoRestrictions": "未找到此客户端的限制",
     "DuplicateProvider": "提供者已添加",
-    "CertTapRow": "<i class='fa fa-info'></i> 点击一行将开始删除证书",
     "NoCertificates": "未找到证书",
     "ID": "客户端ID",
     "Title": "客户端",
@@ -447,7 +480,6 @@
     "UpdatedClient": "更新客户端成功",
     "Deleted": "客户端已删除",
     "Search": "搜寻客户端...",
-    "TapRow": "<i class='fa fa-info'></i>在单笔上连击<br />可显示客户端明细",
     "Reserved": "此客户端已被保留，不可编辑",
     "None": "找不到客户端",
     "NoSecrets": "未设置密钥。使用上面的表格新增，将显示在这裡.",
@@ -802,7 +834,7 @@
   "LandingPage": {
     "Welcome": "欢迎使用",
     "LatestNews": "最新消息",
-    "IntroParagraph1": "欢迎使用AdminUI,IdentityServer4的领先用户和配置管理工具。",
+    "IntroParagraph1": "IdentityServer4的领先用户和配置管理工具。",
     "IntroParagraph2": "如需查询许可证,请联系: ",
     "Documentation": "文档",
     "APIDocs": "API文档"
@@ -814,6 +846,7 @@
     "Auditer": "审计员"
   },
   "Auditing": {
+    "ToggleDetails": "切換詳情",
     "Title": "正在审计",
     "SearchAudits": "搜索审计",
     "NoAuditsFound": "未找到审计",
@@ -845,7 +878,7 @@
     "RemoveFilter": "删除过滤器",
     "Showing": "显示",
     "ExecuteAndDownload": "执行并下载",
-    "DownloadResults": "下载(CSV)",
+    "DownloadResults": "下载",
     "ExecuteAndDisplay": "更新结果",
     "UpdateWarning": "点击“更新结果”以查看您的更改",
     "Reset": "重置",
