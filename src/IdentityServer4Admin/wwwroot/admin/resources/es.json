@@ -1,5 +1,11 @@
 {
   "Common": {
+    "Saving": "Guardando",
+    "Remove": {
+      "Title": "Eliminar",
+      "Confirm": "Confirmar eliminación",
+      "No": "No, no eliminar"
+    },
     "ID": "ID",
     "Add": "Añadir",
     "Password": "Contraseña",
@@ -122,12 +128,13 @@
     "ResetPassword": {
       "Confirm": "Confirmar restablecimiento",
       "AreYouSureSimple": "¿Estás seguro de que quieres restablecer la contraseña de",
-      "Title": "Restablecer contraseña"
+      "Title": "Restablecer contraseña",
+      "HowToSetupTitle": "Configurar el webhook de restablecimiento de contraseña de usuario",
+      "HowToSetup": "Para poder utilizar esta función, primero debe configurar el webhook de restablecimiento de contraseña. Consulte la documentación del webhook de AdminUI."
     },
     "UserEditable": "Editable por el usuario",
     "Key": "Clave",
     "CommunityEditionBanner": "Te damos la bienvenida a AdminUI Community Edition. Esta es una versión gratuita de la herramienta AdminUI para administrar la configuración y los usuarios de IdentityServer. Está limitado a 10 usuarios y 2 clientes. Para obtener más información sobre el producto AdminUI completo, haz clic en el siguiente enlace",
-    "Remove": "Eliminar",
     "Actions": "Acciones",
     "Assign": "Asignar",
     "Unassign": "Desasignar",
@@ -140,7 +147,16 @@
     "CommunityPolicyNotice": "Esta es una vista previa de la pantalla de la política de acceso. En la edición Community, se han eliminado las características de la política de acceso. Puede utilizar la pantalla, pero ninguna de las políticas entrará en vigor. Para saber más sobre el producto AdminUI completo, haga clic en el siguiente enlace "
   },
   "Nav": {
-    "Salutation": "Hola",
+    "Breadcrumbs": "Migas de pan",
+    "Active": "Activo",
+    "Account": "Cuenta",
+    "Found": "encontrado(s)",
+    "ResultsFound": "resultado(s) encontrado(s)",
+    "PageXofX": "Página {0} de {1}",
+    "First": "Primero",
+    "Previous": "Anterior",
+    "Next": "Siguiente",
+    "Last": "Último",
     "Login": "Iniciar sesión",
     "Logout": "Cerrar sesión",
     "Home": "Inicio",
@@ -156,7 +172,6 @@
     "MobileListInfo": "Si pulsas sobre una fila, se te redirigirá a los detalles del usuario.",
     "PerPage": "por página",
     "Displaying": "Mostrando",
-    "Found": "Encontrado",
     "Page": "Página",
     "of": "de",
     "Details": "Detalles",
@@ -311,7 +326,6 @@
     "CloseReturnsRoleList": "Con la opción <strong>Añadir</strong>, se cerrará este cuadro y volverás a la lista de roles.",
     "RoleRemoved": "El rol ha sido eliminado",
     "Search": "Buscar un rol...",
-    "TapRole": "<i class='fa fa-info'></i>Si haces clic en una fila, se te redirigirá<br />a los detalles del rol",
     "ReservedHelp": "Este rol está reservado y no se puede editar",
     "Reserved": "reservado",
     "NoRolesFound": "No se han encontrado roles",
@@ -322,7 +336,26 @@
     "UnassignUnauthorized": "No tienes los permisos necesarios para anular la asignación de este rol",
     "UpdateUnauthorized": "No tienes los permisos necesarios para actualizar este rol",
     "DeleteUnauthorized": "No tienes los permisos necesarios para eliminar este rol",
-    "AddRole": "Añadir rol"
+    "AddRole": "Añadir rol",
+    "AreYouSureRemove": "¿Está seguro de que desea eliminar <b>{0}</b> de <b>{1}</b>?",
+    "UpdateBadRequest": "No ha sido posible procesar su solicitud",
+    "ManageUsers": "Gestionar usuarios",
+    "AddUsers": "Añadir usuarios",
+    "AddRemoveUsersFromRole": "Añadir o eliminar usuarios de <b>{0}</b>",
+    "User": "Usuario",
+    "InRole": "Con el rol",
+    "SearchAllUsers": "Buscar todos los usuarios",
+    "Adding": "Añadiendo",
+    "Removing": "Eliminando",
+    "CancelAdding": "Cancelar la adición",
+    "CancelRemoving": "Cancelar eliminación",
+    "NoUsersAdding": "No se añadirán usuarios",
+    "NoUsersRemoving": "No se eliminarán usuarios",
+    "RoleUserManagement": "Gestión de roles de usuarios",
+    "AddRemoveUserFromRole": "Añadir o eliminar usuarios de",
+    "NoResults": "No se han encontrado usuarios con esos criterios",
+    "NotSelected": "Buscar usuarios para añadir o eliminar de este rol (2 caracteres mín.)",
+    "SavingPleaseWait": "Guardando. Espere, por favor..."
   },
   "Claims": {
     "Title": "Tipo de exigencia",
@@ -339,7 +372,6 @@
     "AddAnotherClaimType": "Añadir otro tipo de exigencia después de tocar en Enviar",
     "DeleteConfirmation": "¿Seguro que quieres eliminar el tipo de exigencia?",
     "Search": "Buscar un tipo de exigencia...",
-    "TapClaim": "<i class='fa fa-info'></i> Si pulsas sobre una fila, se te redirigirá<br />a los detalles del tipo de exigencia",
     "UserEditable": "El valor será editable por un usuario si se expone a través de la api pública",
     "AssignUnassignUnauthorized": "No tienes los permisos necesarios para asignar o anular la asignación de esta exigencia.",
     "NoClaimsFound": "No se han encontrado reclamos",
@@ -386,7 +418,6 @@
     "ShowInDiscoveryDocument": "Mostrar en Documento de descubrimiento",
     "ConsentScreen": "Enfatizar el nombre del recurso en la pantalla de consentimiento",
     "UpdatedClient": "Cliente actualizado correctamente",
-    "ResourceDetailsTapRow": "Si pulsas sobre en una fila, se te redirigirá<br /> a los detalles del recurso",
     "ResourceReservedHelp": "Este recurso está reservado y no se puede editar.",
     "NoIdentityResources": "No se han encontrado recursos de identidad",
     "Reserved": "Este tipo de exigencia está reservado y no se puede editar"
@@ -404,6 +435,9 @@
     "NoneFound": "No se han encontrado recursos protegidos"
   },
   "Clients": {
+    "Export": {
+      "ExportAll": "Exportar todo"
+    },
     "ID": "ID de cliente",
     "Title": "Cliente",
     "Add": "Añadir cliente",
@@ -438,7 +472,6 @@
     "UpdatedClient": "Cliente actualizado correctamente",
     "Deleted": "Cliente eliminado",
     "Search": "Buscar un cliente...",
-    "TapRow": "<i class='fa fa-info'></i> Si pulsas sobre en una fila, se te redirigirá<br /> a los detalles del cliente",
     "Reserved": "Este cliente está reservado y no puede editarse",
     "None": "No se han encontrado clientes",
     "NoSecrets": "No se han establecido secretos. Utiliza el formulario de arriba para añadir uno y se mostrará aquí.",
@@ -455,7 +488,6 @@
     "NoClaims": "No se han encontrado notificaciones para este cliente",
     "NoRestrictions": "No se han encontrado restricciones para este cliente",
     "DuplicateProvider": "Proveedor ya añadido",
-    "CertTapRow": "<i class='fa fa-info'></i> Al tocar una fila se iniciará la eliminación del certificado",
     "NoCertificates": "No se han encontrado certificados",
     "GrantTypes": {
       "Implicit": "Implícito",
@@ -584,8 +616,7 @@
       "Sliding": "Deslizante",
       "AllowPlainTextPkce": "Permitir Pkce de texto sin formato",
       "AllowOfflineAccess": "Permitir el acceso sin conexión",
-      "UpdateAccessTokensSummary":
-        "Actualizar los tokens de acceso (y sus exigencias) cuando se utilice el token de actualización.",
+      "UpdateAccessTokensSummary": "Actualizar los tokens de acceso (y sus exigencias) cuando se utilice el token de actualización.",
       "UpdateAccessTokens": "Actualizar exigencias de token de acceso al actualizar",
       "IncludeJwtId": "Incluir ID Jwt",
       "LogoutSessionRequired": "Se requiere la sesión para activar el cierre de sesión",
@@ -593,15 +624,13 @@
       "BackChannelLogoutSessionRequired": "Se requiere cierre de sesión del canal trasero",
       "BackChannelLogoutUri": "URI de cierre de sesión del canal trasero",
       "UserSSOLifetime": "Tiempo de SSO (segundos)",
-      "UserSSOLifetimeTooltip":
-        "La cantidad de tiempo que transcurre entre los desafíos de autenticación de usuarios. De forma predeterminada, pasará al tiempo de la sesión de IdentityServer",
+      "UserSSOLifetimeTooltip": "La cantidad de tiempo que transcurre entre los desafíos de autenticación de usuarios. De forma predeterminada, pasará al tiempo de la sesión de IdentityServer",
       "UserCode": "Tipo de generador de código de usuario",
       "DeviceCodeLifetime": "Tiempo de la solicitud de flujo de dispositivo",
       "DurationTitle": "Duración de tiempo calculada",
       "RequirePkce": "Solicitar clave PKCE",
       "AccessTokensViaBrowser": "Permitir el envío de tokens de acceso a través del navegador",
-      "AccessTokensViaBrowserSummary":
-        "La desactivación es útil para flujos que admiten múltiples tipos de flujo de autorización.",
+      "AccessTokensViaBrowserSummary": "La desactivación es útil para flujos que admiten múltiples tipos de flujo de autorización.",
       "Durations": {
         "Seconds": "segundos",
         "SecondsShort": "s",
@@ -808,7 +837,7 @@
   "LandingPage": {
     "Welcome": "Te damos la bienvenida a",
     "LatestNews": "Últimas noticias",
-    "IntroParagraph1": "Bienvenido a AdminUI, la herramienta líder de administración de usuarios y configuraciones para IdentityServer4.",
+    "IntroParagraph1": "La herramienta líder de administración de usuarios y configuraciones para IdentityServer4.",
     "IntroParagraph2": "Para consultas sobre licencias, ponte en contacto con:",
     "Documentation": "Documentación",
     "APIDocs": "Documentos de API"
@@ -820,6 +849,7 @@
     "Auditer": "Auditor"
   },
   "Auditing": {
+    "ToggleDetails": "Mostrar/ocultar detalles",
     "Title": "Auditoría",
     "SearchAudits": "Buscar auditorías",
     "NoAuditsFound": "No se han encontrado auditorías",
@@ -851,7 +881,7 @@
     "RemoveFilter": "Eliminar filtro",
     "Showing": "Mostrando",
     "ExecuteAndDownload": "Ejecutar y descargar",
-    "DownloadResults": "Descargar (CSV)",
+    "DownloadResults": "Descargar",
     "ExecuteAndDisplay": "Actualizar resultados",
     "UpdateWarning": "Haga clic en \"Actualizar resultados\" para ver sus cambios",
     "Reset": "Restablecer",

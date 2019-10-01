@@ -1,5 +1,11 @@
 {
   "Common": {
+    "Saving": "Speichern",
+    "Remove": {
+      "Title": "Entfernen",
+      "Confirm": "Entfernung bestätigen",
+      "No": "Nein, nicht entfernen"
+    },
     "ID": "ID",
     "Add": "Hinzufügen",
     "True": "wahr ",
@@ -122,12 +128,13 @@
     "ResetPassword": {
       "Confirm": "Zurücksetzen bestätigen",
       "AreYouSureSimple": "Möchten Sie wirklich das Passwort zurücksetzen für",
-      "Title": "Passwort zurücksetzen"
+      "Title": "Passwort zurücksetzen",
+      "HowToSetupTitle": "Webhook zum Zurücksetzen des Benutzerkennworts einrichten",
+      "HowToSetup": "Der Webhook zum Zurücksetzen des Kennworts muss zuerst konfiguriert werden, damit diese Funktion verwendet werden kann. Weitere Informationen finden Sie in der AdminUI-Webhook-Dokumentation."
     },
     "UserEditable": "Benutzer bearbeitbar",
     "Key": "Schlüssel",
     "CommunityEditionBanner": "Willkommen bei der AdminUI Community Edition. Dies ist eine kostenlose Version des AdminUI-Tools zum Verwalten der IdentityServer-Konfiguration und der Benutzer. Es ist auf 10 Benutzer und 2 Clients beschränkt. Klicken Sie auf den folgenden Link, um mehr über das vollständige AdminUI-Produkt zu erfahren",
-    "Remove": "Entfernen",
     "Actions": "Aktionen",
     "Assign": "Zuweisen",
     "Unassign": "Zuweisung aufheben",
@@ -140,6 +147,16 @@
     "CommunityPolicyNotice": "Dies ist eine Vorschau der Bildschirmanzeige zur Zugriffsrichtlinie. In der Community Edition wurden die Funktionen zur Zugriffsrichtlinie entfernt. Sie können den Bildschirm verwenden, aber keine der Richtlinien wird greifen. Klicken Sie auf den unten stehenden Link, um mehr über das vollständige AdminUI-Produkt zu erfahren "
   },
   "Nav": {
+    "Breadcrumbs": "Brotkrümel",
+    "Active": "Aktiv",
+    "Account": "Konto",
+    "Found": "gefunden",
+    "ResultsFound": "gefundene(s) Ergebnis(se)",
+    "PageXofX": "Seite {0} von {1}",
+    "First": "Erste",
+    "Previous": "Vorherige",
+    "Next": "Nächste",
+    "Last": "Letzte",
     "SkipToContent": "Zum Inhalt springen",
     "Menu": "Menü",
     "SubMenu": "Untermenü",
@@ -147,7 +164,6 @@
     "Secrets": "Geheimnisse",
     "Saml": "SAML",
     "WsFed": "WS-Fed",
-    "Salutation": "Hallo",
     "Logout": "Abmelden",
     "Home": "Startseite",
     "Users": "Benutzer",
@@ -162,7 +178,6 @@
     "MobileListInfo": "Wenn Sie auf eine Zeile tippen, werden Sie zu den Benutzerdetails weitergeleitet",
     "PerPage": "pro Seite",
     "Displaying": "Wird angezeigt",
-    "Found": "Gefunden",
     "Page": "Seite",
     "of": "von",
     "Details": "Details",
@@ -304,6 +319,25 @@
     "RevokeLoginConfirmationText": "Sind Sie sicher, dass Sie dieses externe Login widerrufen wollen?"
   },
   "Roles": {
+    "AreYouSureRemove": "Sind Sie sicher, dass Sie <b>{0}</b> aus <b>{1}</b> löschen möchten?",
+    "UpdateBadRequest": "Ihre Anfrage konnte nicht bearbeitet werden",
+    "ManageUsers": "Nutzer verwalten",
+    "AddUsers": "Nutzer hinzufügen",
+    "AddRemoveUsersFromRole": "Nutzer zu <b>{0}</b> hinzufügen oder daraus entfernen",
+    "User": "Nutzer",
+    "InRole": "In Rolle",
+    "SearchAllUsers": "Alle Nutzer durchsuchen",
+    "Adding": "Wird hinzugefügt",
+    "Removing": "Wird entfernt",
+    "CancelAdding": "Hinzufügen abbrechen",
+    "CancelRemoving": "Entfernen abbrechen",
+    "NoUsersAdding": "Es werden keine Benutzer hinzugefügt",
+    "NoUsersRemoving": "Es werden keine Benutzer entfernt",
+    "RoleUserManagement": "Benutzerrollenverwaltung",
+    "AddRemoveUserFromRole": "Nutzer hinzufügen oder entfernen aus",
+    "NoResults": "Keine passenden Nutzer gefunden.",
+    "NotSelected": "Nach Benutzern suchen, die dieser Rolle hinzugefügt oder daraus entfernt werden sollen (mindestens 2 Zeichen)",
+    "SavingPleaseWait": "Speichern, bitte warten ...",
     "AddRole": "Rolle hinzufügen",
     "Role": "Rolle",
     "NewRole": "Neue Rolle",
@@ -312,7 +346,6 @@
     "CloseReturnsRoleList": "<strong>Hinzufügen<\/strong> schließt dieses Feld und bringt Sie zurück zur Rollenliste.",
     "RoleRemoved": "Die Rolle wurde entfernt",
     "Search": "Nach einer Rolle suchen ...",
-    "TapRole": "<i class='fa fa-info'><\/i> Wenn Sie auf eine Zeile tippen, werden<br \/>Sie zu den Details der Rolle weitergeleitet",
     "ReservedHelp": "Diese Rolle ist reserviert und kann nicht bearbeitet werden",
     "Reserved": "reserviert",
     "NoRolesFound": "Keine Rollen gefunden",
@@ -340,7 +373,6 @@
     "AddAnotherClaimType": "Nach dem Absenden einen weiteren Anspruchstyp hinzufügen",
     "DeleteConfirmation": "Sind Sie sich sicher, dass Sie den Anspruchstyp löschen möchten",
     "Search": "Nach einem Anspruchstyp suchen ...",
-    "TapClaim": "<i class='fa fa-info'><\/i> Wenn Sie auf eine Zeile tippen, werden<br \/>Sie zu den Details des Anspruchstyp weitergeleitet",
     "UserEditable": "Der Wert kann von einem Benutzer bearbeitet werden, wenn er über die öffentliche API angezeigt wird",
     "AssignUnassignUnauthorized": "Sie haben nicht die erforderlichen Rechte, um dieses Anrecht zuzuteilen oder aufzuheben.",
     "NoClaimsFound": "Keine Claims gefunden"
@@ -386,7 +418,6 @@
     "ShowInDiscoveryDocument": "Im Discovery-Dokument anzeigen",
     "ConsentScreen": "Den Ressourcennamen im Zustimmungsfenster hervorheben",
     "UpdatedClient": "Client erfolgreich aktualisiert",
-    "ResourceDetailsTapRow": "Wenn Sie auf eine Zeile tippen, werden<br \/>Sie zu den Ressourcendetails weitergeleitet",
     "ResourceReservedHelp": "Diese Ressource ist reserviert und kann nicht bearbeitet werden",
     "NoIdentityResources": "Keine Identitätsressourcen gefunden",
     "Reserved": "Dieser Anspruchstyp ist reserviert und kann nicht bearbeitet werden"
@@ -404,6 +435,9 @@
     "NoneFound": "Keine geschützten Ressourcen gefunden"
   },
   "Clients": {
+    "Export": {
+      "ExportAll": "Alle exportieren"
+    },
     "EntityId": "Entitäts-ID",
     "Realm": "Bereich",
     "Created": "Erstellt",
@@ -412,7 +446,6 @@
     "NoClaims": "Für diesen Client wurden keine Ansprüche gefunden",
     "NoRestrictions": "Keine Einschränkungen für diesen Client gefunden",
     "DuplicateProvider": "Provider bereits hinzugefügt",
-    "CertTapRow": "<i class='fa fa-info'></i> Durch Tippen auf eine Zeile wird das Entfernen des Zertifikats gestartet",
     "NoCertificates": "Keine Zertifikate gefunden",
     "ID": "Client-ID",
     "Title": "Client",
@@ -448,7 +481,6 @@
     "UpdatedClient": "Client erfolgreich aktualisiert",
     "Deleted": "Client gelöscht",
     "Search": "Nach einem Client suchen ...",
-    "TapRow": "<i class='fa fa-info'><\/i> Wenn Sie auf eine Zeile tippen, werden<br \/>Sie zu den Details des Clients weitergeleitet",
     "Reserved": "Dieser Client ist reserviert und kann nicht bearbeitet werden",
     "None": "Keine Clients gefunden",
     "NoSecrets": "Es wurden keine Geheimnisse festgelegt. Verwenden Sie das obige Formular, um eines hinzuzufügen und es wird hier angezeigt.",
@@ -805,7 +837,7 @@
   "LandingPage": {
     "Welcome": "Willkommen auf/bei",
     "LatestNews": "Neueste Nachrichten",
-    "IntroParagraph1": "Willkommen bei AdminUI, dem führenden Benutzer- und Konfigurationsmanagement-Tool für IdentityServer4",
+    "IntroParagraph1": "Dem führenden Benutzer- und Konfigurationsmanagement-Tool für IdentityServer4",
     "IntroParagraph2": "Für Lizenzanfragen wenden Sie sich bitte an:",
     "Documentation": "Dokumentation",
     "APIDocs": "API-Dokumente"
@@ -817,6 +849,7 @@
     "Auditer": "Auditor"
   },
   "Auditing": {
+    "ToggleDetails": "Details umschalten",
     "Title": "Auditing",
     "SearchAudits": "Nach Audits suchen",
     "NoAuditsFound": "Keine Audits gefunden",
@@ -838,7 +871,7 @@
     "SetDateYesterday": "Datum auf gestern einstellen",
     "Yesterday": "Gestern",
     "SetDateLastWeek": "Datum auf Woche einstellen",
-    "Week" : "Woche",
+    "Week": "Woche",
     "ResultsPerPage": "Ergebnisse pro Seite",
     "AddFilter": "Filter hinzufügen",
     "ShowFilters": "Filter anzeigen",
@@ -848,7 +881,7 @@
     "RemoveFilter": "Filter entfernen",
     "Showing": "Anzeigen",
     "ExecuteAndDownload": "Ausführen und Herunterladen",
-    "DownloadResults": "Herunterladen (CSV)",
+    "DownloadResults": "Herunterladen",
     "ExecuteAndDisplay": "Ausführen und Anzeigen",
     "UpdateWarning": "Klicken Sie auf \"Ergebnisse aktualisieren\", um Ihre Änderungen anzuzeigen",
     "Reset": "Zurücksetzen",

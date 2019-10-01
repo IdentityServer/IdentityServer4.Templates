@@ -1,5 +1,11 @@
 ﻿{
   "Common": {
+    "Saving": "正在儲存",
+    "Remove": {
+      "Title": "移除",
+      "Confirm": "確認移除",
+      "No": "否，不要移除"
+    },
     "ID": "ID",
     "Add": "新增",
     "True": "真",
@@ -80,7 +86,6 @@
     "Week": "週",
     "Month": "月",
     "Year": "日",
-    "Remove": "刪除",
     "Actions": "操作",
     "Assign": "分配",
     "Unassign": "取消分配",
@@ -133,14 +138,25 @@
     "ResetPassword": {
       "Confirm": "確認重置",
       "AreYouSureSimple": "你確定要重設密碼嗎",
-      "Title": "重置密碼"
+      "Title": "重置密碼",
+      "HowToSetupTitle": "設定使用者密碼重置Webhook",
+      "HowToSetup": "需要首先設定密碼重置Webhook才能使用此功能，請存取AdminUI Webhook文件。"
     },
     "UserEditable": "使用者可編輯",
     "Key": "關鍵值",
     "CommunityEditionBanner": "歡迎使用AdminUI社群版。 這是用於管理IdentityServer組態和用戶的AdminUI工具的免費版本。它僅限於10個使用者和2個用戶端。 要了解有關完整AdminUI產品的更多訊息，請點擊下面的連結"
   },
   "Nav": {
-    "Salutation": "您好",
+    "Breadcrumbs": "階層連結",
+    "Active": "使用中",
+    "Account": "帳戶",
+    "Found": "找到",
+    "ResultsFound": "個結果被找到",
+    "PageXofX": "第{0}頁 共{1}頁",
+    "First": "第一個",
+    "Previous": "上一個",
+    "Next": "下一個",
+    "Last": "最後一個",
     "Logout": "登出",
     "Home": "首頁",
     "Users": "使用者(User)",
@@ -155,7 +171,6 @@
     "MobileListInfo": "連續點擊將開啟使用者明細",
     "PerPage": "筆(每頁)",
     "Displaying": "顯示",
-    "Found": "筆已找到",
     "Page": "頁",
     "of": "的",
     "Details": "明細",
@@ -304,6 +319,25 @@
     "RevokeLoginConfirmationText": "您確定要撤消此外部登入"
   },
   "Roles": {
+    "AreYouSureRemove": "您是否確定希望將<b>{0}</b>從<b>{1}</b>移除？",
+    "UpdateBadRequest": "無法處理您的要求",
+    "ManageUsers": "管理使用者",
+    "AddUsers": "新增使用者",
+    "AddRemoveUsersFromRole": "新增使用者或將使用者從<b>{0}</b>移除",
+    "User": "使用者",
+    "InRole": "角色：",
+    "SearchAllUsers": "搜尋所有使用者",
+    "Adding": "新增",
+    "Removing": "移除",
+    "CancelAdding": "取消新增",
+    "CancelRemoving": "取消移除",
+    "NoUsersAdding": "不會新增任何使用者",
+    "NoUsersRemoving": "不會移除任何使用者",
+    "RoleUserManagement": "角色使用者管理",
+    "AddRemoveUserFromRole": "新增使用者或將其移除出",
+    "NoResults": "未找到相符的使用者",
+    "NotSelected": "搜尋要新增或從此角色移除的使用者（最少2個字元）",
+    "SavingPleaseWait": "正在儲存，請稍候......",
     "Role": "角色",
     "NewRole": "新增角色",
     "AddAnother": "連續新增角色",
@@ -311,7 +345,6 @@
     "CloseReturnsRoleList": "選擇 <strong>新增</strong> 將關閉對話框，並回到角色列表.",
     "RoleRemoved": "角色已被刪除.",
     "Search": "搜尋角色...",
-    "TapRole": "<i class='fa fa-info'></i>在單筆上連擊<br />可顯示角色明細",
     "ReservedHelp": "此角色已被保留，不可編輯",
     "Reserved": "保留",
     "NoRolesFound": "找不到角色",
@@ -339,7 +372,6 @@
     "AddAnotherClaimType": "提交後新增另一項宣告類型",
     "DeleteConfirmation": "你是否要刪除此宣告類型",
     "Search": "搜尋宣告名稱...",
-    "TapClaim": "<i class='fa fa-info'></i>在單筆上連擊<br />可顯示宣告類型內容",
     "UserEditable": "如果通過對外公開的顯露，則使用者可以編輯這些值",
     "AssignUnassignUnauthorized": "您沒有指派或移除指派此宣告(Claim)所需之權限",
     "NoClaimsFound": "未找到任何宣告",
@@ -386,7 +418,6 @@
     "ShowInDiscoveryDocument": "顯示於探索文件",
     "ConsentScreen": "在同意畫面上強調資源名稱",
     "UpdatedClient": "更新用戶端成功",
-    "ResourceDetailsTapRow": "在單筆上雙擊<br />會顯示該項資源基本項目",
     "ResourceReservedHelp": "此項應用程式介面資源被設定為保留項目，不可修改",
     "NoIdentityResources": "找不到身份資源",
     "Reserved": "此為保留項目，不可修改"
@@ -404,6 +435,9 @@
     "NoneFound": "找不到應用程式介面資源"
   },
   "Clients": {
+    "Export": {
+      "ExportAll": "匯出全部"
+    },
     "ID": "用戶端ID",
     "Title": "用戶端",
     "Add": "新增用戶端",
@@ -438,7 +472,6 @@
     "UpdatedClient": "更新用戶端成功",
     "Deleted": "用戶端已刪除",
     "Search": "搜尋用戶端...",
-    "TapRow": "<i class='fa fa-info'></i>在單筆上連擊<br />可顯示用戶端基本資料",
     "Reserved": "此為保留項目，不可修改",
     "None": "找不到用戶端",
     "NoSecrets": "尚未設置密鑰。請利用上方的表單新增，產出之密鑰將顯示於此.",
@@ -455,7 +488,6 @@
     "NoClaims": "找不到任何用戶端角色",
     "NoRestrictions": "找不到任何用戶端限制",
     "DuplicateProvider": "已新增提供者",
-    "CertTapRow": "<i class='fa fa-info'></i> 點選一整列將會開始移除憑證",
     "NoCertificates": "找不到憑證",
     "RelyingParty": {
       "Heading": "信賴憑證者",
@@ -803,7 +835,7 @@
   "LandingPage": {
     "Welcome": "Welcome to",
     "LatestNews": "最新消息",
-    "IntroParagraph1": "歡迎使用 AdminUI, IdentityServer4 領先的使用者與組態管理工具",
+    "IntroParagraph1": "IdentityServer4 領先的使用者與組態管理工具",
     "IntroParagraph2": "如需授權諮詢,請聯繫:",
     "Documentation": "說明文件(英文)",
     "APIDocs": "API 文件(Swagger)"
@@ -815,6 +847,7 @@
     "Auditer": "審計員"
   },
   "Auditing": {
+    "ToggleDetails": "切換詳情",
     "Title": "正在審計",
     "SearchAudits": "搜尋審計",
     "NoAuditsFound": "未找到審計",
@@ -846,7 +879,7 @@
     "RemoveFilter": "刪除篩選器",
     "Showing": "顯示",
     "ExecuteAndDownload": "執行並下載",
-    "DownloadResults": "下載(CSV)",
+    "DownloadResults": "下載",
     "ExecuteAndDisplay": "更新結果",
     "UpdateWarning": "按一下「更新結果」以查看您的更改",
     "Reset": "重設",
