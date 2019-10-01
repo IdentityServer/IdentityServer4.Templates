@@ -12,7 +12,7 @@ jobs:
     displayName: 'Install .NET Core 2.x SDK'
     inputs:
       packageType: 'sdk'
-      version: '2.*'
+      version: '2.x'
   - task: UseDotNet@2
     displayName: 'Install .NET Core 3.x SDK'
     inputs:
