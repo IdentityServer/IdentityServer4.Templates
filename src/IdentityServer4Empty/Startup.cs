@@ -40,12 +40,14 @@ namespace IdentityServer4Empty
                 app.UseDeveloperExceptionPage();
             }
 
-            // uncomment if you want to support static files
+            // uncomment if you want to support MVC
             //app.UseStaticFiles();
+            //app.UseRouting();
 
             app.UseIdentityServer();
 
-            // uncomment, if you want to add an MVC-based UI
+            // uncomment, if you want to add MVC-based
+            //app.UseAuthorization();
             //app.UseEndpoints(endpoints =>
             //{
             //    endpoints.MapDefaultControllerRoute();
