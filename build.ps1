@@ -1,6 +1,4 @@
 $CakeVersion = "0.30.0"
-$DotNetVersion = "2.1.504";
-$DotNetInstallerUri = "https://dot.net/v1/dotnet-install.ps1";
 
 $TOOLS_DIR = Join-Path $PSScriptRoot "tools"
 $NUGET_EXE = Join-Path $TOOLS_DIR "nuget.exe"
