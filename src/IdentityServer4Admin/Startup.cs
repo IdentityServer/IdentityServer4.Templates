@@ -35,7 +35,15 @@ namespace IdentityServer4Admin
         {
             services.AddControllersWithViews();
 
+            // configures IIS out-of-proc settings (see https://github.com/aspnet/AspNetCore/issues/14882)
             services.Configure<IISOptions>(iis =>
+            {
+                iis.AuthenticationDisplayName = "Windows";
+                iis.AutomaticAuthentication = false;
+            });
+
+            // configures IIS in-proc settings
+            services.Configure<IISServerOptions>(iis =>
             {
                 iis.AuthenticationDisplayName = "Windows";
                 iis.AutomaticAuthentication = false;
@@ -84,15 +92,9 @@ namespace IdentityServer4Admin
                     options.EnableTokenCleanup = true;
                     // options.TokenCleanupInterval = 15; // interval in seconds. 15 seconds useful for debugging
                 });
-            
-            if (Environment.IsDevelopment())
-            {
-                builder.AddDeveloperSigningCredential();
-            }
-            else
-            {
-                throw new Exception("need to configure key material");
-            }
+
+            // not recommended for production - you need to store your key material somewhere secure
+            builder.AddDeveloperSigningCredential();
 
             services.AddAuthentication()
                 .AddGoogle(options =>
