@@ -24,9 +24,9 @@ namespace IdentityServer4Empty
             //services.AddControllersWithViews();
 
             var builder = services.AddIdentityServer()
-                .AddInMemoryIdentityResources(Config.GetIdentityResources())
-                .AddInMemoryApiResources(Config.GetApis())
-                .AddInMemoryClients(Config.GetClients());
+                .AddInMemoryIdentityResources(Config.Ids)
+                .AddInMemoryApiResources(Config.Apis)
+                .AddInMemoryClients(Config.Clients);
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
@@ -39,13 +39,13 @@ namespace IdentityServer4Empty
                 app.UseDeveloperExceptionPage();
             }
 
-            // uncomment if you want to support MVC
+            // uncomment if you want to add MVC
             //app.UseStaticFiles();
             //app.UseRouting();
 
             app.UseIdentityServer();
 
-            // uncomment, if you want to add MVC-based
+            // uncomment, if you want to add MVC
             //app.UseAuthorization();
             //app.UseEndpoints(endpoints =>
             //{
