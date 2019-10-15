@@ -51,9 +51,9 @@ namespace IdentityServer4InMem
                 .AddTestUsers(TestUsers.Users);
 
             // in-memory, code config
-            builder.AddInMemoryIdentityResources(Config.GetIdentityResources());
-            builder.AddInMemoryApiResources(Config.GetApis());
-            builder.AddInMemoryClients(Config.GetClients());
+            builder.AddInMemoryIdentityResources(Config.Ids);
+            builder.AddInMemoryApiResources(Config.Apis);
+            builder.AddInMemoryClients(Config.Clients);
 
             // or in-memory, json config
             //builder.AddInMemoryIdentityResources(Configuration.GetSection("IdentityResources"));

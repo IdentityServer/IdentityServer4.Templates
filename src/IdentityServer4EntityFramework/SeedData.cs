@@ -7,7 +7,6 @@ using IdentityServer4.EntityFramework.Interfaces;
 using IdentityServer4.EntityFramework.Mappers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Linq;
 using IdentityServer4.EntityFramework.Storage;
 using Serilog;
@@ -45,7 +44,7 @@ namespace IdentityServer4EntityFramework
             if (!context.Clients.Any())
             {
                 Log.Debug("Clients being populated");
-                foreach (var client in Config.GetClients().ToList())
+                foreach (var client in Config.Clients.ToList())
                 {
                     context.Clients.Add(client.ToEntity());
                 }
@@ -59,7 +58,7 @@ namespace IdentityServer4EntityFramework
             if (!context.IdentityResources.Any())
             {
                 Log.Debug("IdentityResources being populated");
-                foreach (var resource in Config.GetIdentityResources().ToList())
+                foreach (var resource in Config.Ids.ToList())
                 {
                     context.IdentityResources.Add(resource.ToEntity());
                 }
@@ -73,7 +72,7 @@ namespace IdentityServer4EntityFramework
             if (!context.ApiResources.Any())
             {
                 Log.Debug("ApiResources being populated");
-                foreach (var resource in Config.GetApis().ToList())
+                foreach (var resource in Config.Apis.ToList())
                 {
                     context.ApiResources.Add(resource.ToEntity());
                 }

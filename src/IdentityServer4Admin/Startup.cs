@@ -2,7 +2,11 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityExpress.Identity;
+using IdentityExpress.Manager.Api;
 using IdentityServer4;
+using IdentityServer4.Configuration;
+using IdentityServer4Admin.Data;
 using IdentityServer4Admin.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,13 +14,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Reflection;
-using IdentityExpress.Identity;
-using IdentityExpress.Manager.Api;
-using IdentityServer4.Configuration;
-using IdentityServer4Admin.Data;
 using Microsoft.Extensions.Hosting;
+using System.Reflection;
 
 namespace IdentityServer4Admin
 {

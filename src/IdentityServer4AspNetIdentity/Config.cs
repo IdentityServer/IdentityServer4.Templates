@@ -9,26 +9,23 @@ namespace IdentityServer4AspNetIdentity
 {
     public static class Config
     {
-        public static IEnumerable<IdentityResource> GetIdentityResources()
-        {
-            return new IdentityResource[]
+        public static IEnumerable<IdentityResource> Ids =>
+            new IdentityResource[]
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
             };
-        }
 
-        public static IEnumerable<ApiResource> GetApis()
-        {
-            return new ApiResource[]
+
+        public static IEnumerable<ApiResource> Apis =>
+            new ApiResource[]
             {
                 new ApiResource("api1", "My API #1")
             };
-        }
 
-        public static IEnumerable<Client> GetClients()
-        {
-            return new[]
+
+        public static IEnumerable<Client> Clients =>
+            new Client[]
             {
                 // client credentials flow client
                 new Client
@@ -85,6 +82,5 @@ namespace IdentityServer4AspNetIdentity
                     AllowedScopes = { "openid", "profile", "api1" }
                 }
             };
-        }
     }
 }
