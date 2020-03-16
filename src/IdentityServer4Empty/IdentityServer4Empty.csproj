@@ -8,5 +8,7 @@
     <PackageReference Include="IdentityServer4" Version="3.1.0" />
 
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+
+    <!-- <PackageReference Include="System.Security.Principal.Windows" Version="4.7.0" /> -->
   </ItemGroup>
 </Project>
