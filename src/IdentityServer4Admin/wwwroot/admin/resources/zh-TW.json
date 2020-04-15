@@ -95,7 +95,6 @@
     "Years": "年",
     "Unlimited": "無限",
     "Audits": "審計",
-    "AddandConfigure": "新增與設定",
     "Reset": "重設",
     "SaveAll": "全部儲存",
     "Custom": "自訂",
@@ -114,6 +113,10 @@
     "ExpiresOn": "截止日期",
     "ExpiresIn": "Expires In",
     "CommunityPolicyNotice": "這是存取原則螢幕的預覽。在社區版中已刪除了存取原則功能。您可以使用該螢幕，但這些原則都不會生效。如需瞭解有關完整AdminUI產品的更多資訊，請按一下下面的連結",
+    "SaveAndConfigure": "儲存並設定",
+    "SaveAndAdd": "儲存並新增其他項目",
+    "LoadingPleaseWait": "正在載入中，請稍候...",
+    "AddAndAdd": "新增並新增另一個",
     "Delete": {
       "Title": "刪除",
       "TitleUndo": "復原",
@@ -124,6 +127,7 @@
       "AreYouSure": "您確定要刪除值嗎？",
       "AreYouSureSimple": "您確定要刪除",
       "AreYouSureSimple2": "您確定要刪除嗎？",
+      "AreYouSureSimple3": "\"確定要刪除這個嗎？",
       "Warning": "<strong>注意:</strong> 此操作無法撤消.",
       "No": "不，不要刪除"
     },
@@ -140,7 +144,7 @@
       "AreYouSureSimple": "你確定要重設密碼嗎",
       "Title": "重置密碼",
       "HowToSetupTitle": "設定使用者密碼重置Webhook",
-      "HowToSetup": "需要首先設定密碼重置Webhook才能使用此功能，請存取AdminUI Webhook文件。"
+      "HowToSetup": "密碼重設Webhook在使用前需先設定。進階資訊，請參閱AdminUI Webhook文件。"
     },
     "UserEditable": "使用者可編輯",
     "Key": "關鍵值",
@@ -207,10 +211,17 @@
     "ContactAdmin": "您未被允許使用 AdminUI, 請連絡您的系統管理人員",
     "ResourceNotFound": "未找到資源(resource)",
     "ResourceNotFoundDescription": "未找到此項資源(resource)",
-    "RssUnavalible": "Rss不可用"
+    "RssUnavailable": "RSS不可用",
+    "ValidateImportError": {
+      "ImportNull": "正在嘗試匯入 json 時發生錯誤",
+      "WrongVersion": "抱歉，匯出檔案來自 AdminUI ({0}) 不相容的版本。僅支援 2.6.0 - {1}版本",
+      "ValidateImport": "抱歉，正在匯入時發生問題。請再試一次"
+    }
   },
   "Index": {
     "Title": "儀表板",
+    "LicensedTo": "授權給",
+    "LicenseType": "授權類型",
     "Users": {
       "Title": "使用者管理",
       "Body": "輕鬆管理IdentityServer使用者."
@@ -244,11 +255,11 @@
     "FirstName": "名字",
     "LastName": "姓氏",
     "Details": {
-      "AdditionalDetailsBody": "設定與使用者相關的額外資訊. 若要建立新的類型,請前往宣告(Claim)類型之功能頁面."
+      "AdditionalDetailsBody": "設定與使用者相關的額外資訊. 若要建立新的類型,請前往宣告(Claim)類型之功能頁面.",
+      "AddClaim": "新增請求"
     },
     "CopyValue": "從明細中複製值",
     "NoUsersFound": "找不到使用者",
-    "AddAnotherHelp": "選擇 <strong>連續新增使用者</strong> 在新增使用者之後會保留這個對話框，您可以繼續新增下一位使用者。",
     "AddAnother": "連續新增使用者",
     "CloseBox": "選擇 <strong>新增</strong> 將關閉此對話框，並回到使用者列表。",
     "Password": {
@@ -263,7 +274,8 @@
     },
     "Delete": {
       "DeletedUser": "使用者已刪除.",
-      "AuditingPurposes": "使用者資訊仍會保留以方便稽核"
+      "AuditingPurposes": "使用者資訊仍會保留以方便稽核",
+      "Confirmation": "{0}已刪除。使用者資料仍可存取審核"
     },
     "First page of results": "第一頁",
     "Previous page of results": "前一頁",
@@ -276,10 +288,10 @@
       "RevokeApp": "撤消應用程式",
       "RevokeAll": "是, 全部撤消",
       "RevokeConfirm": "請確認，此帳號上 <u>所有</u> 應用程式之存取權限即將被撤銷. <br />您亦可透過點選單一應用程式之彈出視窗來逐一撤銷.",
-      "Accessible": "透過應用程式可存取之Resources/Scopes:",
       "RevokeUserConfirm": "此將撤消存取權限",
       "ForUser": "給使用者",
-      "RevokeYes": "是, 撤消應用程式"
+      "RevokeYes": "是, 撤消應用程式",
+      "Accessible": "應用程式可存取的資源/範圍："
     }
   },
   "UserDetails": {
@@ -368,14 +380,13 @@
     "Required": "必填之宣告",
     "FutureUsers": "未來新增使用者時必須有值",
     "AddAnother": "選擇 <strong>新增另一項宣告</strong> 在提交後繼續保留此對話框，您可以繼續新增另一項宣告.",
-    "AddAnotherHelp": "<strong>新增</strong> 將關閉對話框並將返回宣告類型列表.",
-    "AddAnotherClaimType": "提交後新增另一項宣告類型",
     "DeleteConfirmation": "你是否要刪除此宣告類型",
     "Search": "搜尋宣告名稱...",
     "UserEditable": "如果通過對外公開的顯露，則使用者可以編輯這些值",
     "AssignUnassignUnauthorized": "您沒有指派或移除指派此宣告(Claim)所需之權限",
     "NoClaimsFound": "未找到任何宣告",
-    "Add": "添加声明类型"
+    "Add": "添加声明类型",
+    "AddAnotherClaimType": "送出後新增其他聲明類型"
   },
   "Resources": {
     "ResourceID": "資源ID",
@@ -436,7 +447,160 @@
   },
   "Clients": {
     "Export": {
-      "ExportAll": "匯出全部"
+      "ExportAll": "匯出全部",
+      "ExportAllClients": "匯出所有客戶",
+      "ExportSelected": "匯出所選",
+      "ExportSelectedClients": "匯出選定的客戶"
+    },
+    "Import": {
+      "Import": "匯入",
+      "ImportClients": "匯入客戶",
+      "Wizard": {
+        "Setup": {
+          "Title": "匯入客戶",
+          "Summary": "從另一個AdminUI解決方案匯入客戶及資源。",
+          "ChooseFile": "選擇檔案",
+          "ChooseFileHelp": "從另一個AdminUI解決方案匯出的JSON文件",
+          "CheckImportPleaseWait": "驗證中，請稍候",
+          "Errors": {
+            "Default": "很抱歉，匯入時出現問題。請再試一次。",
+            "InvalidFile": "抱歉，讀取文件時出現問題。請再試一次。",
+            "InvalidData": "很抱歉，文件資料無效。請檢視並再試一次。",
+            "CompleteImportFailed": "很抱歉，匯入期間出現錯誤。請再試一次。"
+          }
+        },
+        "Secrets": {
+          "Title": "密碼",
+          "ChooseWhatToDo": "請選擇要如何處理先前建立的機密。",
+          "DoNotSet": "不要設定密碼",
+          "Generate": "製作隨機密碼",
+          "ManuallyCreate": "手動建立密碼",
+          "RememberMyDecision": "記住設定並套用到所有目前的密碼",
+          "UseExistingSecrets": "使用現有的密碼",
+          "Note": {
+            "Note": "匯入後即可下載新密碼",
+            "Title": "備註"
+          },
+          "ProtectedResource": "受保護的資源",
+          "IdentityResource": "身份資源",
+          "Client": "客戶",
+          "ClaimType": "宣告類型"
+        },
+        "Certificates": {
+          "Title": "憑證",
+          "ChooseWhatToDo": "請選擇如何處理先前連結的憑證。",
+          "DoNotSet": "不新增憑證",
+          "UploadNewCertificates": "上載新憑證",
+          "RememberMyDecision": "記住設定並套用到所有目前的憑證",
+          "UseExistingCertificates": "使用現有的憑證",
+          "AddCertificate": "新增憑證",
+          "FailedToParseCertificate": "解析憑證失敗",
+          "TryAgainDifferentFile": "請使用其他憑證再試一次",
+          "DuplicateCertificate": "憑證已新增",
+          "InvalidCertificate": "憑證重複"
+        },
+        "Warning": {
+          "Title": "警告",
+          "Text1": "客戶尚未匯入完成。",
+          "Text2": "確定要離開嗎?",
+          "DownloadSecrets": "新密碼已製作。",
+          "Yes": "是",
+          "No": "否"
+        },
+        "Summary": {
+          "LinkedClients": "哪些客戶與這資源相依？",
+          "EffectsImportClients": "匯入",
+          "EffectsExistingClients": "現有的",
+          "NewClients": "新客戶",
+          "ExistingClients": "現有客戶",
+          "ClientsHelp": "匯入資源會影響的客戶數量",
+          "DependencyConflicts": "相依",
+          "Title": {
+            "All": "匯入摘要",
+            "Client": "客戶總結",
+            "Resource": "資源彙整",
+            "ClaimType": "宣告類型摘要",
+            "Final": "最終匯入摘要"
+          },
+          "Name": {
+            "Client": "客戶名稱",
+            "Resource": "資源名稱",
+            "ClaimType": "宣告類型"
+          },
+          "Identifier": {
+            "Client": "客戶 ID",
+            "Resource": "資源ID",
+            "ClaimType": "宣告類型"
+          },
+          "Type": {
+            "Client": "客戶類型",
+            "Resource": "資源類型",
+            "ClaimType": "數值類型"
+          },
+          "Intro": {
+            "Client": "請選擇要匯入的客戶。",
+            "Resource": "匯入期間將更新以下資源。",
+            "ClaimType": "匯入期間將更新以下宣告類型。"
+          },
+          "ClientName": "客戶名稱",
+          "ClientId": "客戶 ID",
+          "ClientType": "客戶類型",
+          "Change": "變更",
+          "Changes": "變更",
+          "Conflicts": {
+            "ReviewChanges": "檢視變更",
+            "ConflictedServiceProvider": "服務廠商衝突",
+            "ConflictedRelyingParty": "信賴憑證者衝突",
+            "ConflictedScopes": "衝突範圍",
+            "ConfirmationText": {
+              "Client": "匯入這個客戶會變更以下內容。請問要接受變更嗎？",
+              "Resource": "匯入這個資源會變更以下內容。請問要接受變更嗎？",
+              "ClaimType": "匯入這個宣告會變更以下內容。請問要接受變更嗎？"
+            },
+            "Property": "屬性",
+            "Key": "金鑰",
+            "OldValue": "目前的數值",
+            "NewValue": "新的數值",
+            "NoValue": "沒有數值",
+            "Deleted": "已刪除",
+            "Accept": "接受",
+            "Decline": "拒絕",
+            "Cancel": "取消",
+            "Confirmation": {
+              "AreYouSure": "確定不要匯入變更嗎",
+              "Client": "這個客戶將不會匯入",
+              "Resource": "所有連結的客戶都從這次匯入中刪除"
+            }
+          },
+          "ResourceTypes": {
+            "Unknown": "未知",
+            "ServerSide": "網頁應用程式",
+            "Machine": "機器",
+            "Native": "原生",
+            "Device": "載具",
+            "Saml": "服務廠商",
+            "WsFed": "WS-Fed信賴憑證者",
+            "BrowserBased": "單一頁面",
+            "LegacyClientSide": "單頁應用程式（舊版）",
+            "Identity": "身分識別",
+            "Protected": "受保護",
+            "String": "字串",
+            "Int": "Int",
+            "DateTime": "日期時間",
+            "Boolean": "布林值"
+          },
+          "FinalSummary": "檢視要匯入的客戶和資源。重複項將不會匯入。"
+        },
+        "CompleteImport": {
+          "ImportInProgress": "匯入中...",
+          "ImportComplete": "匯入完成",
+          "ImportSuccess": "選定的客戶及有關資源已成功匯入",
+          "ImportSuccessMultiple": "{0}個客戶及有關資源已成功匯入",
+          "ImportFailure": "匯入失敗",
+          "FinishImport": "完成",
+          "DownloadSecrets": "下載密碼"
+        }
+      }
     },
     "ID": "用戶端ID",
     "Title": "用戶端",
@@ -501,16 +665,16 @@
       "Heading": "宣告對應",
       "ClaimType": "宣告類型",
       "AssertionType": "判斷提示類型",
-      "UseDefaults": "清除全部宣告對應並使用預設值",
       "None": "找不到任何宣告對應",
-      "ClearAll": "全部清除",
-      "ClearAllWarning": "這樣會清除全部宣告對應",
       "AssertionTypeHeading": "宣告類型對應",
       "AssertionTypeHeadingHelp": "新增宣告類型對應，或新增您自己的",
       "AssertionTypeAlias": "別名",
       "AssertionTypeValue": "數值",
       "AssertionTypeSearch": "搜尋知名的宣告類型對應",
       "ExisitingMappingWarning": "宣告類型已對應：",
+      "UseDefaults": "刪除宣告對應並使用預設",
+      "DeleteAll": "全部刪除",
+      "DeleteAllWarning": "這將刪除所有目前的宣告對應。確定嗎？",
       "AssertionTypeValues": {
         "Actor": "動作項目",
         "Anonymous": "匿名",
@@ -582,12 +746,12 @@
       "None": "No properties found"
     },
     "RequireConsent": {
-      "Title": "需要使用者同意?",
+      "Title": "需要使用者同意",
       "Help": "指定是否需要使用者同意畫面",
       "Summary": "Require Consent"
     },
     "AllowRememberConsent": {
-      "Title": "記住使用者同意?",
+      "Title": "記住使用者同意",
       "Help": "指定是否記住使用者同意畫面記錄"
     },
     "RequireSecret": {
@@ -668,6 +832,11 @@
       "Title": "設定用戶端應用程式",
       "Description": "從清單中選擇應用程式類型，深入了解。<br />然後按一下 \"開始\"開始安裝程式。"
     },
+    "WizardTypes": {
+      "WebAppSelection": "選擇支援的流程",
+      "WebApplication": "混合式流程及用戶端驗證",
+      "PKCEWebApplication": "授權碼流程+PKCE"
+    },
     "MachineToMachine": {
       "Setup": "設定伺服器應用程式",
       "Title": "伺服器",
@@ -696,14 +865,24 @@
       "Created": "Web 應用程式已建立",
       "Title": "Web應用程式",
       "Summary": "混合式流程及用戶端驗證",
-      "Description": "伺服器端應用程式可在基礎結構中運作。<br />以上應用程式無法保密，卻可以使用重新整理權杖。<br/>會透過瀏覽器傳送權杖，就能讓使用者看見。"
+      "Description": "伺服器端應用程式可在基礎結構中運作。<br />以上應用程式無法保密，卻可以使用重新整理權杖。<br/>會透過瀏覽器傳送權杖，就能讓使用者看見。",
+      "Secrets": "輸入部分秘密（選填）"
+    },
+    "PKCEWebApp": {
+      "Setup": "設定網路應用程式",
+      "Title": "網路應用程式",
+      "Summary": "授權碼流程+PKCE",
+      "Description": "伺服器端應用程式可在基礎結構中運作。<br />以上應用程式無法保密，卻可以使用重新整理權杖。<br/>會透過瀏覽器傳送權杖，就能讓使用者看見。",
+      "Created": "已建立網路應用程式",
+      "Secrets": "輸入部分秘密（選填）"
     },
     "NativeApp": {
       "Setup": "設定原生應用程式",
       "Title": "原生",
       "Created": "原生應用程式已建立",
       "Summary": "授權碼流程+PKCE",
-      "Description": "桌面或行動應用程式可在使用者裝置中運作。<br />以上應用程式無法保密，卻可以使用重新整理權杖。<br />權杖可見度與瀏覽器和重新導向URI選擇有關。"
+      "Description": "桌面或行動應用程式可在使用者裝置中運作。<br />以上應用程式無法保密，卻可以使用重新整理權杖。<br />權杖可見度與瀏覽器和重新導向URI選擇有關。",
+      "Secrets": "輸入部分秘密（選填）"
     },
     "DeviceFlow": {
       "Setup": "設定裝置",
@@ -751,7 +930,9 @@
       "DuplicateCertMessage": "此憑證已存在於服務提供者中",
       "IndexInvalidType": "索引應為數字",
       "ReplaceCertificate": "替換憑證",
-      "CannotDeleteResponseCert": "Cannot delete encryption certificate while encrypt assertions is true"
+      "CannotDeleteResponseCert": "Cannot delete encryption certificate while encrypt assertions is true",
+      "AllowIdpInitiatedSso": "允許 IdP 初始化的單一登入",
+      "AllowIdpInitiatedSsoHelp": "透過識別提供者，允許單一登入初始化（不建議）"
     },
     "WsFed": {
       "Setup": "設定WS-同盟信賴憑證者",
@@ -766,7 +947,8 @@
       "RedirectAfterLogout": "登出後將重導至此URL",
       "CORSDomain": "此網域會造成跨網域請求",
       "NoURLS": "不可缺少重導之urls",
-      "URLAddUnsuccessful": "增加URL時發生問題"
+      "URLAddUnsuccessful": "增加URL時發生問題",
+      "None": "找不到應用程式URL"
     },
     "Selected": "(已選取)",
     "Endpoint": "端點",
@@ -783,7 +965,7 @@
   "Secret Picker": {
     "Set Expiration Button": "(非必填)過期時間設定",
     "HiddenValue": "值已被隱藏",
-    "LastWarning": "警告，新增後您將無法存取此密鑰的值。"
+    "LastWarning": "警告：建立內容之後，就無法存取秘密值"
   },
   "Notifications": {
     "Success": "成功",
@@ -802,9 +984,6 @@
     "AllAppsRevoked": "所有應用程式已成功撤消",
     "AppRevoked": "應用程式已成功撤消",
     "UnsavedChanges": "您尚未儲存變更",
-    "ContinueWithoutSaving": "不儲存後繼續?",
-    "AbandonChanges": "Yes, 放棄變更",
-    "DontAbandon": "No, 繼續",
     "SomethingWrong": "發生一些問題",
     "CheckLogs": "請檢查日誌.",
     "Apology": "由於系統崩潰，我們將回到主頁面",
@@ -812,9 +991,16 @@
     "Reset Success Message": "密碼重設成功",
     "Reset Error Message": "使用者密碼重設發生問題",
     "Error": "錯誤",
-    "Unauthorized": "未授權"
+    "Unauthorized": "未授權",
+    "UnsavedChangesTitle": "未儲存的變更",
+    "ContinueWithoutSaving": "確定不儲存就離開瀏覽嗎？",
+    "DiscardChanges": "捨棄變更",
+    "StayHere": "停留在本頁",
+    "Notice": "注意",
+    "DontForgetToSave": "別忘了儲存變更"
   },
   "Settings": {
+    "Title": "設定/存取原則",
     "AccessPolicy": {
       "ClaimType": "宣告類型",
       "ClaimValue": "宣告值",
@@ -829,7 +1015,9 @@
       "InvalidPermission": "未選擇權限",
       "AccessPolicyUpdated": "存取原則已變更",
       "AccessPolicyConflict": "衝突：存取原則已存在",
-      "Title": "設定/存取原則"
+      "Title": "設定/存取原則",
+      "Add": "新增原則",
+      "NewPolicy": "新存取原則"
     }
   },
   "LandingPage": {
@@ -838,7 +1026,9 @@
     "IntroParagraph1": "IdentityServer4 領先的使用者與組態管理工具",
     "IntroParagraph2": "如需授權諮詢,請聯繫:",
     "Documentation": "說明文件(英文)",
-    "APIDocs": "API 文件(Swagger)"
+    "APIDocs": "API 文件(Swagger)",
+    "IdentityServerError": "無法連線IdentityServer",
+    "APIError": "無法連線API"
   },
   "Permission": {
     "UserManager": "使用者管理員",
@@ -859,9 +1049,7 @@
     "Description": "描述",
     "Succeeded": "成功",
     "FromDate": "起始日期",
-    "FromDateWarning": "起始日期不能在將來",
     "ToDate": "結束日期",
-    "ToDateBehindWarning": "您的起始日期不能在結束日期之後",
     "SetDateToday": "將日期設定為今天",
     "Today": "今天",
     "SetDateLast24Hours": "設定最近24小時的日期",
@@ -879,7 +1067,6 @@
     "RemoveFilter": "刪除篩選器",
     "Showing": "顯示",
     "ExecuteAndDownload": "執行並下載",
-    "DownloadResults": "下載",
     "ExecuteAndDisplay": "更新結果",
     "UpdateWarning": "按一下「更新結果」以查看您的更改",
     "Reset": "重設",
@@ -887,7 +1074,12 @@
     "First page of results": "結果第一頁",
     "Previous page of results": "結果的上一頁",
     "Next page of results": "結果的下一頁",
-    "Last page of results": "結果的最後一頁"
+    "Last page of results": "結果的最後一頁",
+    "DownloadResults": "匯出",
+    "FromDateWarning": "開始日期不能是未來的時間",
+    "ToDateBehindWarning": "結束日期不能早於開始日期",
+    "ActiveFilters": "使用中的篩選",
+    "AddFilterTerm": "新增篩選條件"
   },
   "Resource": {
     "user": "使用者",
@@ -896,8 +1088,6 @@
     "client": "用戶端",
     "identityResource": "識別資源",
     "protectedResource": "受保護資源",
-    "serviceProvider": "服務提供者",
-    "relyingParty": "信賴憑證者",
     "serviceProvider": "服務提供者",
     "relyingParty": "信賴憑證者"
   }

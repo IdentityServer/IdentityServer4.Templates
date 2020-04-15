@@ -6,7 +6,6 @@
       "Confirm": "確認移除",
       "No": "否，不要移除"
     },
-    "AddandConfigure": "添加配置",
     "Reset": "重置",
     "SaveAll": "保存全部",
     "Custom": "自定义",
@@ -114,6 +113,10 @@
     "Unlimited": "无限",
     "Audits": "审计",
     "CommunityPolicyNotice": "这是访问策略屏幕的预览。在社区版中已删除了访问策略功能。您可以使用该屏幕，但这些策略都不会生效。如需了解有关完整AdminUI产品的更多信息，请单击下面的链接",
+    "SaveAndConfigure": "保存并配置",
+    "SaveAndAdd": "保存并添加另一个",
+    "LoadingPleaseWait": "加载中，请稍候...",
+    "AddAndAdd": "添加并添加另一个",
     "Delete": {
       "Title": "删除",
       "TitleUndo": "復原",
@@ -124,6 +127,7 @@
       "AreYouSure": "您确定要删除值吗？",
       "AreYouSureSimple": "您确定要删除",
       "AreYouSureSimple2": "您确定要删除吗？",
+      "AreYouSureSimple3": "\"您确定要删除这个吗?",
       "Warning": "<strong>注意:</strong> 此操作无法撤消.",
       "No": "不，不要删除"
     },
@@ -140,7 +144,7 @@
       "AreYouSureSimple": "你确定要重设密码吗",
       "Title": "重置密码",
       "HowToSetupTitle": "設定使用者密碼重置Webhook",
-      "HowToSetup": "需要首先設定密碼重置Webhook才能使用此功能，請存取AdminUI Webhook文件。"
+      "HowToSetup": "必须先配置密码重置Webhook，然后才能使用此功能。阅读AdminUI Webhook文档以获取更多信息。"
     },
     "UserEditable": "用户可编辑",
     "Key": "键值",
@@ -207,10 +211,17 @@
     "ContactAdmin": "您没有使用AdminUI所需的权限,请联系管理员",
     "ResourceNotFound": "找不到资源",
     "ResourceNotFoundDescription": "无法找到此资源",
-    "RssUnavalible": "Rss不可用"
+    "RssUnavailable": "RSS不可用",
+    "ValidateImportError": {
+      "ImportNull": "尝试读取导入json时发生错误",
+      "WrongVersion": "抱歉，导出文件来自不兼容版本的AdminUI（{0}）。仅支持版本2.6.0 - {1}",
+      "ValidateImport": "抱歉，导入时出现问题。请重试"
+    }
   },
   "Index": {
     "Title": "仪表板",
+    "LicensedTo": "授权给",
+    "LicenseType": "许可证类型",
     "Users": {
       "Title": "用户管理",
       "Body": "轻鬆管理IdentityServer用户."
@@ -244,11 +255,11 @@
     "FirstName": "名字",
     "LastName": "姓氏",
     "Details": {
-      "AdditionalDetailsBody": "配置与用户有关的选择性明细. 要建立新的类型,请前往声明类型的用户介面."
+      "AdditionalDetailsBody": "配置与用户有关的选择性明细. 要建立新的类型,请前往声明类型的用户介面.",
+      "AddClaim": "添加声明"
     },
     "CopyValue": "从明细中复製值",
     "NoUsersFound": "找不到用户",
-    "AddAnotherHelp": "选择 <strong>提交后新增另一个用户</strong> 在新增用户之后会打开这个对话框，所以你可以很轻易的新增另一个。",
     "AddAnother": "提交后新增另一个用户",
     "CloseBox": "<strong>新增</strong> 将关闭此框并将您带回用户列表。",
     "Password": {
@@ -263,7 +274,8 @@
     },
     "Delete": {
       "DeletedUser": "用户已被删除.",
-      "AuditingPurposes": "用户资讯仍可用于审计作用"
+      "AuditingPurposes": "用户资讯仍可用于审计作用",
+      "Confirmation": "{0}已被删除。仍可出于审核目的访问用户数据"
     },
     "First page of results": "第一页",
     "Previous page of results": "前一页",
@@ -276,10 +288,10 @@
       "RevokeApp": "撤消应用程序",
       "RevokeAll": "是, 全部撤消",
       "RevokeConfirm": "确认将撤消此帐号上 <u>所有</u> 应用程序的访问权限. 您可以秀过弹出讯息删除单一应用程序.",
-      "Accessible": "Resources/Scopes 透过应用程序访问:",
       "RevokeUserConfirm": "此将撤消访问权限",
       "ForUser": "给用户",
-      "RevokeYes": "是, 撤消应用程序"
+      "RevokeYes": "是, 撤消应用程序",
+      "Accessible": "应用程序可访问的资源/范围："
     }
   },
   "UserDetails": {
@@ -369,13 +381,12 @@
     "Required": "必要的声明",
     "FutureUsers": "必须有值已建立未来的用户客户",
     "AddAnother": "选择 <strong>新增另一个</strong> 在提交后打开此对话框，你可以很轻易的新增另一个.",
-    "AddAnotherHelp": "<strong>新增</strong> 将关闭对话框并将您带回声明类型列表.",
-    "AddAnotherClaimType": "提交后新增另一个声明类型",
     "DeleteConfirmation": "你是否要删除此声明类型",
     "Search": "搜寻一种声明类型...",
     "UserEditable": "如果通过对外公开的露出，用户可以编辑这些值",
     "AssignUnassignUnauthorized": "您没有分配或取消分配此声明所需的权限",
-    "NoClaimsFound": "未找到任何声明"
+    "NoClaimsFound": "未找到任何声明",
+    "AddAnotherClaimType": "提交后添加其他声明类型"
   },
   "Resources": {
     "AddResource": "添加资源",
@@ -431,11 +442,165 @@
     "AddScope": "新增范围",
     "ProtectedResource": "受保护的资源?",
     "ClientAccess": "选择此客户端可以访问之受保护资源",
-    "NoneFound": "找不到受保护的资源"
+    "NoneFound": "找不到受保护的资源",
+    "Secrets": "输入一些自检密钥（可选）"
   },
   "Clients": {
     "Export": {
-      "ExportAll": "匯出全部"
+      "ExportAll": "匯出全部",
+      "ExportAllClients": "导出所有客户端",
+      "ExportSelected": "导出已选择",
+      "ExportSelectedClients": "导出已选择的客户端"
+    },
+    "Import": {
+      "Import": "导入",
+      "ImportClients": "导入客户端",
+      "Wizard": {
+        "Setup": {
+          "Title": "导入客户端",
+          "Summary": "从另一个AdminUI解决方案导入客户端及其资源。",
+          "ChooseFile": "选择文件",
+          "ChooseFileHelp": "从另一个AdminUI解决方案导出的JSON文件",
+          "CheckImportPleaseWait": "正在验证文件，请稍候...",
+          "Errors": {
+            "Default": "抱歉，导入时出现问题。请重试。",
+            "InvalidFile": "抱歉，读取文件时出现问题。请重试。",
+            "InvalidData": "抱歉，文件中的数据无效。请检查并再次发送。",
+            "CompleteImportFailed": "抱歉，导入期间出现错误。请重试。"
+          }
+        },
+        "Secrets": {
+          "Title": "秘钥",
+          "ChooseWhatToDo": "选择要如何处理之前创建的密钥。",
+          "DoNotSet": "不设置密钥",
+          "Generate": "生成随机密钥",
+          "ManuallyCreate": "手动创建密钥",
+          "RememberMyDecision": "记住我的决定并应用于所有其余密钥",
+          "UseExistingSecrets": "使用现有密钥",
+          "Note": {
+            "Note": "导入后即可下载新密钥",
+            "Title": "注释"
+          },
+          "ProtectedResource": "受保护的资源",
+          "IdentityResource": "身份资源",
+          "Client": "客户端",
+          "ClaimType": "声明类型"
+        },
+        "Certificates": {
+          "Title": "证书",
+          "ChooseWhatToDo": "选择如何处理之前关联的证书。",
+          "DoNotSet": "不添加证书",
+          "UploadNewCertificates": "上传新证书",
+          "RememberMyDecision": "记住我的决定并应用于所有其余证书",
+          "UseExistingCertificates": "使用现有证书",
+          "AddCertificate": "添加证书",
+          "FailedToParseCertificate": "解析证书失败",
+          "TryAgainDifferentFile": "请使用其他证书再试一次",
+          "DuplicateCertificate": "证书已被添加",
+          "InvalidCertificate": "复制证书"
+        },
+        "Warning": {
+          "Title": "警告",
+          "Text1": "您尚未完成客户端导入。",
+          "Text2": "您确定要退出吗?",
+          "DownloadSecrets": "您已经产生了新密钥。",
+          "Yes": "是",
+          "No": "否"
+        },
+        "Summary": {
+          "LinkedClients": "哪些客户端依赖此资源？",
+          "EffectsImportClients": "导入中",
+          "EffectsExistingClients": "现有",
+          "NewClients": "新客户端",
+          "ExistingClients": "现有客户端",
+          "ClientsHelp": "受导入此资源影响的客户端数量",
+          "DependencyConflicts": "依存关系",
+          "Title": {
+            "All": "导入摘要",
+            "Client": "客户端摘要",
+            "Resource": "资源摘要",
+            "ClaimType": "声明类型摘要",
+            "Final": "完成导入摘要"
+          },
+          "Name": {
+            "Client": "客户端名称",
+            "Resource": "资源名称",
+            "ClaimType": "声明类型名称"
+          },
+          "Identifier": {
+            "Client": "客户端ID",
+            "Resource": "资源ID",
+            "ClaimType": "声明类型名称"
+          },
+          "Type": {
+            "Client": "客户端类型",
+            "Resource": "资源类型",
+            "ClaimType": "值类型"
+          },
+          "Intro": {
+            "Client": "选择您要导入的客户端。",
+            "Resource": "以下资源将在导入过程中更新。",
+            "ClaimType": "以下声明类型导入将在过程中更新。"
+          },
+          "ClientName": "客户端名称",
+          "ClientId": "客户端ID",
+          "ClientType": "客户端类型",
+          "Change": "更改",
+          "Changes": "更改",
+          "Conflicts": {
+            "ReviewChanges": "查看更改",
+            "ConflictedServiceProvider": "服务提供商冲突",
+            "ConflictedRelyingParty": "依赖方冲突",
+            "ConflictedScopes": "已冲突的范围",
+            "ConfirmationText": {
+              "Client": "导入此客户端时将进行以下更改。您接受此更改吗？",
+              "Resource": "导入此资源时将进行以下更改。您接受此更改吗？",
+              "ClaimType": "导入此声明类型时，将进行以下更改。您接受此更改吗？"
+            },
+            "Property": "属性",
+            "Key": "键",
+            "OldValue": "当前值",
+            "NewValue": "新值",
+            "NoValue": "无值",
+            "Deleted": "已删除",
+            "Accept": "接受",
+            "Decline": "拒绝",
+            "Cancel": "取消",
+            "Confirmation": {
+              "AreYouSure": "您是否确认不想将更改导入至",
+              "Client": "此客户端不会被导入",
+              "Resource": "将从此导入中删除任何关联的客户端"
+            }
+          },
+          "ResourceTypes": {
+            "Unknown": "未知",
+            "ServerSide": "Web应用",
+            "Machine": "机器",
+            "Native": "原生",
+            "Device": "设备",
+            "Saml": "SAML服务提供者",
+            "WsFed": "WS-Fed依赖方",
+            "BrowserBased": "单页面应用",
+            "LegacyClientSide": "单页面应用（旧版）",
+            "Identity": "身份",
+            "Protected": "受保护",
+            "String": "字符串",
+            "Int": "整型",
+            "DateTime": "日期时间",
+            "Boolean": "布尔值"
+          },
+          "FinalSummary": "查看将要导入的客户端和资源。将不会重复导入。"
+        },
+        "CompleteImport": {
+          "ImportInProgress": "正在导入...",
+          "ImportComplete": "导入完成",
+          "ImportSuccess": "您选择的客户端及其相关资源已被成功导入",
+          "ImportSuccessMultiple": "已成功导入{0}个客户端及其相关资源",
+          "ImportFailure": "导入失败",
+          "FinishImport": "完成",
+          "DownloadSecrets": "下载密钥"
+        }
+      }
     },
     "EntityId": "实体ID",
     "Realm": "领域",
@@ -500,16 +665,16 @@
       "Heading": "声明映射",
       "ClaimType": "声明类型",
       "AssertionType": "断言类型",
-      "UseDefaults": "清除所有声明映射并使用默认值",
       "None": "未找到任何声明映射",
-      "ClearAll": "清除全部",
-      "ClearAllWarning": "这将清除所有当前的声明映射",
       "AssertionTypeHeading": "声明类型映射",
       "AssertionTypeHeadingHelp": "添加一个已知声明类型映射，或添加您自己的声明",
       "AssertionTypeAlias": "别名",
       "AssertionTypeValue": "值",
       "AssertionTypeSearch": "搜索已知声明类型映射",
       "ExisitingMappingWarning": "声明类型已映射：",
+      "UseDefaults": "删除声明映射并使用默认值",
+      "DeleteAll": "全部删除",
+      "DeleteAllWarning": "这将删除所有当前的声明映射。您确定要删除此字段吗？",
       "AssertionTypeValues": {
         "Actor": "操作者",
         "Anonymous": "匿名",
@@ -581,12 +746,12 @@
       "None": "找不到任何属性"
     },
     "RequireConsent": {
-      "Title": "需要同意?",
+      "Title": "需要同意",
       "Help": "指定是否需要同意画面",
       "Summary": "需要同意"
     },
     "AllowRememberConsent": {
-      "Title": "记住同意?",
+      "Title": "记住同意",
       "Help": "指定是否在同意画面记录后记住"
     },
     "RequireSecret": {
@@ -629,43 +794,48 @@
       "UserSSOLifetimeTooltip": "身份验证质询之间的时间量。默认为IdentityServer会话生存期",
       "UserCode": "用户代码生成器类型",
       "DeviceCodeLifetime": "设备流请求生存期",
-      "DurationTitle": "计算生存期时长"
-    },
-    "Durations": {
-      "Seconds": "秒",
-      "SecondsShort": "s",
-      "Second": "秒",
-      "SecondShort": "s",
-      "Minutes": "分",
-      "MinutesShort": "mins",
-      "Minute": "分",
-      "MinuteShort": "min",
-      "Hours": "小时",
-      "HoursShort": "hrs",
-      "Hour": "小时",
-      "HourShort": "hr",
-      "Days": "天",
-      "DaysShort": "d",
-      "Day": "天",
-      "DayShort": "d",
-      "Weeks": "星期",
-      "WeeksShort": "wk",
-      "Week": "星期",
-      "WeekShort": "wk",
-      "Months": "月",
-      "MonthsShort": "mos",
-      "Month": "月",
-      "MonthShort": "mo",
-      "Years": "年",
-      "YearsShort": "yrs",
-      "Year": "年",
-      "YearShort": "yr",
-      "Unlimited": "无限",
-      "UnlimitedShort": "∞"
+      "DurationTitle": "计算生存期时长",
+      "Durations": {
+        "Seconds": "秒",
+        "SecondsShort": "s",
+        "Second": "秒",
+        "SecondShort": "s",
+        "Minutes": "分",
+        "MinutesShort": "mins",
+        "Minute": "分",
+        "MinuteShort": "min",
+        "Hours": "小时",
+        "HoursShort": "hrs",
+        "Hour": "小时",
+        "HourShort": "hr",
+        "Days": "天",
+        "DaysShort": "d",
+        "Day": "天",
+        "DayShort": "d",
+        "Weeks": "星期",
+        "WeeksShort": "wk",
+        "Week": "星期",
+        "WeekShort": "wk",
+        "Months": "月",
+        "MonthsShort": "mos",
+        "Month": "月",
+        "MonthShort": "mo",
+        "Years": "年",
+        "YearsShort": "yrs",
+        "Year": "年",
+        "YearShort": "yr",
+        "Unlimited": "无限",
+        "UnlimitedShort": "∞"
+      }
     },
     "Home": {
       "Title": "设置客户端应用程序",
       "Description": "从列表中选择一种应用程序类型以了解更多信息。<br />然后单击“开始”以开始设置。"
+    },
+    "WizardTypes": {
+      "WebAppSelection": "选择受支持的流程",
+      "WebApplication": "具有客户端验证的混合流程",
+      "PKCEWebApplication": "授权代码流程 + PKCE"
     },
     "MachineToMachine": {
       "Setup": "设置机器应用程序",
@@ -695,14 +865,24 @@
       "Created": "Web 应用程序已建立",
       "Title": "Web应用",
       "Summary": "混合流与客户端身份验证",
-      "Description": "在您的基础架构上运行的服务器端应用程序。<br />可被信任这些应用程序保持密钥以及使用刷新令牌。<br/>令牌将被发送到后端服务器，并且对用户不可见。"
+      "Description": "在您的基础架构上运行的服务器端应用程序。<br />可被信任这些应用程序保持密钥以及使用刷新令牌。<br/>令牌将被发送到后端服务器，并且对用户不可见。",
+      "Secrets": "输入一些密钥（可选）"
+    },
+    "PKCEWebApp": {
+      "Setup": "设置Web应用程序",
+      "Title": "Web应用",
+      "Summary": "授权代码流程 + PKCE",
+      "Description": "在您的基础架构上运行的服务器端应用程序。<br />可信任这些应用程序保留密钥和使用刷新令牌。<br/>令牌将被发送到后端服务器，且将对用户不可见。",
+      "Created": "Web应用程序已创建",
+      "Secrets": "输入一些密钥（可选）"
     },
     "NativeApp": {
       "Setup": "设置原生应用程序",
       "Title": "原生",
       "Created": "原生应用程序已建立",
       "Summary": "授权代码流 + PKCE",
-      "Description": "在用户设备上运行的桌面或移动应用程序。<br />不可信任这些应用程序保持密钥，但可以使用刷新令牌。<br />令牌可见性取决于浏览器和重定向URI选择。"
+      "Description": "在用户设备上运行的桌面或移动应用程序。<br />不可信任这些应用程序保持密钥，但可以使用刷新令牌。<br />令牌可见性取决于浏览器和重定向URI选择。",
+      "Secrets": "输入一些密钥（可选）"
     },
     "DeviceFlow": {
       "Setup": "设置设备",
@@ -750,7 +930,9 @@
       "DuplicateCertMessage": "此证书已存在于此服务提供者上",
       "IndexInvalidType": "索引应该是一个数字",
       "ReplaceCertificate": "替换证书",
-      "CannotDeleteResponseCert": "加密断言为真时无法删除加密证书"
+      "CannotDeleteResponseCert": "加密断言为真时无法删除加密证书",
+      "AllowIdpInitiatedSso": "允许由IdP初始化的SSO",
+      "AllowIdpInitiatedSsoHelp": "允许您的身份提供者发起单点登录（不建议）"
     },
     "WsFed": {
       "Setup": "设置WS联合身份验证依赖方",
@@ -765,7 +947,8 @@
       "RedirectAfterLogout": "登出后可重导至此URL",
       "CORSDomain": "此网载会造成跨域请求",
       "NoURLS": "不可缺少重导之urls",
-      "URLAddUnsuccessful": "增加URL时出现问题"
+      "URLAddUnsuccessful": "增加URL时出现问题",
+      "None": "找不到应用程序URL"
     },
     "Selected": "（已选择）",
     "Endpoint": "端点",
@@ -782,7 +965,7 @@
   "Secret Picker": {
     "Set Expiration Button": "设置选择性逾期",
     "HiddenValue": "值已被隐藏",
-    "LastWarning": "警告，添加后您将无法访问此密钥的值。"
+    "LastWarning": "警告：创建密钥后，您将无法访问它们的值"
   },
   "Notifications": {
     "Success": "成功",
@@ -801,9 +984,6 @@
     "AllAppsRevoked": "所有应用程序已成功撤消",
     "AppRevoked": "应用程序已成功撤消",
     "UnsavedChanges": "您未储存变更",
-    "ContinueWithoutSaving": "不储存后继续?",
-    "AbandonChanges": "是, 放弃变更",
-    "DontAbandon": "不, 继续",
     "SomethingWrong": "发生一些问题",
     "CheckLogs": "请检查日志.",
     "Apology": "由于系统崩溃，我们将回到主页面",
@@ -811,9 +991,16 @@
     "Reset Success Message": "密码成功重置",
     "Reset Error Message": "用户重置密码发生一些问题",
     "Error": "错误",
-    "Unauthorized": "未经授权"
+    "Unauthorized": "未经授权",
+    "UnsavedChangesTitle": "未保存的更改",
+    "ContinueWithoutSaving": "您是否要离开并放弃保存？",
+    "DiscardChanges": "放弃更改",
+    "StayHere": "留在这里",
+    "Notice": "通知",
+    "DontForgetToSave": "不要忘记保存您的更改"
   },
   "Settings": {
+    "Title": "设置/访问策略",
     "AccessPolicy": {
       "ClaimType": "声明类型",
       "ClaimValue": "声明值",
@@ -828,7 +1015,9 @@
       "InvalidPermission": "未选择权限",
       "AccessPolicyUpdated": "访问策略已更新",
       "AccessPolicyConflict": "冲突: 存在更新的访问策略",
-      "Title": "设置/访问策略"
+      "Title": "设置/访问策略",
+      "Add": "添加策略",
+      "NewPolicy": "新建访问策略"
     }
   },
   "LandingPage": {
@@ -837,7 +1026,9 @@
     "IntroParagraph1": "IdentityServer4的领先用户和配置管理工具。",
     "IntroParagraph2": "如需查询许可证,请联系: ",
     "Documentation": "文档",
-    "APIDocs": "API文档"
+    "APIDocs": "API文档",
+    "IdentityServerError": "无法联系身份服务器",
+    "APIError": "无法联系API"
   },
   "Permission": {
     "UserManager": "用户管理者",
@@ -858,9 +1049,7 @@
     "Description": "描述",
     "Succeeded": "成功",
     "FromDate": "起始日期",
-    "FromDateWarning": "起始日期不能在将来",
     "ToDate": "结束日期",
-    "ToDateBehindWarning": "您的起始日期不能在结束日期之后",
     "SetDateToday": "将日期设置为今天",
     "Today": "今天",
     "SetDateLast24Hours": "设置最近24小时的日期",
@@ -878,7 +1067,6 @@
     "RemoveFilter": "删除过滤器",
     "Showing": "显示",
     "ExecuteAndDownload": "执行并下载",
-    "DownloadResults": "下载",
     "ExecuteAndDisplay": "更新结果",
     "UpdateWarning": "点击“更新结果”以查看您的更改",
     "Reset": "重置",
@@ -886,7 +1074,12 @@
     "First page of results": "结果第一页",
     "Previous page of results": "结果的上一页",
     "Next page of results": "结果的下一页",
-    "Last page of results": "结果的最后一页"
+    "Last page of results": "结果的最后一页",
+    "DownloadResults": "导出",
+    "FromDateWarning": "开始日期不能在将来",
+    "ToDateBehindWarning": "结束日期不能早于开始日期。",
+    "ActiveFilters": "激活筛选器",
+    "AddFilterTerm": "添加筛选器字词"
   },
   "Resource": {
     "user": "用户",
