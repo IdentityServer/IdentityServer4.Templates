@@ -11,7 +11,7 @@
 <body>
 
     <script>
-        var mgr = new Oidc.UserManager();
+        var mgr = new UserManager();
         mgr.signinSilentCallback().catch(error => {
             console.error(error);
         });

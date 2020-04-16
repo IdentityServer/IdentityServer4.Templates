@@ -6,7 +6,6 @@
       "Confirm": "Confirmer la suppression",
       "No": "Non, ne pas supprimer"
     },
-    "AddandConfigure": "Ajouter et configurer",
     "Reset": "Réinitialiser",
     "SaveAll": "Tout enregistrer",
     "Custom": "Personnalisé",
@@ -104,6 +103,10 @@
     "Week": "Semaine",
     "Month": "Mois",
     "Year": "Année",
+    "SaveAndConfigure": "Enregistrer et configurer",
+    "SaveAndAdd": "Enregistrer et ajouter une autre",
+    "LoadingPleaseWait": "Chargement en cours, merci de patienter...",
+    "AddAndAdd": "Ajouter et ajouter un autre",
     "Delete": {
       "Title": "Supprimer",
       "TitleUndo": "Restaurer",
@@ -114,6 +117,7 @@
       "AreYouSure": "Voulez-vous vraiment supprimer la valeur pour",
       "AreYouSureSimple": "Voulez-vous vraiment supprimer",
       "AreYouSureSimple2": "Voulez-vous vraiment supprimer le",
+      "AreYouSureSimple3": "\"Êtes-vous sûr de que vouloir supprimer cet élément ?",
       "Warning": "<strong>Attention :</strong> cette action ne pourra être annulée.",
       "No": "Non, ne pas supprimer"
     },
@@ -130,7 +134,7 @@
       "AreYouSureSimple": "Voulez-vous vraiment réinitialiser le mot de passe pour",
       "Title": "Réinitialiser le mot de passe",
       "HowToSetupTitle": "Configurer Webhook de réinitialisation de mot de passe utilisateur",
-      "HowToSetup": "Le Webhook de réinitialisation de mot de passe doit d'abord être configuré pour pouvoir utiliser cette fonctionnalité. Consultez la documentation de WebHook AdminUI."
+      "HowToSetup": "Le Webhook de réinitialisation du mot de passe doit être configuré avant de pouvoir utiliser cette fonction. Lisez la documentation AdminUI Webhook pour en savoir plus."
     },
     "UserEditable": "Utilisateur éditable",
     "Key": "Clé",
@@ -207,10 +211,17 @@
     "ContactAdmin": "Vous n'avez pas les autorisations requises pour utiliser AdminUI, veuillez contacter un administrateur",
     "ResourceNotFound": "Ressource introuvable",
     "ResourceNotFoundDescription": "Cette ressource est introuvable",
-    "RssUnavalible": "RSS indisponible"
+    "RssUnavailable": "RSS indisponible",
+    "ValidateImportError": {
+      "ImportNull": "Une erreur s'est produite lors de la tentative de lIRE l'importation json",
+      "WrongVersion": "Désolé, le fichier d'export provient d'une version incompatible d'AdminUI ({0}). Seules les versions 2.6.0 - {1} sont prises en charge",
+      "ValidateImport": "Désolé, il y a eu un problème lors de l'importation. Veuillez essayer de nouveau"
+    }
   },
   "Index": {
     "Title": "Tableau de bord",
+    "LicensedTo": "Concédé sous licence à",
+    "LicenseType": "Type de licence",
     "Users": {
       "Title": "Gestion des utilisateurs",
       "Body": "Gérez facilement les utilisateurs d'IdentityServer."
@@ -244,11 +255,11 @@
     "FirstName": "Prénom",
     "LastName": "Nom",
     "Details": {
-      "AdditionalDetailsBody": "Configurez les détails facultatifs concernant l'utilisateur. Pour créer de nouveaux types, consultez la section Types de demandes de l'interface utilisateur."
+      "AdditionalDetailsBody": "Configurez les détails facultatifs concernant l'utilisateur. Pour créer de nouveaux types, consultez la section Types de demandes de l'interface utilisateur.",
+      "AddClaim": "Ajouter la réclamation"
     },
     "CopyValue": "Copier la valeur depuis les Détails",
     "NoUsersFound": "Aucun utilisateur n'a été trouvé",
-    "AddAnotherHelp": "Si vous sélectionnez <strong>Ajouter un autre utilisateur après l'envoi</strong>, cette boîte de dialogue restera ouverte après la création d'un utilisateur et vous pourrez facilement en ajouter un autre.",
     "AddAnother": "Ajouter un autre utilisateur après l'envoi",
     "CloseBox": "Si vous sélectionnez <strong>Ajouter</strong>, cette boîte de dialogue sera fermée et vous retournez à la liste des utilisateurs.",
     "Password": {
@@ -263,7 +274,9 @@
     },
     "Delete": {
       "DeletedUser": "Cet utilisateur a été supprimé.",
-      "AuditingPurposes": "Les données de l'utilisateur restent accessibles à des fins d'audit"
+      "AuditingPurposes": "Les données de l'utilisateur restent accessibles à des fins d'audit",
+      "AddClaim": "Ajouter la réclamation",
+      "Confirmation": "{0} a été supprimé. Les données de l'utilisateur restent accessibles à des fins de vérification ultérieure"
     },
     "Supprimer": {
       "Utilisateur supprimé": "Cet utilisateur a été supprimé.",
@@ -280,10 +293,10 @@
       "RevokeApp": "Révoquer l'application",
       "RevokeAll": "Oui, révoquer tout",
       "RevokeConfirm": "Si vous confirmez, vous révoquerez l'accès <u>pour toutes les</u> applications sur ce compte. Vous pouvez supprimer des applications individuelles depuis la fenêtre contextuelle d'information.",
-      "Accessible": "Ressources / Portées accessibles par application :",
       "RevokeUserConfirm": "Validez pour révoquer l'accès à",
       "ForUser": "pour l’utilisateur",
-      "RevokeYes": "Oui, révoquer l'application"
+      "RevokeYes": "Oui, révoquer l'application",
+      "Accessible": "Ressources / Portées accessibles par application :"
     }
   },
   "UserDetails": {
@@ -373,13 +386,12 @@
     "Required": "Demande requise",
     "FutureUsers": "La valeur doit être présente pour créer de futurs utilisateurs",
     "AddAnother": "Si vous sélectionnez <strong>Ajouter un autre</strong> , cette boîte de dialogue restera ouverte après l'envoi et vous pourrez facilement en ajouter un autre.",
-    "AddAnotherHelp": "Si vous sélectionnez<strong> Ajouter</strong> , cette boîte de dialogue sera fermée et vous retournez à la liste des types.",
-    "AddAnotherClaimType": "Ajouter un autre type de demande après l'envoi",
     "DeleteConfirmation": "Voulez-vous vraiment supprimer le type de demande",
     "Search": "Rechercher un type de demande...",
     "UserEditable": "La valeur pourra être modifiée par un utilisateur si elle est exposée via l'API publique",
     "AssignUnassignUnauthorized": "Vous n'avez pas les autorisations requises pour attribuer ou annuler l'attribution de cette demande",
-    "NoClaimsFound": "Aucune revendication n'a été trouvée"
+    "NoClaimsFound": "Aucune revendication n'a été trouvée",
+    "AddAnotherClaimType": "Ajouter un autre type de demande après l'envoi"
   },
   "Resources": {
     "AddResource": "Ajouter une ressource",
@@ -440,7 +452,160 @@
   },
   "Clients": {
     "Export": {
-      "ExportAll": "Exporter tout"
+      "ExportAll": "Exporter tout",
+      "ExportAllClients": "Exporter tous les clients",
+      "ExportSelected": "Exporter la sélection",
+      "ExportSelectedClients": "Exporter les clients sélectionnés"
+    },
+    "Import": {
+      "Import": "Importer",
+      "ImportClients": "Importer clients",
+      "Wizard": {
+        "Setup": {
+          "Title": "Importer Clients",
+          "Summary": "Importer des clients et leurs ressources à partir d'une autre solution AdminUI.",
+          "ChooseFile": "Choisir un fichier",
+          "ChooseFileHelp": "Fichier JSON exporté à partir d'une autre solution AdminUI",
+          "CheckImportPleaseWait": "Validation du fichier, veuillez patienter ...",
+          "Errors": {
+            "Default": "Désolé, il y a eu un problème lors de l'importation. Veuillez réessayer.",
+            "InvalidFile": "Désolé, un problème est survenu lors de la lecture du fichier. Veuillez réessayer.",
+            "InvalidData": "Désolé, il y avait des données invalides dans le fichier. Veuillez consulter et essayer à nouveau.",
+            "CompleteImportFailed": "Désolé, une erreur est survenue lors de l'importation. Veuillez réessayer. "
+          }
+        },
+        "Secrets": {
+          "Title": "Secrets",
+          "ChooseWhatToDo": "Choisissez quoi faire avec les secrets créés précédemment.",
+          "DoNotSet": "Ne pas définir de secret",
+          "Generate": "Générer un secret aléatoire",
+          "ManuallyCreate": "Créer manuellement des secrets",
+          "RememberMyDecision": "Se souvenir de mes décisions et les appliquer à tous les secrets restants",
+          "UseExistingSecrets": "Utiliser les secrets existants",
+          "Note": {
+            "Note": "De nouveaux secrets seront disponibles au téléchargement après l'importation",
+            "Title": "À savoir"
+          },
+          "ProtectedResource": "Ressource protégée",
+          "IdentityResource": "Ressource d'identité",
+          "Client": "Client",
+          "ClaimType": "Type de revendication"
+        },
+        "Certificates": {
+          "Title": "Certificats",
+          "ChooseWhatToDo": "Choisir quoi faire avec les certificats précédemment associés.",
+          "DoNotSet": "Ne pas ajouter de certificat",
+          "UploadNewCertificates": "Télécharger un nouveau certificat",
+          "RememberMyDecision": "Se souvenir de mes décisions et les appliquer à tous les certificats restants",
+          "UseExistingCertificates": "Utiliser un certificat existant",
+          "AddCertificate": "Ajouter un certificat",
+          "FailedToParseCertificate": "Impossible d'ouvrir le certificat",
+          "TryAgainDifferentFile": "Veuillez réessayer avec un autre certificat",
+          "DuplicateCertificate": "Le certificat a déjà été ajouté",
+          "InvalidCertificate": "Certificat en double"
+        },
+        "Warning": {
+          "Title": "Avertissement",
+          "Text1": "Vous N'avez pas fini d'importer des clients.",
+          "Text2": "Êtes-vous sûr de vouloir quitter ?",
+          "DownloadSecrets": "Vous avez généré de nouveaux secrets.",
+          "Yes": "Oui",
+          "No": "Non"
+        },
+        "Summary": {
+          "LinkedClients": "Quels clients dépendent de cette ressource ?",
+          "EffectsImportClients": "Importation en cours",
+          "EffectsExistingClients": "Existant",
+          "NewClients": "Nouveaux clients",
+          "ExistingClients": "Déjà des clients",
+          "ClientsHelp": "Nombre de clients qui seront affectés par l'importation de cette ressource",
+          "DependencyConflicts": "Dépendances",
+          "Title": {
+            "All": "Résumé de l’importation",
+            "Client": "Rappel du client",
+            "Resource": "Résumé des ressources",
+            "ClaimType": "Résumé du type de réclamation",
+            "Final": "Résumé de l'importation finale"
+          },
+          "Name": {
+            "Client": "Nom du client",
+            "Resource": "Nom de la ressource",
+            "ClaimType": "Nom du type de revendication"
+          },
+          "Identifier": {
+            "Client": "ID du Client",
+            "Resource": "ID de la ressource",
+            "ClaimType": "Nom du type de revendication"
+          },
+          "Type": {
+            "Client": "Type de client",
+            "Resource": "Type de ressource",
+            "ClaimType": "Type de valeur"
+          },
+          "Intro": {
+            "Client": "Choisissez les clients que vous souhaitez importer.",
+            "Resource": "Les ressources suivantes seront mises à jour lors de l'importation.",
+            "ClaimType": "Les types de revendications suivants seront mis à jour lors de l'importation."
+          },
+          "ClientName": "Nom du client",
+          "ClientId": "ID du Client",
+          "ClientType": "Type de client",
+          "Change": "changer",
+          "Changes": "modifications",
+          "Conflicts": {
+            "ReviewChanges": "Éditer les modifications",
+            "ConflictedServiceProvider": "Conflits de fournisseurs de services",
+            "ConflictedRelyingParty": "Compter les conflits entre les parties",
+            "ConflictedScopes": "Champs d'application en conflit",
+            "ConfirmationText": {
+              "Client": "Les modifications suivantes seront apportées lors de l'importation de ce client. Acceptez-vous les modifications ?",
+              "Resource": "Les modifications suivantes seront apportées lors de l'importation de cette ressource. Acceptez-vous les modifications ?",
+              "ClaimType": "Les modifications suivantes seront apportées lors de l'importation de ce type de revendication. Acceptez-vous les modifications ?"
+            },
+            "Property": "Propriété",
+            "Key": "Clé",
+            "OldValue": "Valeur actuelle",
+            "NewValue": "Nouvelle valeur",
+            "NoValue": "Aucune valeur",
+            "Deleted": "Supprimé",
+            "Accept": "Accepter",
+            "Decline": "Refuser",
+            "Cancel": "Annuler",
+            "Confirmation": {
+              "AreYouSure": "Voulez-vous vraiment ne pas importer les modifications pour",
+              "Client": "Ce client ne sera pas importé",
+              "Resource": "Tous les clients associés seront supprimés de cette importation"
+            }
+          },
+          "ResourceTypes": {
+            "Unknown": "Inconnu",
+            "ServerSide": "Application Web",
+            "Machine": "Machine",
+            "Native": "natif",
+            "Device": "Dispositif",
+            "Saml": "Fournisseur de services SAML",
+            "WsFed": "Partie de confiance WS-Fed",
+            "BrowserBased": "Application page unique",
+            "LegacyClientSide": "Application à page unique (héritée)",
+            "Identity": "Identité",
+            "Protected": "Protégé",
+            "String": "Chaîne",
+            "Int": "Int",
+            "DateTime": "Date/heure",
+            "Boolean": "Boolean"
+          },
+          "FinalSummary": "Passez en revue les clients et les ressources qui seront importés. Les doublons ne seront pas importés."
+        },
+        "CompleteImport": {
+          "ImportInProgress": "Importation en cours...",
+          "ImportComplete": "Importation terminée",
+          "ImportSuccess": "Votre client sélectionné et ses ressources associées ont été importés avec succès",
+          "ImportSuccessMultiple": "{0} clients et leurs ressources associées ont été importés avec succès",
+          "ImportFailure": "Échec de l’importation",
+          "FinishImport": "Terminé",
+          "DownloadSecrets": "Télécharger les secrets"
+        }
+      }
     },
     "EntityId": "ID de l’entité",
     "Realm": "Domaine",
@@ -505,16 +670,16 @@
       "Heading": "Mappages de revendication",
       "ClaimType": "Type de revendication",
       "AssertionType": "Type d’assertion",
-      "UseDefaults": "Effacer tous les mappages de revendication et utiliser les valeurs par défaut",
       "None": "Aucun mappage de revendication n’a été trouvé",
-      "ClearAll": "Tout effacer",
-      "ClearAllWarning": "Cela effacera tous les mappages de revendication actuels",
       "AssertionTypeHeading": "Mappage de type de revendication",
       "AssertionTypeHeadingHelp": "Ajoutez un mappage de type de revendication connu ou ajoutez le vôtre",
       "AssertionTypeAlias": "Pseudonyme",
       "AssertionTypeValue": "Valeur",
       "AssertionTypeSearch": "Rechercher les mappages de types de revendication bien connus",
       "ExisitingMappingWarning": "Le type de revendication est déjà mappé :",
+      "UseDefaults": "Supprimer les mappages de revendications et utiliser les valeurs par défaut",
+      "DeleteAll": "Tout effacer",
+      "DeleteAllWarning": "Cela supprimera tous les mappages de revendications actuels. Tu en es sûr(e) ?",
       "AssertionTypeValues": {
         "Actor": "Acteur",
         "Anonymous": "Anonyme",
@@ -586,12 +751,12 @@
       "None": "Aucune propriété n’a été trouvée"
     },
     "RequireConsent": {
-      "Title": "Exiger le consentement ?",
+      "Title": "Exiger le consentement",
       "Help": "Spécifie si un écran de consentement est requis",
       "Summary": "Nécessite le consentement"
     },
     "AllowRememberConsent": {
-      "Title": "Rappeler le consentement ?",
+      "Title": "Rappeler le consentement",
       "Help": "Spécifie si l'écran de consentement est rappelé une fois donné"
     },
     "RequireSecret": {
@@ -641,13 +806,13 @@
         "Second": "seconde",
         "SecondShort": "s",
         "Minutes": "minutes",
-        "MinutesShort": "min",
+        "MinutesShort": "mins",
         "Minute": "minute",
         "MinuteShort": "min",
         "Hours": "heures",
-        "HoursShort": "h",
+        "HoursShort": "heures",
         "Hour": "heure",
-        "HourShort": "h",
+        "HourShort": "hr",
         "Days": "jours",
         "DaysShort": "j",
         "Day": "jour",
@@ -659,20 +824,23 @@
         "Months": "mois",
         "MonthsShort": "mois",
         "Month": "mois",
-        "MonthShort": "mois",
-        "Years": "ans",
+        "MonthShort": "lun",
+        "Years": "années",
         "YearsShort": "ans",
-        "Year": "an",
-        "YearShort": "an",
+        "Year": "année",
+        "YearShort": "année",
         "Unlimited": "Illimité",
         "UnlimitedShort": "∞"
-
       }
-
     },
     "Home": {
       "Title": "Définir une application client",
       "Description": "Choisissez un type d’application dans la liste pour en savoir plus.<br />Cliquez ensuite sur \"Démarrer\" pour lancer la configuration."
+    },
+    "WizardTypes": {
+      "WebAppSelection": "Choisissez le flux pris en charge",
+      "WebApplication": "Flux hybride avec authentification client",
+      "PKCEWebApplication": "Flux de code d’autorisation + PKCE"
     },
     "MachineToMachine": {
       "Setup": "Définir une application machine",
@@ -704,6 +872,14 @@
       "Title": "Application Web",
       "Summary": "Flux hybride avec authentification client",
       "Description": "Une application côté serveur s’exécutant sur votre infrastructure.<br />Ces applications peuvent être sécurisées pour conserver un secret et utiliser des jetons d’actualisation.<br/>Les jetons seront envoyés à un serveur principal et ne seront pas visibles pour l’utilisateur."
+    },
+    "PKCEWebApp": {
+      "Setup": "Définir une application web",
+      "Title": "Application Web",
+      "Summary": "Flux de code d’autorisation + PKCE",
+      "Description": "Une application côté serveur s’exécutant sur votre<br /> infrastructure.Ces applications peuvent être sécurisées pour conserver un secret et utiliser des jetons d’actualisation. Les<br/> jetons seront envoyés à un serveur principal et ne seront pas visibles pour l’utilisateur.",
+      "Created": "L'application web a bien été créée",
+      "Secrets": "Entrez quelques secrets (facultatif)"
     },
     "NativeApp": {
       "Setup": "Définir une application native",
@@ -759,7 +935,9 @@
       "DuplicateCertMessage": "Ce certificat existe déjà sur ce fournisseur de services",
       "IndexInvalidType": "L’index doit être un nombre",
       "ReplaceCertificate": "Remplacer le certificat",
-      "CannotDeleteResponseCert": "Impossible de supprimer le certificat de chiffrement tant que les assertions de chiffrement sont vraies"
+      "CannotDeleteResponseCert": "Impossible de supprimer le certificat de chiffrement tant que les assertions de chiffrement sont vraies",
+      "AllowIdpInitiatedSso": "Autoriser l'authentification unique initiée par SSO",
+      "AllowIdpInitiatedSsoHelp": "Permet à l'authentification unique d'être initiée par votre fournisseur d'identité (non recommandé)"
     },
     "WsFed": {
       "Setup": "Configurer une partie de confiance WS-Federation",
@@ -774,7 +952,8 @@
       "RedirectAfterLogout": "Peut être redirigé vers cette URL après la déconnexion",
       "CORSDomain": "Domaine pouvant émettre des requêtes d'origine croisée",
       "NoURLS": "Ne peut avoir des URL de redirection",
-      "URLAddUnsuccessful": "Un problème est survenu lors de l'ajout de votre URL"
+      "URLAddUnsuccessful": "Un problème est survenu lors de l'ajout de votre URL",
+      "None": "Aucun URL  d'application N'a été trouvé"
     },
     "Selected": "(Sélectionné)",
     "Endpoint": "Point de terminaison",
@@ -791,7 +970,7 @@
   "Secret Picker": {
     "Set Expiration Button": "Définir une expiration facultative",
     "HiddenValue": "La valeur est masquée",
-    "LastWarning": "Attention, vous ne pourrez pas accéder à la valeur de ce secret après l'avoir ajouté."
+    "LastWarning": "ATTENTION : vous ne pourrez pas accéder à la valeur des secrets après les avoir créés"
   },
   "Notifications": {
     "Success": "Succès",
@@ -810,9 +989,6 @@
     "AllAppsRevoked": "Toutes les applications ont bien été révoquées",
     "AppRevoked": "L'application a bien été révoquée",
     "UnsavedChanges": "Vous avez des modifications non enregistrés",
-    "ContinueWithoutSaving": "Voulez-vous continuer sans enregistrer ?",
-    "AbandonChanges": "Oui, abandonner les modifications",
-    "DontAbandon": "Non, rester ici",
     "SomethingWrong": "Une erreur est produite",
     "CheckLogs": "Veuillez vérifier le journal des événéments.",
     "Apology": "Nous vous avons renvoyé à la page d'accueil car un problème est survenu",
@@ -820,7 +996,13 @@
     "Reset Success Message": "Votre mot de passe a bien été réinitialisé",
     "Reset Error Message": "Un problème est survenu lors de la réinitialisation du mot de passe de l'utilisateur",
     "Error": "Erreur",
-    "Unauthorized": "Non autorisé"
+    "Unauthorized": "Non autorisé",
+    "UnsavedChangesTitle": "Modifications non enregistrées",
+    "ContinueWithoutSaving": "Voulez-vous naviguer sans enregistrer ?",
+    "DiscardChanges": "Abandonner les modifications",
+    "StayHere": "Rester ici.",
+    "Notice": "Avis",
+    "DontForgetToSave": "N'oubliez pas d'enregistrer vos modifications"
   },
   "Settings": {
     "AccessPolicy": {
@@ -836,7 +1018,9 @@
       "InvalidClaimValue": "Aucune valeur n'a été saisie",
       "InvalidPermission": "Aucune permission n'est sélectionnée",
       "AccessPolicyUpdated": "La politique d'accès a été mise à jour",
-      "AccessPolicyConflict": "Conflit : il existe une politique d'accès plus récente"
+      "AccessPolicyConflict": "Conflit : il existe une politique d'accès plus récente",
+      "Add": "Ajouter une politique",
+      "NewPolicy": "Nouvelle politique d’accès"
     },
     "Title": "Paramètres/Politique d'accès"
   },
@@ -846,7 +1030,9 @@
     "IntroParagraph1": "Le meilleur outil de gestion des utilisateurs et de configuration pour IdentityServer4.",
     "IntroParagraph2": "Pour les questions relatives aux licences, veuillez contacter :",
     "Documentation": "Documentations",
-    "APIDocs": "Documents API"
+    "APIDocs": "Documents API",
+    "IdentityServerError": "Impossible de contacter IdentityServer",
+    "APIError": "Impossible de contacter l'API"
   },
   "Permission": {
     "UserManager": "Manager utilisateurs",
@@ -867,9 +1053,7 @@
     "Description": "Description",
     "Succeeded": "Réussi(e)",
     "FromDate": "Date de début",
-    "FromDateWarning": "La date de début ne peut pas être dans le futur",
     "ToDate": "Date de fin",
-    "ToDateBehindWarning": "Votre date de début ne peut pas être après votre date de fin",
     "SetDateToday": "Fixer la date à aujourd'hui",
     "Today": "Aujourd'hui",
     "SetDateLast24Hours": "Définir la date pour les dernières 24 heures",
@@ -887,7 +1071,6 @@
     "RemoveFilter": "Supprimer le filtre",
     "Showing": "Affichage",
     "ExecuteAndDownload": "Exécuter et télécharger",
-    "DownloadResults": "Télécharger",
     "ExecuteAndDisplay": "Mettre à jour les résultats",
     "UpdateWarning": "Cliquez sur \"Mettre à jour les résultats\" pour afficher vos modifications",
     "Reset": "Rénitialiser",
@@ -895,7 +1078,12 @@
     "First page of results": "Première page de résultats",
     "Previous page of results": "Page de résultats précédente",
     "Next page of results": "Page de résultats suivante",
-    "Last page of results": "Dernière page de résultats"
+    "Last page of results": "Dernière page de résultats",
+    "DownloadResults": "Export",
+    "FromDateWarning": "La date de début ne peut pas être à l'avenir",
+    "ToDateBehindWarning": "La date de fin ne peut pas être antérieure à la date de début.",
+    "ActiveFilters": "Filtres actifs",
+    "AddFilterTerm": "Ajouter un filtre de termes"
   },
   "Resource": {
     "user": "Utilisateur",

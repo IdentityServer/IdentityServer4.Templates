@@ -2,8 +2,9 @@
   "Common": {
     "ID": "ID",
     "Add": "Add",
+    "AddAndAdd": "Add & Add Another",
     "Password": "Password",
-    "AddandConfigure": "Add & Configure",
+    "SaveAndConfigure": "Save & Configure",
     "True": "true",
     "False": "false",
     "Edit": "Edit",
@@ -11,6 +12,7 @@
     "Clear": "Clear",
     "Reset": "Reset",
     "Save": "Save",
+    "SaveAndAdd": "Save & Add Another",
     "SaveAll": "Save All",
     "Saved": "Saved",
     "DontSave": "Don't Save",
@@ -83,6 +85,7 @@
     "Search": "Search...",
     "Authenticating": "Authenticating",
     "Loading": "Loading",
+    "LoadingPleaseWait": "Loading, please wait...",
     "Saving": "Saving",
     "AreYouSureContinue": "Are you sure you want to continue?",
     "CompanyName": "Rock Solid Knowledge Ltd",
@@ -122,7 +125,8 @@
       "AreYouSure": "Are you sure you want to delete the value for",
       "AreYouSureSimple": "Are you sure you want to delete",
       "AreYouSureSimple2": "Are you sure you want to delete the",
-      "Warning": "<strong>Warning:</strong>  This action cannot be undone.",
+      "AreYouSureSimple3": "Are you sure you want to delete this?",
+      "Warning": "<strong>Warning:</strong>  This action cannot be undone",
       "No": "No, don't delete"
     },
     "Types": {
@@ -138,7 +142,7 @@
       "AreYouSureSimple": "Are you sure you want to reset the password for",
       "Title": "Reset Password",
       "HowToSetupTitle": "Setup User Password Reset Webhook",
-      "HowToSetup": "The Password Reset Webhook needs to first be configured in order to use this feature, please vist the AdminUI Webhook documentation."
+      "HowToSetup": "The Password Reset Webhook needs to be configured before you can use this feature. Read the AdminUI Webhook documentation for more information."
     },
     "UserEditable": "User Editable",
     "Key": "Key",
@@ -192,7 +196,7 @@
     "AccessPolicy": "Access Policy",
     "IdentityServer": "IdentityServer Management",
     "UserManagement": "User Management",
-    "Saml" : "SAML",
+    "Saml": "SAML",
     "WsFed": "WS-Fed"
   },
   "Errors": {
@@ -206,10 +210,17 @@
     "ContactAdmin": "You do not have the required permissions to use AdminUI, please contact an administrator",
     "ResourceNotFound": "Not Found",
     "ResourceNotFoundDescription": "This resource cannot be found",
-    "RssUnavalible": "Rss Unavalible"
+    "RssUnavailable": "RSS feed unavailable",
+    "ValidateImportError": {
+      "ImportNull": "Error occured while attempting to read import json",
+      "WrongVersion": "Sorry, the export file is from an incompatible version of AdminUI ({0}). Only versions 2.6.0 - {1} are supported",
+      "ValidateImport": "Sorry, there was a problem when importing. Please try again"
+    }
   },
   "Index": {
     "Title": "Dashboard",
+    "LicensedTo": "Licensed to",
+    "LicenseType": "License type",
     "Users": {
       "Title": "User Management",
       "Body": "Manage IdentityServer Users with ease."
@@ -243,11 +254,11 @@
     "FirstName": "First Name",
     "LastName": "Last Name",
     "Details": {
+      "AddClaim": "Add Claim",
       "AdditionalDetailsBody": "Configure optional details about the user. To create new types, please visit the Claim Types section of the UI."
     },
     "CopyValue": "Copy value from Details",
     "NoUsersFound": "No users found",
-    "AddAnotherHelp": "Selecting <strong>Add another user after submit</strong> will leave this dialogue box open after creating a user so you can easily add another.",
     "AddAnother": "Add another user after submit",
     "CloseBox": "<strong>Add</strong> will close this box and take you back to the user list.",
     "Password": {
@@ -262,6 +273,7 @@
     },
     "Delete": {
       "DeletedUser": "This user has been deleted.",
+      "Confirmation": "{0} was deleted. User data remains accessible for auditing purposes",
       "AuditingPurposes": "User data remains accessible for auditing purposes."
     },
     "First page of results": "First page of results",
@@ -275,7 +287,7 @@
       "RevokeApp": "Revoke Application",
       "RevokeAll": "Yes, revoke all",
       "RevokeConfirm": "Confirming this will revoke access <u>for all</u> applications on this account. You can remove individual applications via the information popup.",
-      "Accessible": "Resources/Scopes Accessible by Application:",
+      "Accessible": "Resources/scopes accessible by application:",
       "RevokeUserConfirm": "This will revoke the access of",
       "ForUser": "for user",
       "RevokeYes": "Yes, Revoke Application"
@@ -368,11 +380,10 @@
     "Required": "Required Claim",
     "FutureUsers": "Value must be present to create future users",
     "AddAnother": "Selecting <strong>Add Another</strong> will leave this dialogue box open after submitting so you can easily add another.",
-    "AddAnotherHelp": "<strong>Add</strong> will close this box and take you back to the claim type list.",
     "AddAnotherClaimType": "Add another claim type after submit",
     "DeleteConfirmation": "Are you sure you want to delete the claim type",
     "Search": "Search for a claim type...",
-    "UserEditable": "Value will be editable by a user if exposed through the public api",
+    "UserEditable": "Value will be editable by a user if exposed through the public API",
     "AssignUnassignUnauthorized": "You do not have the permissions required to assign or unassign this claim",
     "NoClaimsFound": "No claims found"
   },
@@ -485,7 +496,161 @@
     "UrlNotValid": "This Url may not valid",
     "NoCertificates": "No certificates found",
     "Export": {
-      "ExportAll": "Export All" 
+      "ExportAll": "Export all",
+      "ExportAllClients": "Export all clients",
+      "ExportSelected": "Export selected",
+      "ExportSelectedClients": "Export selected clients"
+    },
+    "Import": {
+      "Import": "Import",
+      "ImportClients": "Import clients",
+      "Wizard": {
+        "Setup": {
+          "Title": "Import Clients",
+          "Summary": "Import clients and their resources from another AdminUI solution.",
+          "ChooseFile": "Choose File",
+          "ChooseFileHelp": "Exported JSON file from another AdminUI solution",
+          "CheckImportPleaseWait": "Validating file, please wait...",
+          "Errors": {
+            "Default": "Sorry, there was a problem when importing. Please try again.",
+            "InvalidFile": "Sorry, there was a problem reading the file. Please try again.",
+            "InvalidData": "Sorry, there was invalid data in the file. Please review and try again.",
+            "CompleteImportFailed": "Sorry, there was an error during import. Please try again. "
+          }
+        },
+        "Secrets": {
+          "Title": "Secrets",
+          "ChooseWhatToDo": "Choose what to do with previously created secrets.",
+          "DoNotSet": "Do not set a secret",
+          "Generate": "Generate a random secret",
+          "ManuallyCreate": "Manually create secrets",
+          "RememberMyDecision": "Remember my decisions and apply to all remaining secrets",
+          "UseExistingSecrets": "Use existing secrets",
+          "Note": {
+            "Note": "New secrets will be available to download after import",
+            "Title": "Note"
+          },
+          "ProtectedResource": "Protected Resource",
+          "IdentityResource": "Identity Resource",
+          "Client": "Client",
+          "ClaimType": "Claim Type"
+        },
+        "Certificates": {
+          "Title": "Certificates",
+          "ChooseWhatToDo": "Choose what to do with previously associated certificates.",
+          "DoNotSet": "Do not add certificate",
+          "UploadNewCertificates": "Upload new certificate",
+          "RememberMyDecision": "Remember my decisions and apply to all remaining certificates",
+          "UseExistingCertificates": "Use existing certificate",
+          "AddCertificate": "Add Certificate",
+          "FailedToParseCertificate": "Failed to parse certificate",
+          "TryAgainDifferentFile": "Please try again with a different certificate",
+          "DuplicateCertificate": "Certificate has already been added",
+          "InvalidCertificate": "Duplicate Certificate"
+        },
+        "Warning": {
+          "Title": "Warning",
+          "Text1": "You have not finished importing clients.",
+          "Text2": "Are you sure you want to exit?",
+          "DownloadSecrets": "You have generated new secrets.",
+          "Yes": "Yes",
+          "No": "No"
+        },
+        "Summary": {
+          "LinkedClients": "Which clients depend on this resource?",
+          "EffectsImportClients": "Importing",
+          "EffectsExistingClients": "Existing",
+          "NewClients": "New Clients",
+          "ExistingClients": "Existing Clients",
+          "Clients": "Clients",
+          "ClientsHelp": "Number of clients that will be affected by importing this resource",
+          "DependencyConflicts": "Dependencies",
+          "Title": {
+            "All": "Import Summary",
+            "Client": "Client Summary",
+            "Resource": "Resources Summary",
+            "ClaimType": "Claim Type Summary",
+            "Final": "Final Import Summary"
+          },
+          "Name": {
+            "Client": "Client Name",
+            "Resource": "Resource Name",
+            "ClaimType": "Claim Type Name"
+          },
+          "Identifier": {
+            "Client": "Client ID",
+            "Resource": "Resource ID",
+            "ClaimType": "Claim Type Name"
+          },
+          "Type": {
+            "Client": "Client Type",
+            "Resource": "Resource Type",
+            "ClaimType": "Value Type"
+          },
+          "Intro": {
+            "Client": "Choose which clients you would like to import.",
+            "Resource": "The following resources will be updated during import.",
+            "ClaimType": "The following claim types will be updated during import."
+          },
+          "ClientName": "Client Name",
+          "ClientId": "Client ID",
+          "ClientType": "Client Type",
+          "Change": "change",
+          "Changes": "changes",
+          "Conflicts": {
+            "ReviewChanges": "Review Changes",
+            "ConflictedServiceProvider": "Service Provider Conflicts",
+            "ConflictedRelyingParty": "Relying Party Conflicts",
+            "ConflictedScopes": "Conflicted Scopes",
+            "ConfirmationText": {
+              "Client": "The following changes will be made when importing this client. Do you accept the changes?",
+              "Resource": "The following changes will be made when importing this resource. Do you accept the changes?",
+              "ClaimType": "The following changes will be made when importing this claim type. Do you accept the changes?"
+            },
+            "Property": "Property",
+            "Key": "Key",
+            "OldValue": "Current Value",
+            "NewValue": "New Value",
+            "NoValue": "No value",
+            "Deleted": "Deleted",
+            "Accept": "Accept",
+            "Decline": "Decline",
+            "Cancel": "Cancel",
+            "Confirmation": {
+              "AreYouSure": "Are you sure you do not want to import changes for",
+              "Client": "This client will not be imported",
+              "Resource": "Any associated clients will be removed from this import"
+            }
+          },
+          "ResourceTypes": {
+            "Unknown": "Unknown",
+            "ServerSide": "Web App",
+            "Machine": "Machine",
+            "Native": "Native",
+            "Device": "Device",
+            "Saml": "SAML Service Provider",
+            "WsFed": "WS-Fed Relying Party",
+            "BrowserBased": "Single Page App",
+            "LegacyClientSide": "Single Page App (Legacy)",
+            "Identity": "Identity",
+            "Protected": "Protected",
+            "String": "String",
+            "Int": "Int",
+            "DateTime": "DateTime",
+            "Boolean": "Boolean"
+          },
+          "FinalSummary": "Review the clients and resources that will be imported. Duplicates will not be imported."
+        },
+        "CompleteImport": {
+          "ImportInProgress": "Import in progress...",
+          "ImportComplete": "Import Complete",
+          "ImportSuccess": "Your selected client and its associated resources were imported successfully",
+          "ImportSuccessMultiple": "{0} clients and their associated resources were imported successfully",
+          "ImportFailure": "Import failed",
+          "FinishImport": "Finish",
+          "DownloadSecrets": "Download Secrets"
+        }
+      }
     },
     "RelyingParty": {
       "Heading": "Relying Party",
@@ -499,10 +664,10 @@
       "Heading": "Claim Mappings",
       "ClaimType": "Claim Type",
       "AssertionType": "Assertion Type",
-      "UseDefaults": "Clear all claim mappings and use defaults",
+      "UseDefaults": "Delete claim mappings and use defaults",
       "None": "No claim mappings found",
-      "ClearAll": "Clear All",
-      "ClearAllWarning": "This will clear all the current claim mappings",
+      "DeleteAll": "Delete All",
+      "DeleteAllWarning": "This will delete all the current claim mappings. Are you sure?",
       "AssertionTypeHeading": "Claim Type Mapping",
       "AssertionTypeHeadingHelp": "Add a well-known claim type mapping, or add your own",
       "AssertionTypeAlias": "Alias",
@@ -580,16 +745,16 @@
       "None": "No properties found"
     },
     "RequireConsent": {
-      "Title": "Require Consent?",
+      "Title": "Require Consent",
       "Help": "Specifies whether a consent screen is required",
       "Summary": "Require Consent"
     },
     "AllowRememberConsent": {
-      "Title": "Remember Consent?",
+      "Title": "Remember Consent",
       "Help": "Specifies whether consent screen is remembered after having been given"
     },
     "RequireSecret": {
-      "Title": "Require Secret?",
+      "Title": "Require Secret",
       "Help": "Specifies whether a secret is required"
     },
     "Tokens": {
@@ -666,6 +831,11 @@
       "Title": "Setup a Client Application",
       "Description": "Choose an application type from the list to find out more.<br />Then click \"Start\" to begin setup."
     },
+    "WizardTypes": {
+      "WebAppSelection": "Choose Supported Flow",
+      "WebApplication": "Hybrid flow with client authentication",
+      "PKCEWebApplication": "Authorization code flow + PKCE"
+    },
     "MachineToMachine": {
       "Setup": "Setup a Machine Application",
       "Title": "Machine",
@@ -692,7 +862,15 @@
     "WebApp": {
       "Setup": "Setup a Web Application",
       "Title": "Web App",
-      "Summary": "Hybrid flow with client authentication",
+      "Summary": "A server-side application",
+      "Description": "A server-side application running on your infrastructure.<br />These applications can be trusted to keep a secret and use refresh tokens.<br/>Tokens will be sent to a back-end server and will not be visible to the user.",
+      "Created": "Web Application Created",
+      "Secrets": "Enter some secrets (optional)"
+    },
+    "PKCEWebApp": {
+      "Setup": "Setup a Web Application",
+      "Title": "Web App",
+      "Summary": "Authorization code flow + PKCE",
       "Description": "A server-side application running on your infrastructure.<br />These applications can be trusted to keep a secret and use refresh tokens.<br/>Tokens will be sent to a back-end server and will not be visible to the user.",
       "Created": "Web Application Created",
       "Secrets": "Enter some secrets (optional)"
@@ -734,6 +912,8 @@
       "RequireRequestDestinationHelp": "Ensures that incoming SAML requests include a destination value, allowing IdentityServer to confirm that it is the intended recipient (recommended)",
       "SignAssertions": "Sign assertions",
       "SignAssertionsHelp": "Makes IdentityServer sign both SAML messages and assertions (recommended)",
+      "AllowIdpInitiatedSso": "Allow IdP Initiated SSO",
+      "AllowIdpInitiatedSsoHelp": "Allows single sign-on to be initiated by your Identity Provider (not recommended)",
       "EncryptAssertions": "Encrypt assertions",
       "EncryptAssertionsHelp": "Makes IdentityServer encrypt assertions sent to the Service Provider, using their public key",
       "AddCert": "Add Certificate",
@@ -762,6 +942,7 @@
     },
     "URLS": {
       "Title": "Application URLs",
+      "None": "No application URLs found",
       "SendTokens": "Can send tokens to this URL",
       "RedirectAfterLogout": "Can redirect to this URL after logout",
       "CORSDomain": "Domain that can make cross-origin requests",
@@ -783,7 +964,7 @@
   "Secret Picker": {
     "Set Expiration Button": "Set optional expiration",
     "HiddenValue": "Value is hidden",
-    "LastWarning": "WARNING: you will not be able to access the value of this secret after adding it"
+    "LastWarning": "WARNING: you will not be able to access the value of secrets after creating them"
   },
   "Notifications": {
     "Success": "Success",
@@ -801,16 +982,19 @@
     "AccountCreated": "Account Created",
     "AllAppsRevoked": "All Apps Successfully Revoked",
     "AppRevoked": "App Successfully Revoked",
-    "UnsavedChanges": "You have unsaved changes",
-    "ContinueWithoutSaving": "Do you want to continue without saving?",
-    "AbandonChanges": "Yes, abandon changes",
-    "DontAbandon": "No, stay here",
+    "UnsavedChangesTitle": "Unsaved Changes",
+    "UnsavedChanges": "You have unsaved changes.",
+    "ContinueWithoutSaving": "Do you want to navigate away without saving?",
+    "DiscardChanges": "Discard Changes",
+    "StayHere": "Stay Here",
     "SomethingWrong": "Something went wrong",
     "CheckLogs": "Please check logs.",
     "Apology": "We Sent You Back To The Homepage Due To A Crash",
     "Support": "Message Us At support@identityserver.com For More Assistance",
     "Reset Success Message": "Password reset successful",
     "Reset Error Message": "There has been a problem reseting the user's password",
+    "Notice": "Notice",
+    "DontForgetToSave": "Don't forget to save your changes",
     "Error": "Error",
     "Unauthorized": "Unauthorized"
   },
@@ -820,6 +1004,8 @@
       "ClaimType": "Claim Type",
       "ClaimValue": "Claim Value",
       "Permission": "Permission",
+      "Add": "Add Policy",
+      "NewPolicy": "New Access Policy",
       "Save": "Save",
       "ConfirmSave": "Are you sure you want to update your access policy with these changes?",
       "ConfirmChanges": "Confirm access policy update",
@@ -838,7 +1024,9 @@
     "IntroParagraph1": "The leading user and configuration management tool for IdentityServer4.",
     "IntroParagraph2": "For licensing enquiries, please contact:",
     "Documentation": "Documentation",
-    "APIDocs": "API Docs"
+    "APIDocs": "API Docs",
+    "IdentityServerError": "Unable to contact IdentityServer",
+    "APIError": "Unable to contact the API"
   },
   "Permission": {
     "UserManager": "User Manager",
@@ -861,7 +1049,7 @@
     "FromDate": "From date",
     "FromDateWarning": "From date cannot be in the future",
     "ToDate": "To date",
-    "ToDateBehindWarning": "Your From date cannot be ahead of your To date",
+    "ToDateBehindWarning": "To date cannot be before from date",
     "SetDateToday": "Set date to today",
     "Today": "Today",
     "SetDateLast24Hours": "Set date for last 24 hours",
@@ -871,7 +1059,9 @@
     "SetDateLastWeek": "Set date to week",
     "Week": "Week",
     "ResultsPerPage": "Results per page",
+    "ActiveFilters": "Active filters",
     "AddFilter": "Add filter",
+    "AddFilterTerm": "Add filter term",
     "ShowFilters": "Show filters",
     "HideFilters": "Hide filters",
     "FilterTerm": "Filter term",
@@ -879,7 +1069,7 @@
     "RemoveFilter": "Remove filter",
     "Showing": "Showing",
     "ExecuteAndDownload": "Execute and download",
-    "DownloadResults": "Download",
+    "DownloadResults": "Export",
     "ExecuteAndDisplay": "Update results",
     "UpdateWarning": "Click \"Update results\" to see your changes",
     "Reset": "Reset",
@@ -893,7 +1083,7 @@
     "Resource": "",
     "user": "User",
     "role": "Role",
-    "claimType": "ClaimType",
+    "claimType": "Claim Type",
     "client": "Client",
     "identityResource": "Identity Resource",
     "protectedResource": "Protected Resource",

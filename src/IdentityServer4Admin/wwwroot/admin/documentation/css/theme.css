@@ -36,7 +36,7 @@ body {
     background-color: rgba(86, 86, 85, 0.1);
 }
 
-.cms h1, .cms h2, .cms h3, .cms h4, .cms h5, .cms h6, .cms blockquote, .cms strong, .cms b, .cms em, .cms i {
+.cms h1, .cms h2, .cms h3, .cms h4, .cms h5, .cms strong, .cms i {
     color: #404040;
 }
 
