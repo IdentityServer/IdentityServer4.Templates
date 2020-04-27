@@ -21,7 +21,6 @@ namespace IdentityServer4AspNetIdentity
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-                .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
                 .MinimumLevel.Override("System", LogEventLevel.Warning)
                 .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Information)
                 .Enrich.FromLogContext()
@@ -32,7 +31,7 @@ namespace IdentityServer4AspNetIdentity
                 //    rollOnFileSizeLimit: true,
                 //    shared: true,
                 //    flushToDiskInterval: TimeSpan.FromSeconds(1))
-                .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Code)
+                .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Literate)
                 .CreateLogger();
 
             try
@@ -72,10 +71,10 @@ namespace IdentityServer4AspNetIdentity
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseSerilog();
                 });
     }
 }

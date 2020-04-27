@@ -8,6 +8,7 @@ using IdentityServer4.Extensions;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
+using IdentityServer4AspNetIdentity.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -82,12 +83,12 @@ namespace IdentityServer4.Quickstart.UI
                     // if the user cancels, send a result back into IdentityServer as if they 
                     // denied the consent (even if this client does not require consent).
                     // this will send back an access denied OIDC error response to the client.
-                    await _interaction.DenyAuthorizationAsync(context, AuthorizationError.AccessDenied);
+                    await _interaction.GrantConsentAsync(context, ConsentResponse.Denied);
 
                     // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
-                    if (context.IsNativeClient())
+                    if (await _clientStore.IsPkceClientAsync(context.ClientId))
                     {
-                        // The client is native, so this change in how to
+                        // if the client is PKCE then we assume it's native, so this change in how to
                         // return the response is for better UX for the end user.
                         return this.LoadingPage("Redirect", model.ReturnUrl);
                     }
@@ -107,13 +108,13 @@ namespace IdentityServer4.Quickstart.UI
                 if (result.Succeeded)
                 {
                     var user = await _userManager.FindByNameAsync(model.Username);
-                    await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id, user.UserName, clientId: context?.Client.ClientId));
+                    await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id, user.UserName, clientId: context?.ClientId));
 
                     if (context != null)
                     {
-                        if (context.IsNativeClient())
+                        if (await _clientStore.IsPkceClientAsync(context.ClientId))
                         {
-                            // The client is native, so this change in how to
+                            // if the client is PKCE then we assume it's native, so this change in how to
                             // return the response is for better UX for the end user.
                             return this.LoadingPage("Redirect", model.ReturnUrl);
                         }
@@ -138,7 +139,7 @@ namespace IdentityServer4.Quickstart.UI
                     }
                 }
 
-                await _events.RaiseAsync(new UserLoginFailureEvent(model.Username, "invalid credentials", clientId:context?.Client.ClientId));
+                await _events.RaiseAsync(new UserLoginFailureEvent(model.Username, "invalid credentials", clientId:context?.ClientId));
                 ModelState.AddModelError(string.Empty, AccountOptions.InvalidCredentialsErrorMessage);
             }
 
@@ -247,9 +248,9 @@ namespace IdentityServer4.Quickstart.UI
                 }).ToList();
 
             var allowLocal = true;
-            if (context?.Client.ClientId != null)
+            if (context?.ClientId != null)
             {
-                var client = await _clientStore.FindEnabledClientByIdAsync(context.Client.ClientId);
+                var client = await _clientStore.FindEnabledClientByIdAsync(context.ClientId);
                 if (client != null)
                 {
                     allowLocal = client.EnableLocalLogin;

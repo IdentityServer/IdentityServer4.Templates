@@ -94,7 +94,7 @@ namespace IdentityServer4.Quickstart.UI
                     {
                         // if the client is PKCE then we assume it's native, so this change in how to
                         // return the response is for better UX for the end user.
-                        return this.LoadingPage("Redirect", model.ReturnUrl);
+                        return View("Redirect", new RedirectViewModel { RedirectUrl = model.ReturnUrl });
                     }
 
                     return Redirect(model.ReturnUrl);
@@ -127,12 +127,7 @@ namespace IdentityServer4.Quickstart.UI
                     };
 
                     // issue authentication cookie with subject ID and username
-                    var isuser = new IdentityServerUser(user.SubjectId)
-                    {
-                        DisplayName = user.Username
-                    };
-
-                    await HttpContext.SignInAsync(isuser, props);
+                    await HttpContext.SignInAsync(user.SubjectId, user.Username, props);
 
                     if (context != null)
                     {
@@ -140,7 +135,7 @@ namespace IdentityServer4.Quickstart.UI
                         {
                             // if the client is PKCE then we assume it's native, so this change in how to
                             // return the response is for better UX for the end user.
-                            return this.LoadingPage("Redirect", model.ReturnUrl);
+                            return View("Redirect", new RedirectViewModel { RedirectUrl = model.ReturnUrl });
                         }
 
                         // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
@@ -267,7 +262,7 @@ namespace IdentityServer4.Quickstart.UI
                 )
                 .Select(x => new ExternalProvider
                 {
-                    DisplayName = x.DisplayName ?? x.Name,
+                    DisplayName = x.DisplayName,
                     AuthenticationScheme = x.Name
                 }).ToList();
 
