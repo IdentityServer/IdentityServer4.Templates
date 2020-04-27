@@ -6,9 +6,11 @@ using System.Security.Principal;
 using System.Threading.Tasks;
 using IdentityModel;
 using IdentityServer4.Events;
+using IdentityServer4.Models;
+using IdentityServer4.Quickstart.UI;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
-using IdentityServer4AspNetIdentity.Models;
+using IdentityServer4.Test;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -49,7 +51,7 @@ namespace IdentityServer4.Quickstart.UI
         /// initiate roundtrip to external authentication provider
         /// </summary>
         [HttpGet]
-        public async Task<IActionResult> Challenge(string provider, string returnUrl)
+        public async Task<IActionResult> Challenge(string scheme, string returnUrl)
         {
             if (string.IsNullOrEmpty(returnUrl)) returnUrl = "~/";
 
@@ -60,7 +62,7 @@ namespace IdentityServer4.Quickstart.UI
                 throw new Exception("invalid return URL");
             }
 
-            if (AccountOptions.WindowsAuthenticationSchemeName == provider)
+            if (AccountOptions.WindowsAuthenticationSchemeName == scheme)
             {
                 // windows authentication needs special handling
                 return await ProcessWindowsLoginAsync(returnUrl);
@@ -74,11 +76,11 @@ namespace IdentityServer4.Quickstart.UI
                     Items =
                     {
                         { "returnUrl", returnUrl },
-                        { "scheme", provider },
+                        { "scheme", scheme },
                     }
                 };
 
-                return Challenge(props, provider);
+                return Challenge(props, scheme);
             }
         }
 
@@ -111,8 +113,8 @@ namespace IdentityServer4.Quickstart.UI
                 user = await AutoProvisionUserAsync(provider, providerUserId, claims);
             }
 
-            // this allows us to collect any additonal claims or properties
-            // for the specific prtotocols used and store them in the local auth cookie.
+            // this allows us to collect any additional claims or properties
+            // for the specific protocols used and store them in the local auth cookie.
             // this is typically used to store data needed for signout from those protocols.
             var additionalLocalClaims = new List<Claim>();
             var localSignInProps = new AuthenticationProperties();
@@ -144,13 +146,13 @@ namespace IdentityServer4.Quickstart.UI
 
             // check if external login is in the context of an OIDC request
             var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
-            await _events.RaiseAsync(new UserLoginSuccessEvent(provider, providerUserId, user.Id, name, true, context?.ClientId));
+            await _events.RaiseAsync(new UserLoginSuccessEvent(provider, providerUserId, user.Id, name, true, context?.Client.ClientId));
 
             if (context != null)
             {
-                if (await _clientStore.IsPkceClientAsync(context.ClientId))
+                if (context.IsNativeClient())
                 {
-                    // if the client is PKCE then we assume it's native, so this change in how to
+                    // The client is native, so this change in how to
                     // return the response is for better UX for the end user.
                     return this.LoadingPage("Redirect", returnUrl);
                 }
@@ -192,7 +194,7 @@ namespace IdentityServer4.Quickstart.UI
                 }
 
                 await HttpContext.SignInAsync(
-                    IdentityServer4.IdentityServerConstants.ExternalCookieAuthenticationScheme,
+                    IdentityConstants.ExternalScheme,
                     new ClaimsPrincipal(id),
                     props);
                 return Redirect(props.RedirectUri);
