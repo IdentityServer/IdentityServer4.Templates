@@ -15,6 +15,10 @@ namespace IdentityServer4Empty
                 new IdentityResources.OpenId()
             };
 
+        public static IEnumerable<ApiScope> ApiScopes =>
+            new ApiScope[]
+            { };
+
         public static IEnumerable<ApiResource> Apis =>
             new ApiResource[] 
             { };

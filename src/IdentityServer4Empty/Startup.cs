@@ -25,6 +25,7 @@ namespace IdentityServer4Empty
 
             var builder = services.AddIdentityServer()
                 .AddInMemoryIdentityResources(Config.Ids)
+                .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryApiResources(Config.Apis)
                 .AddInMemoryClients(Config.Clients);
 
@@ -42,7 +43,8 @@ namespace IdentityServer4Empty
             // uncomment if you want to add MVC
             //app.UseStaticFiles();
             //app.UseRouting();
-
+            //app.UseAuthorization();
+            
             app.UseIdentityServer();
 
             // uncomment, if you want to add MVC
