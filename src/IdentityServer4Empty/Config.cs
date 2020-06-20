@@ -9,7 +9,7 @@ namespace IdentityServer4Empty
 {
     public static class Config
     {
-        public static IEnumerable<IdentityResource> Ids =>
+        public static IEnumerable<IdentityResource> IdentityResources =>
             new IdentityResource[]
             { 
                 new IdentityResources.OpenId()
@@ -19,7 +19,7 @@ namespace IdentityServer4Empty
             new ApiScope[]
             { };
 
-        public static IEnumerable<ApiResource> Apis =>
+        public static IEnumerable<ApiResource> ApiResources =>
             new ApiResource[] 
             { };
         
