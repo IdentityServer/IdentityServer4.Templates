@@ -19,13 +19,8 @@ namespace IdentityServer4Empty
             new ApiScope[]
             { };
 
-        public static IEnumerable<ApiResource> ApiResources =>
-            new ApiResource[] 
-            { };
-        
         public static IEnumerable<Client> Clients =>
             new Client[] 
             { };
-        
     }
 }

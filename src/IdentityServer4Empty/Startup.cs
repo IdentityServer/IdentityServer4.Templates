@@ -23,10 +23,13 @@ namespace IdentityServer4Empty
             // uncomment, if you want to add an MVC-based UI
             //services.AddControllersWithViews();
 
-            var builder = services.AddIdentityServer()
+            var builder = services.AddIdentityServer(options =>
+            {
+                // see https://identityserver4.readthedocs.io/en/latest/topics/resources.html
+                options.EmitStaticAudienceClaim = true;
+            })
                 .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
-                .AddInMemoryApiResources(Config.ApiResources)
                 .AddInMemoryClients(Config.Clients);
 
             // not recommended for production - you need to store your key material somewhere secure
@@ -43,7 +46,6 @@ namespace IdentityServer4Empty
             // uncomment if you want to add MVC
             //app.UseStaticFiles();
             //app.UseRouting();
-            //app.UseAuthorization();
             
             app.UseIdentityServer();
 

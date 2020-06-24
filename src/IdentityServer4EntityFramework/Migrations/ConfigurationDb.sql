@@ -9,10 +9,23 @@ CREATE TABLE "ApiResources" (
     "Name" TEXT NOT NULL,
     "DisplayName" TEXT NULL,
     "Description" TEXT NULL,
+    "AllowedAccessTokenSigningAlgorithms" TEXT NULL,
+    "ShowInDiscoveryDocument" INTEGER NOT NULL,
     "Created" TEXT NOT NULL,
     "Updated" TEXT NULL,
     "LastAccessed" TEXT NULL,
     "NonEditable" INTEGER NOT NULL
+);
+
+CREATE TABLE "ApiScopes" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiScopes" PRIMARY KEY AUTOINCREMENT,
+    "Enabled" INTEGER NOT NULL,
+    "Name" TEXT NOT NULL,
+    "DisplayName" TEXT NULL,
+    "Description" TEXT NULL,
+    "Required" INTEGER NOT NULL,
+    "Emphasize" INTEGER NOT NULL,
+    "ShowInDiscoveryDocument" INTEGER NOT NULL
 );
 
 CREATE TABLE "Clients" (
@@ -30,6 +43,7 @@ CREATE TABLE "Clients" (
     "AlwaysIncludeUserClaimsInIdToken" INTEGER NOT NULL,
     "RequirePkce" INTEGER NOT NULL,
     "AllowPlainTextPkce" INTEGER NOT NULL,
+    "RequireRequestObject" INTEGER NOT NULL,
     "AllowAccessTokensViaBrowser" INTEGER NOT NULL,
     "FrontChannelLogoutUri" TEXT NULL,
     "FrontChannelLogoutSessionRequired" INTEGER NOT NULL,
@@ -37,6 +51,7 @@ CREATE TABLE "Clients" (
     "BackChannelLogoutSessionRequired" INTEGER NOT NULL,
     "AllowOfflineAccess" INTEGER NOT NULL,
     "IdentityTokenLifetime" INTEGER NOT NULL,
+    "AllowedIdentityTokenSigningAlgorithms" TEXT NULL,
     "AccessTokenLifetime" INTEGER NOT NULL,
     "AuthorizationCodeLifetime" INTEGER NOT NULL,
     "ConsentLifetime" INTEGER NULL,
@@ -74,42 +89,52 @@ CREATE TABLE "IdentityResources" (
     "NonEditable" INTEGER NOT NULL
 );
 
-CREATE TABLE "ApiClaims" (
-    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiClaims" PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE "ApiResourceClaims" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiResourceClaims" PRIMARY KEY AUTOINCREMENT,
     "Type" TEXT NOT NULL,
     "ApiResourceId" INTEGER NOT NULL,
-    CONSTRAINT "FK_ApiClaims_ApiResources_ApiResourceId" FOREIGN KEY ("ApiResourceId") REFERENCES "ApiResources" ("Id") ON DELETE CASCADE
+    CONSTRAINT "FK_ApiResourceClaims_ApiResources_ApiResourceId" FOREIGN KEY ("ApiResourceId") REFERENCES "ApiResources" ("Id") ON DELETE CASCADE
 );
 
-CREATE TABLE "ApiProperties" (
-    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiProperties" PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE "ApiResourceProperties" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiResourceProperties" PRIMARY KEY AUTOINCREMENT,
     "Key" TEXT NOT NULL,
     "Value" TEXT NOT NULL,
     "ApiResourceId" INTEGER NOT NULL,
-    CONSTRAINT "FK_ApiProperties_ApiResources_ApiResourceId" FOREIGN KEY ("ApiResourceId") REFERENCES "ApiResources" ("Id") ON DELETE CASCADE
+    CONSTRAINT "FK_ApiResourceProperties_ApiResources_ApiResourceId" FOREIGN KEY ("ApiResourceId") REFERENCES "ApiResources" ("Id") ON DELETE CASCADE
 );
 
-CREATE TABLE "ApiScopes" (
-    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiScopes" PRIMARY KEY AUTOINCREMENT,
-    "Name" TEXT NOT NULL,
-    "DisplayName" TEXT NULL,
-    "Description" TEXT NULL,
-    "Required" INTEGER NOT NULL,
-    "Emphasize" INTEGER NOT NULL,
-    "ShowInDiscoveryDocument" INTEGER NOT NULL,
+CREATE TABLE "ApiResourceScopes" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiResourceScopes" PRIMARY KEY AUTOINCREMENT,
+    "Scope" TEXT NOT NULL,
     "ApiResourceId" INTEGER NOT NULL,
-    CONSTRAINT "FK_ApiScopes_ApiResources_ApiResourceId" FOREIGN KEY ("ApiResourceId") REFERENCES "ApiResources" ("Id") ON DELETE CASCADE
+    CONSTRAINT "FK_ApiResourceScopes_ApiResources_ApiResourceId" FOREIGN KEY ("ApiResourceId") REFERENCES "ApiResources" ("Id") ON DELETE CASCADE
 );
 
-CREATE TABLE "ApiSecrets" (
-    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiSecrets" PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE "ApiResourceSecrets" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiResourceSecrets" PRIMARY KEY AUTOINCREMENT,
     "Description" TEXT NULL,
     "Value" TEXT NOT NULL,
     "Expiration" TEXT NULL,
     "Type" TEXT NOT NULL,
     "Created" TEXT NOT NULL,
     "ApiResourceId" INTEGER NOT NULL,
-    CONSTRAINT "FK_ApiSecrets_ApiResources_ApiResourceId" FOREIGN KEY ("ApiResourceId") REFERENCES "ApiResources" ("Id") ON DELETE CASCADE
+    CONSTRAINT "FK_ApiResourceSecrets_ApiResources_ApiResourceId" FOREIGN KEY ("ApiResourceId") REFERENCES "ApiResources" ("Id") ON DELETE CASCADE
+);
+
+CREATE TABLE "ApiScopeClaims" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiScopeClaims" PRIMARY KEY AUTOINCREMENT,
+    "Type" TEXT NOT NULL,
+    "ScopeId" INTEGER NOT NULL,
+    CONSTRAINT "FK_ApiScopeClaims_ApiScopes_ScopeId" FOREIGN KEY ("ScopeId") REFERENCES "ApiScopes" ("Id") ON DELETE CASCADE
+);
+
+CREATE TABLE "ApiScopeProperties" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiScopeProperties" PRIMARY KEY AUTOINCREMENT,
+    "Key" TEXT NOT NULL,
+    "Value" TEXT NOT NULL,
+    "ScopeId" INTEGER NOT NULL,
+    CONSTRAINT "FK_ApiScopeProperties_ApiScopes_ScopeId" FOREIGN KEY ("ScopeId") REFERENCES "ApiScopes" ("Id") ON DELETE CASCADE
 );
 
 CREATE TABLE "ClientClaims" (
@@ -181,41 +206,36 @@ CREATE TABLE "ClientSecrets" (
     CONSTRAINT "FK_ClientSecrets_Clients_ClientId" FOREIGN KEY ("ClientId") REFERENCES "Clients" ("Id") ON DELETE CASCADE
 );
 
-CREATE TABLE "IdentityClaims" (
-    "Id" INTEGER NOT NULL CONSTRAINT "PK_IdentityClaims" PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE "IdentityResourceClaims" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_IdentityResourceClaims" PRIMARY KEY AUTOINCREMENT,
     "Type" TEXT NOT NULL,
     "IdentityResourceId" INTEGER NOT NULL,
-    CONSTRAINT "FK_IdentityClaims_IdentityResources_IdentityResourceId" FOREIGN KEY ("IdentityResourceId") REFERENCES "IdentityResources" ("Id") ON DELETE CASCADE
+    CONSTRAINT "FK_IdentityResourceClaims_IdentityResources_IdentityResourceId" FOREIGN KEY ("IdentityResourceId") REFERENCES "IdentityResources" ("Id") ON DELETE CASCADE
 );
 
-CREATE TABLE "IdentityProperties" (
-    "Id" INTEGER NOT NULL CONSTRAINT "PK_IdentityProperties" PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE "IdentityResourceProperties" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_IdentityResourceProperties" PRIMARY KEY AUTOINCREMENT,
     "Key" TEXT NOT NULL,
     "Value" TEXT NOT NULL,
     "IdentityResourceId" INTEGER NOT NULL,
-    CONSTRAINT "FK_IdentityProperties_IdentityResources_IdentityResourceId" FOREIGN KEY ("IdentityResourceId") REFERENCES "IdentityResources" ("Id") ON DELETE CASCADE
+    CONSTRAINT "FK_IdentityResourceProperties_IdentityResources_IdentityResourceId" FOREIGN KEY ("IdentityResourceId") REFERENCES "IdentityResources" ("Id") ON DELETE CASCADE
 );
 
-CREATE TABLE "ApiScopeClaims" (
-    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiScopeClaims" PRIMARY KEY AUTOINCREMENT,
-    "Type" TEXT NOT NULL,
-    "ApiScopeId" INTEGER NOT NULL,
-    CONSTRAINT "FK_ApiScopeClaims_ApiScopes_ApiScopeId" FOREIGN KEY ("ApiScopeId") REFERENCES "ApiScopes" ("Id") ON DELETE CASCADE
-);
+CREATE INDEX "IX_ApiResourceClaims_ApiResourceId" ON "ApiResourceClaims" ("ApiResourceId");
 
-CREATE INDEX "IX_ApiClaims_ApiResourceId" ON "ApiClaims" ("ApiResourceId");
-
-CREATE INDEX "IX_ApiProperties_ApiResourceId" ON "ApiProperties" ("ApiResourceId");
+CREATE INDEX "IX_ApiResourceProperties_ApiResourceId" ON "ApiResourceProperties" ("ApiResourceId");
 
 CREATE UNIQUE INDEX "IX_ApiResources_Name" ON "ApiResources" ("Name");
 
-CREATE INDEX "IX_ApiScopeClaims_ApiScopeId" ON "ApiScopeClaims" ("ApiScopeId");
+CREATE INDEX "IX_ApiResourceScopes_ApiResourceId" ON "ApiResourceScopes" ("ApiResourceId");
 
-CREATE INDEX "IX_ApiScopes_ApiResourceId" ON "ApiScopes" ("ApiResourceId");
+CREATE INDEX "IX_ApiResourceSecrets_ApiResourceId" ON "ApiResourceSecrets" ("ApiResourceId");
+
+CREATE INDEX "IX_ApiScopeClaims_ScopeId" ON "ApiScopeClaims" ("ScopeId");
+
+CREATE INDEX "IX_ApiScopeProperties_ScopeId" ON "ApiScopeProperties" ("ScopeId");
 
 CREATE UNIQUE INDEX "IX_ApiScopes_Name" ON "ApiScopes" ("Name");
-
-CREATE INDEX "IX_ApiSecrets_ApiResourceId" ON "ApiSecrets" ("ApiResourceId");
 
 CREATE INDEX "IX_ClientClaims_ClientId" ON "ClientClaims" ("ClientId");
 
@@ -237,12 +257,12 @@ CREATE INDEX "IX_ClientScopes_ClientId" ON "ClientScopes" ("ClientId");
 
 CREATE INDEX "IX_ClientSecrets_ClientId" ON "ClientSecrets" ("ClientId");
 
-CREATE INDEX "IX_IdentityClaims_IdentityResourceId" ON "IdentityClaims" ("IdentityResourceId");
+CREATE INDEX "IX_IdentityResourceClaims_IdentityResourceId" ON "IdentityResourceClaims" ("IdentityResourceId");
 
-CREATE INDEX "IX_IdentityProperties_IdentityResourceId" ON "IdentityProperties" ("IdentityResourceId");
+CREATE INDEX "IX_IdentityResourceProperties_IdentityResourceId" ON "IdentityResourceProperties" ("IdentityResourceId");
 
 CREATE UNIQUE INDEX "IX_IdentityResources_Name" ON "IdentityResources" ("Name");
 
 INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
-VALUES ('20190927145500_Config', '3.0.0');
+VALUES ('20200624171023_Config', '3.1.0');
 
