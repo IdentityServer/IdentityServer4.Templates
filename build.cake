@@ -6,7 +6,7 @@ var sign            = Argument<bool>("sign", false);
 // GLOBAL VARIABLES
 ///////////////////////////////////////////////////////////////////////////////
 var buildArtifacts      = Directory("./artifacts/packages");
-var packageVersion      = "4.0.0";
+var packageVersion      = "4.0.0-preview.1";
 
 ///////////////////////////////////////////////////////////////////////////////
 // Clean
