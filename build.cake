@@ -108,8 +108,9 @@ private void SignFile(string fileName)
 
     Information("  Signing " + fileName);
 
-    var success = StartProcess("./tools/signclient", new ProcessSettings {
+    var success = StartProcess("dotnet", new ProcessSettings {
         Arguments = new ProcessArgumentBuilder()
+            .Append("SignClient")
             .Append("sign")
             .Append($"-c {signClientConfig}")
             .Append($"-i {fileName}")

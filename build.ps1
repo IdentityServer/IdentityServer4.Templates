@@ -93,6 +93,7 @@ cd .\UI
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/IdentityServer/IdentityServer4.Quickstart.UI/main/getmain.ps1'))
 cd ..
 
+dotnet tool restore
 & "$CakeExePath" ./build.cake --bootstrap
 if ($LASTEXITCODE -eq 0)
 {
