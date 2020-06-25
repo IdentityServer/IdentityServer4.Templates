@@ -14,7 +14,7 @@ namespace IdentityServer4EntityFramework.Migrations.PersistedGrantDb
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.0.0");
+                .HasAnnotation("ProductVersion", "3.1.0");
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.DeviceFlowCodes", b =>
                 {
@@ -35,6 +35,10 @@ namespace IdentityServer4EntityFramework.Migrations.PersistedGrantDb
                         .HasColumnType("TEXT")
                         .HasMaxLength(50000);
 
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
+
                     b.Property<string>("DeviceCode")
                         .IsRequired()
                         .HasColumnType("TEXT")
@@ -43,6 +47,10 @@ namespace IdentityServer4EntityFramework.Migrations.PersistedGrantDb
                     b.Property<DateTime?>("Expiration")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<string>("SessionId")
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(100);
 
                     b.Property<string>("SubjectId")
                         .HasColumnType("TEXT")
@@ -69,6 +77,9 @@ namespace IdentityServer4EntityFramework.Migrations.PersistedGrantDb
                         .HasColumnType("TEXT")
                         .HasMaxLength(200);
 
+                    b.Property<DateTime?>("ConsumedTime")
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("TEXT");
 
@@ -77,8 +88,16 @@ namespace IdentityServer4EntityFramework.Migrations.PersistedGrantDb
                         .HasColumnType("TEXT")
                         .HasMaxLength(50000);
 
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
+
                     b.Property<DateTime?>("Expiration")
                         .HasColumnType("TEXT");
+
+                    b.Property<string>("SessionId")
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(100);
 
                     b.Property<string>("SubjectId")
                         .HasColumnType("TEXT")
@@ -94,6 +113,8 @@ namespace IdentityServer4EntityFramework.Migrations.PersistedGrantDb
                     b.HasIndex("Expiration");
 
                     b.HasIndex("SubjectId", "ClientId", "Type");
+
+                    b.HasIndex("SubjectId", "SessionId", "Type");
 
                     b.ToTable("PersistedGrants");
                 });

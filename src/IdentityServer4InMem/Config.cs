@@ -9,78 +9,50 @@ namespace IdentityServer4InMem
 {
     public static class Config
     {
-        public static IEnumerable<IdentityResource> Ids =>
+        public static IEnumerable<IdentityResource> IdentityResources =>
             new IdentityResource[]
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
             };
 
-
-        public static IEnumerable<ApiResource> Apis =>
-            new ApiResource[]
+        public static IEnumerable<ApiScope> ApiScopes =>
+            new ApiScope[]
             {
-                new ApiResource("api1", "My API #1")
+                new ApiScope("scope1"),
+                new ApiScope("scope2"),
             };
-
 
         public static IEnumerable<Client> Clients =>
             new Client[]
             {
-                // client credentials flow client
+                // m2m client credentials flow client
                 new Client
                 {
-                    ClientId = "client",
+                    ClientId = "m2m.client",
                     ClientName = "Client Credentials Client",
 
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     ClientSecrets = { new Secret("511536EF-F270-4058-80CA-1C89C192F69A".Sha256()) },
 
-                    AllowedScopes = { "api1" }
+                    AllowedScopes = { "scope1" }
                 },
 
-                // MVC client using code flow + pkce
+                // interactive client using code flow + pkce
                 new Client
                 {
-                    ClientId = "mvc",
-                    ClientName = "MVC Client",
-
-                    AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
-                    RequirePkce = true,
+                    ClientId = "interactive",
                     ClientSecrets = { new Secret("49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".Sha256()) },
+                    
+                    AllowedGrantTypes = GrantTypes.Code,
 
-                    RedirectUris = { "http://localhost:5003/signin-oidc" },
-                    FrontChannelLogoutUri = "http://localhost:5003/signout-oidc",
-                    PostLogoutRedirectUris = { "http://localhost:5003/signout-callback-oidc" },
+                    RedirectUris = { "https://localhost:44300/signin-oidc" },
+                    FrontChannelLogoutUri = "https://localhost:44300/signout-oidc",
+                    PostLogoutRedirectUris = { "https://localhost:44300/signout-callback-oidc" },
 
                     AllowOfflineAccess = true,
-                    AllowedScopes = { "openid", "profile", "api1" }
+                    AllowedScopes = { "openid", "profile", "scope2" }
                 },
-
-                // SPA client using code flow + pkce
-                new Client
-                {
-                    ClientId = "spa",
-                    ClientName = "SPA Client",
-                    ClientUri = "http://identityserver.io",
-
-                    AllowedGrantTypes = GrantTypes.Code,
-                    RequirePkce = true,
-                    RequireClientSecret = false,
-
-                    RedirectUris =
-                    {
-                        "http://localhost:5002/index.html",
-                        "http://localhost:5002/callback.html",
-                        "http://localhost:5002/silent.html",
-                        "http://localhost:5002/popup.html",
-                    },
-
-                    PostLogoutRedirectUris = { "http://localhost:5002/index.html" },
-                    AllowedCorsOrigins = { "http://localhost:5002" },
-
-                    AllowedScopes = { "openid", "profile", "api1" }
-                }
             };
     }
 }
