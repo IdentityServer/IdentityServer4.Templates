@@ -68,7 +68,7 @@ namespace IdentityServer4EntityFramework
                 Log.Debug("IdentityResources already populated");
             }
 
-            if (!context.ApiResources.Any())
+            if (!context.ApiScopes.Any())
             {
                 Log.Debug("ApiScopes being populated");
                 foreach (var resource in Config.ApiScopes.ToList())
