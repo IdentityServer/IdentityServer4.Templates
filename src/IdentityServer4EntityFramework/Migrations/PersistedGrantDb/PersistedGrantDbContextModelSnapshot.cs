@@ -3,10 +3,9 @@ using System;
 using IdentityServer4.EntityFramework.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace SqlServer.Migrations.PersistedGrantDb
+namespace IdentityServer4EntityFramework.Migrations.PersistedGrantDb
 {
     [DbContext(typeof(PersistedGrantDbContext))]
     partial class PersistedGrantDbContextModelSnapshot : ModelSnapshot
@@ -15,34 +14,46 @@ namespace SqlServer.Migrations.PersistedGrantDb
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "3.1.0");
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.DeviceFlowCodes", b =>
                 {
                     b.Property<string>("UserCode")
-                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
                         .HasMaxLength(200);
 
                     b.Property<string>("ClientId")
                         .IsRequired()
+                        .HasColumnType("TEXT")
                         .HasMaxLength(200);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Data")
                         .IsRequired()
+                        .HasColumnType("TEXT")
                         .HasMaxLength(50000);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
                     b.Property<string>("DeviceCode")
                         .IsRequired()
+                        .HasColumnType("TEXT")
                         .HasMaxLength(200);
 
                     b.Property<DateTime?>("Expiration")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("SessionId")
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(100);
 
                     b.Property<string>("SubjectId")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(200);
 
                     b.HasKey("UserCode");
@@ -50,8 +61,7 @@ namespace SqlServer.Migrations.PersistedGrantDb
                     b.HasIndex("DeviceCode")
                         .IsUnique();
 
-                    b.HasIndex("UserCode")
-                        .IsUnique();
+                    b.HasIndex("Expiration");
 
                     b.ToTable("DeviceCodes");
                 });
@@ -59,30 +69,52 @@ namespace SqlServer.Migrations.PersistedGrantDb
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.PersistedGrant", b =>
                 {
                     b.Property<string>("Key")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(200);
 
                     b.Property<string>("ClientId")
                         .IsRequired()
+                        .HasColumnType("TEXT")
                         .HasMaxLength(200);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime?>("ConsumedTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Data")
                         .IsRequired()
+                        .HasColumnType("TEXT")
                         .HasMaxLength(50000);
 
-                    b.Property<DateTime?>("Expiration");
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
+
+                    b.Property<DateTime?>("Expiration")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("SessionId")
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(100);
 
                     b.Property<string>("SubjectId")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(200);
 
                     b.Property<string>("Type")
                         .IsRequired()
+                        .HasColumnType("TEXT")
                         .HasMaxLength(50);
 
                     b.HasKey("Key");
 
+                    b.HasIndex("Expiration");
+
                     b.HasIndex("SubjectId", "ClientId", "Type");
+
+                    b.HasIndex("SubjectId", "SessionId", "Type");
 
                     b.ToTable("PersistedGrants");
                 });

@@ -1,76 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="tw-bg-primary-500 tw-h-full">
 <head>
     <base href="/admin/">
-    <title>Identity Express</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <title>AdminUI</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script type="text/javascript">
         // temporary hack to enable bootstrap 4
         window.__theme = 'bs4';
     </script>
-    
     <link href="assets/styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/styles/font-awesome.min.css" rel="stylesheet" type="text/css" />
-
+    <link href="assets/fonts/roboto/roboto.css" rel="stylesheet" type="text/css" />
+    <link href="assets/fonts/fontawesome/css/all.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/styles/app.min.css?v=2-6" rel="stylesheet" type="text/css" />
     <script src="assets/scripts/tether.min.js"></script>
     <script src="assets/scripts/jquery.min.js"></script>
     <script src="assets/scripts/bootstrap.min.js"></script>
-    
     <script src="assets/env.js"></script>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-<link rel="stylesheet" href="styles.101f7515d4a5b3a8a400.css"></head>
-
-<body>
+    <link href="assets/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="theme-color" content="#4C5C68" />
+    <meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="styles.74cd9ef17f08dc09cd6a.css"></head>
+<body class="tw-bg-grey-100 tw-text-body tw-font-sans tw-text-base tw-leading-normal tw-min-h-full tw-pb-24 tw-relative no-focus-outline">
     <my-app></my-app>
-
-    <div id="pre-bootstrap-container">
-        <script type="text/javascript">
-            document.addEventListener("appready", handleAppReady);
-
-            function handleAppReady(event) {
-                var preBootstrapContainer = document.getElementById( "pre-bootstrap-container" );
-                var preBootstrap = document.getElementById( "pre-bootstrap" );
-
-                if(preBootstrap != null) {
-                    preBootstrap.className = "loaded";
-
-                    setTimeout(
-                        function removeLoadingScreen() {
-                            if(preBootstrapContainer.parentNode){
-                                preBootstrapContainer
-                                    .parentNode
-                                    .removeChild(preBootstrapContainer);
-                            }
-                        }, 500
-                    );
-                }
-            }
-        </script>
-        <div id="pre-bootstrap">
-            <div class="msg">
-
-                <div id='loading' class="text-center">
-                    <img src='assets/logo_full_slate.png' alt='AdminUI' title='AdminUI' />
-                    <span class="sr-only">Loading...</span>
-                    <span id="wait">.</span>
-                </div>
-
+    <div id="pre-loader" class="tw-flex tw-items-center tw-justify-center tw-bg-primary-500 tw-text-white tw-fixed tw-inset-0 tw-z-50 trans-slowest">
+        <div class="tw-text-center">
+            <div class="tw-flex tw-items-center tw-justify-center">
+                <img class="tw-block tw-w-8 tw-mr-3" src="assets/img/logo-white.png" alt="" aria-hidden="true" />
+                <span class="tw-text-xl tw-font-bold">AdminUI</span>
             </div>
-        </div>
+            <span class="tw-block tw-text-sm tw-opacity-50 tw-mt-4">
+                <span class="fad fa-spinner-third fa-spin" aria-hidden="true"></span>
+            </span>
+        </div> 
     </div>
-<script type="text/javascript" src="runtime.06daa30a2963fa413676.js"></script><script type="text/javascript" src="polyfills.bc2a885346e607f90f29.js"></script><script type="text/javascript" src="scripts.730292c744802ef10a95.js"></script><script type="text/javascript" src="main.0634a63d45bceedf173a.js"></script></body>
-<script type="text/javascript">
-    var counter = 0;
-    var dots = window.setInterval( function() {
-        counter++;
-        var wait = document.getElementById("wait");
-        if(wait){
-            if(Math.random() < .7) wait.innerHTML += ".";
-            if(counter > 50) clearInterval(dots);
-        } else clearInterval(dots);
-    }, 50);
-</script>
+    <script src="assets/scripts/index.js"></script>
+<script src="runtime-es2015.eaeb4183bc7dbb626e47.js" type="module"></script><script src="runtime-es5.eaeb4183bc7dbb626e47.js" nomodule defer></script><script src="polyfills-es5.a862bfcf3c7ed6f4842f.js" nomodule defer></script><script src="polyfills-es2015.de4760aa0f066578a8c2.js" type="module"></script><script src="scripts.d1da9d4084d6b8e8c365.js" defer></script><script src="main-es2015.593c4a2dd4766d3a5310.js" type="module"></script><script src="main-es5.593c4a2dd4766d3a5310.js" nomodule defer></script></body>
 </html>
-

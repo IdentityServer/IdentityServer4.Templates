@@ -9,22 +9,18 @@ namespace IdentityServer4Empty
 {
     public static class Config
     {
-        public static IEnumerable<IdentityResource> GetIdentityResources()
-        {
-            return new IdentityResource[]
-            {
+        public static IEnumerable<IdentityResource> IdentityResources =>
+            new IdentityResource[]
+            { 
                 new IdentityResources.OpenId()
             };
-        }
 
-        public static IEnumerable<ApiResource> GetApis()
-        {
-            return new ApiResource[] { };
-        }
+        public static IEnumerable<ApiScope> ApiScopes =>
+            new ApiScope[]
+            { };
 
-        public static IEnumerable<Client> GetClients()
-        {
-            return new Client[] { };
-        }
+        public static IEnumerable<Client> Clients =>
+            new Client[] 
+            { };
     }
 }

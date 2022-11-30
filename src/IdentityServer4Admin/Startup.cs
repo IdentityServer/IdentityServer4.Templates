@@ -2,7 +2,11 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityExpress.Identity;
+using IdentityExpress.Manager.Api;
 using IdentityServer4;
+using IdentityServer4.Configuration;
+using IdentityServer4Admin.Data;
 using IdentityServer4Admin.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,26 +14,17 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
+using Microsoft.Extensions.Hosting;
 using System.Reflection;
-using IdentityExpress.Identity;
-using IdentityExpress.Manager.Api;
-using IdentityServer4.Configuration;
-using IdentityServer4.Services;
-using IdentityServer4Admin.Data;
-using Microsoft.Extensions.Logging.Abstractions;
-using RSK.Audit.EF;
-using RSK.IdentityServer4.AuditEventSink;
 
 namespace IdentityServer4Admin
 {
     public class Startup
     {
+        public IWebHostEnvironment Environment { get; }
         public IConfiguration Configuration { get; }
-        public IHostingEnvironment Environment { get; }
 
-        public Startup(IConfiguration configuration, IHostingEnvironment environment)
+        public Startup(IWebHostEnvironment environment, IConfiguration configuration)
         {
             Configuration = configuration;
             Environment = environment;
@@ -37,6 +32,22 @@ namespace IdentityServer4Admin
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
+
+            // configures IIS out-of-proc settings (see https://github.com/aspnet/AspNetCore/issues/14882)
+            services.Configure<IISOptions>(iis =>
+            {
+                iis.AuthenticationDisplayName = "Windows";
+                iis.AutomaticAuthentication = false;
+            });
+
+            // configures IIS in-proc settings
+            services.Configure<IISServerOptions>(iis =>
+            {
+                iis.AuthenticationDisplayName = "Windows";
+                iis.AutomaticAuthentication = false;
+            });
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("Users")));
 
@@ -44,31 +55,23 @@ namespace IdentityServer4Admin
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddMvc();
-
-            services.Configure<IISOptions>(iis =>
-            {
-                iis.AuthenticationDisplayName = "Windows";
-                iis.AutomaticAuthentication = false;
-            });
-
             var connectionString = Configuration.GetConnectionString("Configuration");
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             var builder = services.AddIdentityServer(options =>
-            {
-                options.Events.RaiseErrorEvents = true;
-                options.Events.RaiseInformationEvents = true;
-                options.Events.RaiseFailureEvents = true;
-                options.Events.RaiseSuccessEvents = true;
-
-                options.UserInteraction = new UserInteractionOptions
                 {
-                    LogoutUrl = "/Account/Logout",
-                    LoginUrl = "/Account/Login",
-                    LoginReturnUrlParameter = "returnUrl"
-                };
-            })
+                    options.Events.RaiseErrorEvents = true;
+                    options.Events.RaiseInformationEvents = true;
+                    options.Events.RaiseFailureEvents = true;
+                    options.Events.RaiseSuccessEvents = true;
+
+                    options.UserInteraction = new UserInteractionOptions
+                    {
+                        LogoutUrl = "/Account/Logout",
+                        LoginUrl = "/Account/Login",
+                        LoginReturnUrlParameter = "returnUrl"
+                    };
+                })
                 .AddAspNetIdentity<ApplicationUser>()
                 // this adds the config data from DB (clients, resources, CORS)
                 .AddConfigurationStore(options =>
@@ -89,16 +92,8 @@ namespace IdentityServer4Admin
                     // options.TokenCleanupInterval = 15; // interval in seconds. 15 seconds useful for debugging
                 });
 
-            ConfigureIdentityServerAuditing(services, connectionString);
-
-            if (Environment.IsDevelopment())
-            {
-                builder.AddDeveloperSigningCredential();
-            }
-            else
-            {
-                throw new Exception("need to configure key material");
-            }
+            // not recommended for production - you need to store your key material somewhere secure
+            builder.AddDeveloperSigningCredential();
 
             services.AddAuthentication()
                 .AddGoogle(options =>
@@ -126,28 +121,16 @@ namespace IdentityServer4Admin
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseIdentityServer();
-
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
-            app.UseAdminUI();
-        }
-        
-        public void ConfigureIdentityServerAuditing(IServiceCollection services, string auditConnectionString)
-        {
-            var dbContextOptionsBuilder = new DbContextOptionsBuilder<AuditDatabaseContext>();
-            RSK.Audit.AuditProviderFactory auditFactory = new AuditProviderFactory(dbContextOptionsBuilder.UseSqlite(auditConnectionString).Options);
-            var auditRecorder = auditFactory.CreateAuditSource("IdentityServer");
-            services.AddSingleton<IEventSink>(provider => new AuditSink(auditRecorder));
 
-            services.AddSingleton<IEventSink>(provider => new EventSinkAggregator(new NullLogger<EventSinkAggregator>())
-            {
-                EventSinks = new List<IEventSink>
-                {
-                    new AuditSink(auditRecorder)
-                }
-            });
+            app.UseRouting();
+            app.UseIdentityServer();
+            app.UseAuthorization();
+
+            app.UseAdminUI();
+
+            app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
         }
     }
 }

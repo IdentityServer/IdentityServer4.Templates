@@ -2,7 +2,6 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
-using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,19 +23,17 @@ namespace IdentityServer4Empty
             // uncomment, if you want to add an MVC-based UI
             //services.AddControllersWithViews();
 
-            var builder = services.AddIdentityServer()
-                .AddInMemoryIdentityResources(Config.GetIdentityResources())
-                .AddInMemoryApiResources(Config.GetApis())
-                .AddInMemoryClients(Config.GetClients());
+            var builder = services.AddIdentityServer(options =>
+            {
+                // see https://identityserver4.readthedocs.io/en/latest/topics/resources.html
+                options.EmitStaticAudienceClaim = true;
+            })
+                .AddInMemoryIdentityResources(Config.IdentityResources)
+                .AddInMemoryApiScopes(Config.ApiScopes)
+                .AddInMemoryClients(Config.Clients);
 
-            if (Environment.IsDevelopment())
-            {
-                builder.AddDeveloperSigningCredential();
-            }
-            else
-            {
-                throw new Exception("need to configure key material");
-            }
+            // not recommended for production - you need to store your key material somewhere secure
+            builder.AddDeveloperSigningCredential();
         }
 
         public void Configure(IApplicationBuilder app)
@@ -46,12 +43,14 @@ namespace IdentityServer4Empty
                 app.UseDeveloperExceptionPage();
             }
 
-            // uncomment if you want to support static files
+            // uncomment if you want to add MVC
             //app.UseStaticFiles();
-
+            //app.UseRouting();
+            
             app.UseIdentityServer();
 
-            // uncomment, if you want to add an MVC-based UI
+            // uncomment, if you want to add MVC
+            //app.UseAuthorization();
             //app.UseEndpoints(endpoints =>
             //{
             //    endpoints.MapDefaultControllerRoute();

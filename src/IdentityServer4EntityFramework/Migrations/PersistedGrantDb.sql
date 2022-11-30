@@ -1,54 +1,43 @@
-﻿IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
-BEGIN
-    CREATE TABLE [__EFMigrationsHistory] (
-        [MigrationId] nvarchar(150) NOT NULL,
-        [ProductVersion] nvarchar(32) NOT NULL,
-        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
-    );
-END;
-
-GO
-
-CREATE TABLE [DeviceCodes] (
-    [DeviceCode] nvarchar(200) NOT NULL,
-    [UserCode] nvarchar(200) NOT NULL,
-    [SubjectId] nvarchar(200) NULL,
-    [ClientId] nvarchar(200) NOT NULL,
-    [CreationTime] datetime2 NOT NULL,
-    [Expiration] datetime2 NOT NULL,
-    [Data] nvarchar(max) NOT NULL,
-    CONSTRAINT [PK_DeviceCodes] PRIMARY KEY ([UserCode])
+﻿CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
 );
 
-GO
-
-CREATE TABLE [PersistedGrants] (
-    [Key] nvarchar(200) NOT NULL,
-    [Type] nvarchar(50) NOT NULL,
-    [SubjectId] nvarchar(200) NULL,
-    [ClientId] nvarchar(200) NOT NULL,
-    [CreationTime] datetime2 NOT NULL,
-    [Expiration] datetime2 NULL,
-    [Data] nvarchar(max) NOT NULL,
-    CONSTRAINT [PK_PersistedGrants] PRIMARY KEY ([Key])
+CREATE TABLE "DeviceCodes" (
+    "UserCode" TEXT NOT NULL CONSTRAINT "PK_DeviceCodes" PRIMARY KEY,
+    "DeviceCode" TEXT NOT NULL,
+    "SubjectId" TEXT NULL,
+    "SessionId" TEXT NULL,
+    "ClientId" TEXT NOT NULL,
+    "Description" TEXT NULL,
+    "CreationTime" TEXT NOT NULL,
+    "Expiration" TEXT NOT NULL,
+    "Data" TEXT NOT NULL
 );
 
-GO
+CREATE TABLE "PersistedGrants" (
+    "Key" TEXT NOT NULL CONSTRAINT "PK_PersistedGrants" PRIMARY KEY,
+    "Type" TEXT NOT NULL,
+    "SubjectId" TEXT NULL,
+    "SessionId" TEXT NULL,
+    "ClientId" TEXT NOT NULL,
+    "Description" TEXT NULL,
+    "CreationTime" TEXT NOT NULL,
+    "Expiration" TEXT NULL,
+    "ConsumedTime" TEXT NULL,
+    "Data" TEXT NOT NULL
+);
 
-CREATE UNIQUE INDEX [IX_DeviceCodes_DeviceCode] ON [DeviceCodes] ([DeviceCode]);
+CREATE UNIQUE INDEX "IX_DeviceCodes_DeviceCode" ON "DeviceCodes" ("DeviceCode");
 
-GO
+CREATE INDEX "IX_DeviceCodes_Expiration" ON "DeviceCodes" ("Expiration");
 
-CREATE UNIQUE INDEX [IX_DeviceCodes_UserCode] ON [DeviceCodes] ([UserCode]);
+CREATE INDEX "IX_PersistedGrants_Expiration" ON "PersistedGrants" ("Expiration");
 
-GO
+CREATE INDEX "IX_PersistedGrants_SubjectId_ClientId_Type" ON "PersistedGrants" ("SubjectId", "ClientId", "Type");
 
-CREATE INDEX [IX_PersistedGrants_SubjectId_ClientId_Type] ON [PersistedGrants] ([SubjectId], [ClientId], [Type]);
+CREATE INDEX "IX_PersistedGrants_SubjectId_SessionId_Type" ON "PersistedGrants" ("SubjectId", "SessionId", "Type");
 
-GO
-
-INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20181021143709_Grants', N'2.1.4-rtm-31024');
-
-GO
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20200624171018_Grants', '3.1.0');
 

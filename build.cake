@@ -6,7 +6,7 @@ var sign            = Argument<bool>("sign", false);
 // GLOBAL VARIABLES
 ///////////////////////////////////////////////////////////////////////////////
 var buildArtifacts      = Directory("./artifacts/packages");
-var packageVersion      = "2.7.0";
+var packageVersion      = "4.0.1";
 
 ///////////////////////////////////////////////////////////////////////////////
 // Clean
@@ -108,8 +108,9 @@ private void SignFile(string fileName)
 
     Information("  Signing " + fileName);
 
-    var success = StartProcess("./tools/signclient", new ProcessSettings {
+    var success = StartProcess("dotnet", new ProcessSettings {
         Arguments = new ProcessArgumentBuilder()
+            .Append("SignClient")
             .Append("sign")
             .Append($"-c {signClientConfig}")
             .Append($"-i {fileName}")

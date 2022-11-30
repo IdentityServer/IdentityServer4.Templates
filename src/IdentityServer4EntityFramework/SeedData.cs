@@ -3,13 +3,12 @@
 
 
 using IdentityServer4.EntityFramework.DbContexts;
-using IdentityServer4.EntityFramework.Interfaces;
 using IdentityServer4.EntityFramework.Mappers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Linq;
 using IdentityServer4.EntityFramework.Storage;
+using Serilog;
 
 namespace IdentityServer4EntityFramework
 {
@@ -39,14 +38,12 @@ namespace IdentityServer4EntityFramework
             }
         }
 
-        private static void EnsureSeedData(IConfigurationDbContext context)
+        private static void EnsureSeedData(ConfigurationDbContext context)
         {
-            Console.WriteLine("Seeding database...");
-
             if (!context.Clients.Any())
             {
-                Console.WriteLine("Clients being populated");
-                foreach (var client in Config.GetClients().ToList())
+                Log.Debug("Clients being populated");
+                foreach (var client in Config.Clients.ToList())
                 {
                     context.Clients.Add(client.ToEntity());
                 }
@@ -54,13 +51,13 @@ namespace IdentityServer4EntityFramework
             }
             else
             {
-                Console.WriteLine("Clients already populated");
+                Log.Debug("Clients already populated");
             }
 
             if (!context.IdentityResources.Any())
             {
-                Console.WriteLine("IdentityResources being populated");
-                foreach (var resource in Config.GetIdentityResources().ToList())
+                Log.Debug("IdentityResources being populated");
+                foreach (var resource in Config.IdentityResources.ToList())
                 {
                     context.IdentityResources.Add(resource.ToEntity());
                 }
@@ -68,25 +65,22 @@ namespace IdentityServer4EntityFramework
             }
             else
             {
-                Console.WriteLine("IdentityResources already populated");
+                Log.Debug("IdentityResources already populated");
             }
 
-            if (!context.ApiResources.Any())
+            if (!context.ApiScopes.Any())
             {
-                Console.WriteLine("ApiResources being populated");
-                foreach (var resource in Config.GetApis().ToList())
+                Log.Debug("ApiScopes being populated");
+                foreach (var resource in Config.ApiScopes.ToList())
                 {
-                    context.ApiResources.Add(resource.ToEntity());
+                    context.ApiScopes.Add(resource.ToEntity());
                 }
                 context.SaveChanges();
             }
             else
             {
-                Console.WriteLine("ApiResources already populated");
+                Log.Debug("ApiScopes already populated");
             }
-
-            Console.WriteLine("Done seeding database.");
-            Console.WriteLine();
         }
     }
 }
